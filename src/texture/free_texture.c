@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 14:21:43 by lseeger          ###   ########.fr       */
+/*   Created: 2025/06/17 14:27:21 by lseeger           #+#    #+#             */
+/*   Updated: 2025/06/17 14:35:07 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/header.h"
+#include "header.h"
 
-void	key_hook(mlx_key_data_t keydata, void *param)
+void	free_texture(mlx_t *mlx, t_texture *texture)
 {
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	free(texture->path);
+	texture->path = NULL;
+	if (texture->img)
 	{
-		mlx_close_window((mlx_t *)param);
+		mlx_delete_image(mlx, texture->img);
+		texture->img = NULL;
 	}
-}
-
-int	main(void)
-{
-	t_game	game;
-	mlx_t	*mlx;
-
-	mlx = mlx_init(800, 600, "cub3d", true);
-	if (!mlx)
-	{
-		return (1);
-	}
-	mlx_key_hook(mlx, key_hook, mlx);
-	mlx_loop(mlx);
-	return (0);
+	texture->width = 0;
+	texture->height = 0;
 }

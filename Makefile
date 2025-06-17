@@ -23,9 +23,12 @@ GNL_LIB     := $(GNL_DIR)/get_next_line.a
 INCLUDES    := -I include -I $(LIBMLX)/include -I $(LIBFT_DIR) -I $(GNL_DIR)
 LIBS        := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
+vpath %.c src
+vpath %.c src/parsing
+vpath %.c src/texture
+
 # Source and object files
 SRC_FILES := main.c
-VPATH := $(SRC_DIR)
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))
 

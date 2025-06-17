@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 12:58:16 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/17 14:35:15 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ typedef struct s_texture
 {
 	char		*path;
 	void		*img;
-	char		*addr;
 	int			width;
 	int			height;
 }				t_texture;
+
+// texture functions
+void			init_texture(t_texture *texture);
+void			free_texture(mlx_t *mlx, t_texture *texture);
 
 typedef struct s_game
 {
@@ -68,5 +71,9 @@ typedef struct s_game
 	// .cub file path
 	char		*scene_path;
 }				t_game;
+
+// game functions
+void			init_game(t_game *game);
+void			free_game(t_game *game);
 
 #endif // HEADER_H
