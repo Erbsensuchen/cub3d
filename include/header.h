@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 14:35:15 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 14:52:38 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "MLX42/MLX42.h"
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_color
 {
@@ -22,6 +24,8 @@ typedef struct s_color
 	int			g;
 	int			b;
 }				t_color;
+// color functions
+void			print_color(t_color *color);
 
 typedef struct s_texture
 {
@@ -34,6 +38,7 @@ typedef struct s_texture
 // texture functions
 void			init_texture(t_texture *texture);
 void			free_texture(mlx_t *mlx, t_texture *texture);
+void			print_texture(t_texture *texture);
 
 typedef struct s_game
 {
@@ -58,7 +63,7 @@ typedef struct s_game
 
 	// Player
 	double		player_x;
-	double		player_zy;
+	double		player_y;
 	double		player_x_rotation;
 	double		player_y_rotation;
 
@@ -75,5 +80,7 @@ typedef struct s_game
 // game functions
 void			init_game(t_game *game);
 void			free_game(t_game *game);
+void			print_game(t_game *game);
+void			print_grid(t_game *game);
 
 #endif // HEADER_H

@@ -26,9 +26,20 @@ LIBS        := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 vpath %.c src
 vpath %.c src/parsing
 vpath %.c src/texture
+vpath %.c src/game
+vpath %.c src/color
 
 # Source and object files
-SRC_FILES := main.c
+SRC_FILES := main.c \
+			print_color.c \
+			free_game.c \
+			init_game.c \
+			print_game.c \
+			parsing.c \
+			free_texture.c \
+			init_texture.c \
+			print_texture.c
+
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))
 

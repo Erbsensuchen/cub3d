@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 14:21:43 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:00:00 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(void)
 	t_game	game;
 	mlx_t	*mlx;
 
+	init_game(&game);
+	print_game(&game);
 	mlx = mlx_init(800, 600, "cub3d", true);
 	if (!mlx)
 	{
@@ -32,5 +34,6 @@ int	main(void)
 	}
 	mlx_key_hook(mlx, key_hook, mlx);
 	mlx_loop(mlx);
+	free_game(&game);
 	return (0);
 }
