@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:06:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:37:03 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	print_game(t_game *game)
 {
 	printf("Game\n");
 	printf("MLX: %p\n", game->mlx);
-	printf("Window: %p\n", game->win);
 	print_textures(game);
 	printf("Floor Color: ");
 	print_color(&game->floor);
