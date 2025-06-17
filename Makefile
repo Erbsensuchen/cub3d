@@ -5,7 +5,7 @@ DEBUG_NAME  := cub3d_debug
 # Compiler and flags
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast
-DEBUG_FLAGS := -g -O0
+DEBUG_FLAGS := -g -O0 -DDEBUG=1
 
 # Directories
 OBJ_DIR     := obj
@@ -60,7 +60,7 @@ $(NAME): $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_FILES)
 # Debug binary
 debug: $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_DEBUG_FILES)
 	@echo "Linking debug build..."
-	@$(CC) $(OBJ_DEBUG_FILES) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
+	@$(CC) $(OBJ_DEBUG_FILES) -D DEBUG=1 $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
 
 # Compile .o files
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
@@ -131,6 +131,5 @@ run: all
 # Run the debug program
 debug_run: debug
 	@./$(DEBUG_NAME)
-
 
 .PHONY: all debug clean fclean re debug_clean debug_fclean debug_re run debug_run

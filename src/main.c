@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:11:11 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:18:01 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	(void)argc;
-    (void)argv;
+	(void)argv;
 	init_game(&game);
-    print_game(&game);
+	print_game(&game);
 	game.mlx = mlx_init(800, 600, "cub3d", true);
 	if (!game.mlx)
 	{
@@ -27,5 +27,6 @@ int	main(int argc, char **argv)
 	}
 	mlx_key_hook(game.mlx, keyhook, &game);
 	mlx_loop(game.mlx);
+	free_game(&game);
 	return (0);
 }
