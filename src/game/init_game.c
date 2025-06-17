@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:33:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:55:48 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,12 @@ static void	init_movement_values(t_game *game)
 	game->y_rotation = 0.0;
 }
 
-bool	init_game(t_game *game)
+void	init_game(t_game *game)
 {
-	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "cub3d", true);
-	if (!game->mlx)
-		return (true);
+	game->mlx = NULL;
 	init_texture(&game->north);
 	init_texture(&game->south);
 	init_texture(&game->east);
 	init_texture(&game->west);
 	init_movement_values(game);
-	game->scene_path = NULL;
-	return (false);
 }

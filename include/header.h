@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:33:08 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:55:56 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 # define HEADER_H
 
 # include "MLX42/MLX42.h"
+# include "libft.h"
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
 
+# define TITLE "Cub3D"
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
 
@@ -79,16 +82,17 @@ typedef struct s_game
 	double		y_movement;
 	double		x_rotation;
 	double		y_rotation;
-
-	// .cub file path
-	char		*scene_path;
 }				t_game;
 
 // game functions
-bool			init_game(t_game *game);
+void			init_game(t_game *game);
 void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
+
+// parsing functions
+bool			scene_valid(const char *scene_path);
+bool			parse_game(t_game *game, const char *scene_path);
 
 // movement functions
 void			move_forward(t_game *game);

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 14:18:50 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:54:10 by lseeger          ###   ########.fr       */
+/*   Created: 2025/06/17 15:51:09 by lseeger           #+#    #+#             */
+/*   Updated: 2025/06/17 15:54:48 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-bool	parse_game(t_game *game, const char *scene_path)
+bool	scene_valid(const char *scene_path)
 {
-	(void)game;
 	(void)scene_path;
-	return (false);
+	return (true);
 }

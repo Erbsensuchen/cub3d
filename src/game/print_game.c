@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:37:03 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:53:54 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ void	print_game(t_game *game)
 		game->player_y_rotation);
 	printf("Movement: (%.2f | %.2f)\n", game->x_movement, game->y_movement);
 	printf("Rotation: (%.2f | %.2f)\n", game->x_rotation, game->y_rotation);
-	if (game->scene_path)
-		printf("Scene Path: %s\n", game->scene_path);
-	else
-		printf("Scene Path: NULL\n");
 }
 
 void	print_grid(t_game *game)
