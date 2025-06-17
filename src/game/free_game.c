@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:56:53 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 16:00:00 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	reset_movement_values(t_game *game)
 	game->height = 0;
 	game->player_x = 0.0;
 	game->player_y = 0.0;
-	game->player_x_rotation = 0.0;
-	game->player_y_rotation = 0.0;
+	// game->player_x_rotation = 0.0;
+	game->player_rotation = 0.0;
 	game->x_movement = 0.0;
 	game->y_movement = 0.0;
 	game->x_rotation = 0.0;

@@ -46,6 +46,7 @@ SRC_FILES := main.c \
 			right.c \
 			keyhook.c \
 			validation.c \
+			rotation.c 
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

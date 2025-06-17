@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:55:56 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:59:42 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ typedef struct s_game
 	// Player
 	double		player_x;
 	double		player_y;
-	double		player_x_rotation;
-	double		player_y_rotation;
-
+	double player_rotation; // in radians, 0 / 2*PI means forward
 	// Movement flags
 	double		x_movement;
 	double		y_movement;
@@ -99,6 +97,10 @@ void			move_forward(t_game *game);
 void			move_backward(t_game *game);
 void			move_left(t_game *game);
 void			move_right(t_game *game);
+
+// rotation functions
+void			rotate_left(t_game *game);
+void			rotate_right(t_game *game);
 
 // hooks
 void			keyhook(mlx_key_data_t keydata, void *param);

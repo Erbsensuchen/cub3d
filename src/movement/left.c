@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:55:30 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 14:55:31 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:47:22 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	move_left(t_game *game)
     double	new_x;
     double	new_y;
 
-    new_x = game->player_x - game->x_movement * cos(game->player_y_rotation + M_PI_2);
-    new_y = game->player_y - game->y_movement * sin(game->player_y_rotation + M_PI_2);
+    new_x = game->player_x - game->x_movement * cos(game->player_rotation + M_PI_2);
+    new_y = game->player_y - game->y_movement * sin(game->player_rotation + M_PI_2);
     if (game->grid[(int)new_y][(int)new_x] != '1')
     {
         game->player_x = new_x;

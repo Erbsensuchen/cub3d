@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:01:23 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:53:03 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 16:00:11 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		move_left(game);
 	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		move_right(game);
-	else if (DEBUG && keydata.key == MLX_KEY_L && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+		rotate_left(game);
+	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+		rotate_right(game);
+	if (DEBUG)
 		print_game(game);
 }

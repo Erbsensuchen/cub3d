@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 15:53:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 16:00:07 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	print_game(t_game *game)
 	print_color(&game->ceiling);
 	print_grid(game);
 	printf("Player Position: (%.2f | %.2f)\n", game->player_x, game->player_y);
-	printf("Player Rotation: (%.2f | %.2f)\n", game->player_x_rotation,
-		game->player_y_rotation);
+    printf("Player Rotation: %.2f\n", game->player_rotation);
 	printf("Movement: (%.2f | %.2f)\n", game->x_movement, game->y_movement);
 	printf("Rotation: (%.2f | %.2f)\n", game->x_rotation, game->y_rotation);
 }
