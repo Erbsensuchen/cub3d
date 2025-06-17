@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:23:34 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:33:08 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
+
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 typedef struct s_color
 {
@@ -48,8 +51,7 @@ void			print_texture(t_texture *texture);
 typedef struct s_game
 {
 	// MLX
-	void		*mlx;
-	void		*win;
+	mlx_t		*mlx;
 
 	// Textures
 	t_texture	north;
@@ -83,7 +85,7 @@ typedef struct s_game
 }				t_game;
 
 // game functions
-void			init_game(t_game *game);
+bool			init_game(t_game *game);
 void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
