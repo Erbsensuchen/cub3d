@@ -1,5 +1,4 @@
 .vscode
-!.gitignore
 val
 cub3d
 a
@@ -13,3 +12,4 @@ test.c
 *.json
 MLX42
 obj
+.DS_Store
