@@ -1,0 +1,14 @@
+.*
+!.gitignore
+val
+cub3d
+a
+b
+aa
+c
+*.o
+*.a
+a.out 
+test.c
+*.json
+MLX42
