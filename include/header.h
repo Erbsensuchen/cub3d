@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 14:52:38 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:10:17 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "MLX42/MLX42.h"
+# include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -82,5 +83,14 @@ void			init_game(t_game *game);
 void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
+
+// movement functions
+void			move_forward(t_game *game);
+void			move_backward(t_game *game);
+void			move_left(t_game *game);
+void			move_right(t_game *game);
+
+// hooks
+void			keyhook(mlx_key_data_t keydata, void *param);
 
 #endif // HEADER_H

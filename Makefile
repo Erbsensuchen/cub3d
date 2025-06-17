@@ -8,7 +8,6 @@ CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast
 DEBUG_FLAGS := -g -O0
 
 # Directories
-SRC_DIR     := src
 OBJ_DIR     := obj
 OBJ_DEBUG_DIR := obj_debug
 
@@ -28,6 +27,8 @@ vpath %.c src/parsing
 vpath %.c src/texture
 vpath %.c src/game
 vpath %.c src/color
+vpath %.c src/movement
+vpath %.c src/hooks
 
 # Source and object files
 SRC_FILES := main.c \
@@ -38,7 +39,12 @@ SRC_FILES := main.c \
 			parsing.c \
 			free_texture.c \
 			init_texture.c \
-			print_texture.c
+			print_texture.c \
+			backward.c \
+			forward.c \
+			left.c \
+			right.c \
+			keyhook.c 
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))
