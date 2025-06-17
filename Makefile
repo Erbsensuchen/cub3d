@@ -124,4 +124,13 @@ debug_fclean:
 
 debug_re: debug_fclean debug
 
-.PHONY: all debug clean fclean re debug_clean debug_fclean debug_re
+# Run the program
+run: all
+	@./$(NAME)
+
+# Run the debug program
+debug_run: debug
+	@./$(DEBUG_NAME)
+
+
+.PHONY: all debug clean fclean re debug_clean debug_fclean debug_re run debug_run
