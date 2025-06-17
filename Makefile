@@ -5,7 +5,7 @@ LIBFT 	:= printf/libftprintf.a
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= 
+SRCS	:= src/main.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx42.a $(NAME)
