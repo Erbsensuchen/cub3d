@@ -1,51 +1,69 @@
-NAME	:= cub3d
-CFLAGS	:=  -Werror -Wextra -Wall -Wunreachable-code -Ofast -g
-LIBMLX	:= ./MLX42
-LIBFT 	:= printf/libftprintf.a
+# Project name
+NAME    := cub3d
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= src/main.c
-OBJS	:= ${SRCS:.c=.o}
+# Compiler and flags
+CC      := cc
+CFLAGS  := -Werror -Wextra -Wall -Wunreachable-code -Ofast -g
 
-all: libmlx42.a $(NAME)
+# Libraries and paths
+LIBMLX  := ./MLX42
+LIBFT_DIR := libft
+LIBFT   := $(LIBFT_DIR)/libft.a
 
-mlx: libmlx42.a
+# Headers and libs
+HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT_DIR)
+LIBS    := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-libmlx42.a: $(LIBMLX) MLX42/build/libmlx42.a
+# Sources
+SRCS    := src/main.c
+OBJS    := ${SRCS:.c=.o}
 
-MLX42/build/libmlx42.a:
-	@echo "compiling MLX42"
-	@cmake $(LIBMLX) -B $(LIBMLX)/build >/dev/null && make -C $(LIBMLX)/build -j4 > /dev/null
+# Default target
+all: libmlx42.a $(LIBFT) $(NAME)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+# Compile main executable
+$(NAME): $(OBJS) $(LIBFT)
+	@echo "Compiling $(NAME)..."
+	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
+
+# Compile MLX if needed
+libmlx42.a: $(LIBMLX) $(LIBMLX)/build/libmlx42.a
+
+$(LIBMLX)/build/libmlx42.a:
+	@echo "Compiling MLX42..."
+	@cmake $(LIBMLX) -B $(LIBMLX)/build >/dev/null
+	@make -C $(LIBMLX)/build -j4 > /dev/null
 
 $(LIBMLX):
-	@echo "getting MLX42"
+	@echo "Cloning MLX42..."
 	@git clone https://github.com/codam-coding-college/MLX42 2> /dev/null
 
-$(NAME): $(OBJS) $(LIBFT)
-	@echo "compiling $(NAME)"
-	@$(CC) $(OBJS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME) 
+# Compile object files from source
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
 
-$(LIBFT): 
-	@echo compiling printflibft
-	@make bonus -sC printf 2> /dev/null
+# Compile libft
+$(LIBFT):
+	@echo "Compiling libft..."
+	@make -sC $(LIBFT_DIR)
 
+# Clean temp files
 clean:
-	@echo "removing temp files"
-	@rm -rf $(OBJS)
+	@echo "Cleaning object files..."
+	@rm -f $(OBJS)
 	@rm -rf $(LIBMLX)/build
-	@make fclean -sC printf 
+	@make -sC $(LIBFT_DIR) clean
 
+# Full clean
 fclean: clean
-	@echo "removing all files"
+	@echo "Removing all built files..."
+	@rm -f $(NAME)
+	@rm -f $(LIBFT)
 	@rm -rf $(LIBMLX)
-	@rm -rf $(NAME)
 
+# Rebuild everything
 re: fclean all
 
 bonus: all
 
-.PHONY: all, clean, fclean, re, bonus
+.PHONY: all clean fclean re bonus

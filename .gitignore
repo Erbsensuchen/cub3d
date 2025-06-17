@@ -1,4 +1,4 @@
-.*
+.vscode
 !.gitignore
 val
 cub3d
@@ -12,3 +12,4 @@ a.out
 test.c
 *.json
 MLX42
+obj
