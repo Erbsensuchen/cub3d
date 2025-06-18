@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:54:59 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 14:02:25 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:34:00 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	move_right(t_game *game)
 	{
 		game->player_x = new_x;
 		game->player_y = new_y;
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }

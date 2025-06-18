@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 13:42:29 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:05:57 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	movment_handler(t_game *game)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (game->forward == -1)
 		i = move_backward(game);
 	if (game->forward == 1)
@@ -38,8 +38,8 @@ void	loophook(void *param)
 	int		i;
 
 	game = (t_game *)param;
-	i = 0;
+	i = 1;
 	i = movment_handler(game);
-	if (DEBUG && i)
+	if (DEBUG && !i)
 		print_game(game);
 }
