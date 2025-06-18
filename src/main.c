@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:59:52 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:24:10 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	if (DEBUG)
 		print_game(&game);
 	mlx_key_hook(game.mlx, keyhook, &game);
+	mlx_loop_hook(game.mlx, loophook, &game);
 	mlx_loop(game.mlx);
 	return (free_game(&game), EXIT_SUCCESS);
 }

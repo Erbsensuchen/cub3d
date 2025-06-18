@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 16:00:00 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:29:28 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ static void	reset_movement_values(t_game *game)
 	game->player_y = 0.0;
 	// game->player_x_rotation = 0.0;
 	game->player_rotation = 0.0;
-	game->x_movement = 0.0;
-	game->y_movement = 0.0;
-	game->x_rotation = 0.0;
-	game->y_rotation = 0.0;
+	game->forward = 0;
+	game->sideways = 0;
 }
 
 static void	free_grid(t_game *game)

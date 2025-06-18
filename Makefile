@@ -5,7 +5,7 @@ DEBUG_NAME  := cub3d_debug
 # Compiler and flags
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast
-DEBUG_FLAGS := -g -O0 -DDEBUG=1
+DEBUG_FLAGS := -g -O0 -DDEBUG=1 -fno-stack-protector
 
 # Directories
 OBJ_DIR     := obj
@@ -45,6 +45,7 @@ SRC_FILES := main.c \
 			left.c \
 			right.c \
 			keyhook.c \
+			loophook.c \
 			validation.c \
 			rotation.c 
 

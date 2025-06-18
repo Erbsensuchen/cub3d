@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/17 15:59:42 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:50:46 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "MLX42/MLX42.h"
 # include "libft.h"
+# ifndef __USE_MISC
+#  define __USE_MISC
+# endif // __USE_MISC
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -28,6 +31,9 @@
 # define TITLE "Cub3D"
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+
+# define MOVEMENT_SPEED 0.1
+# define ROTATION_SPEED 0.1
 
 typedef struct s_color
 {
@@ -75,11 +81,11 @@ typedef struct s_game
 	double		player_x;
 	double		player_y;
 	double player_rotation; // in radians, 0 / 2*PI means forward
+
 	// Movement flags
-	double		x_movement;
-	double		y_movement;
-	double		x_rotation;
-	double		y_rotation;
+	int			forward;
+	int			sideways;
+	int			rotation;
 }				t_game;
 
 // game functions
@@ -93,16 +99,17 @@ bool			scene_valid(const char *scene_path);
 bool			parse_game(t_game *game, const char *scene_path);
 
 // movement functions
-void			move_forward(t_game *game);
-void			move_backward(t_game *game);
-void			move_left(t_game *game);
-void			move_right(t_game *game);
+int				move_forward(t_game *game);
+int				move_backward(t_game *game);
+int				move_left(t_game *game);
+int				move_right(t_game *game);
 
 // rotation functions
-void			rotate_left(t_game *game);
-void			rotate_right(t_game *game);
+int				rotate_left(t_game *game);
+int				rotate_right(t_game *game);
 
 // hooks
 void			keyhook(mlx_key_data_t keydata, void *param);
+void			loophook(void *param);
 
 #endif // HEADER_H

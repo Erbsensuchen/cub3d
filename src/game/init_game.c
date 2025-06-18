@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 16:00:04 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:38:32 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ static void	init_movement_values(t_game *game)
 	game->height = 0;
 	game->player_x = 0.0;
 	game->player_y = 0.0;
-	// game->player_x_rotation = 0.0;
 	game->player_rotation = 0.0;
-	game->x_movement = 0.0;
-	game->y_movement = 0.0;
-	game->x_rotation = 0.0;
-	game->y_rotation = 0.0;
+	game->forward = 0;
+	game->sideways = 0;
+	game->rotation = 0;
 }
 
 void	init_game(t_game *game)
