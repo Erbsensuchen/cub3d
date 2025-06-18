@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:54:16 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 13:48:47 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/18 14:01:38 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	move_backward(t_game *game)
 	double	new_x;
 	double	new_y;
 
-	new_x = game->player_x + cos(game->player_rotation) * MOVEMENT_SPEED;
-	new_y = game->player_y + sin(game->player_rotation) * MOVEMENT_SPEED;
+	new_x = game->player_x - cos(game->player_rotation) * MOVEMENT_SPEED;
+	new_y = game->player_y - sin(game->player_rotation) * MOVEMENT_SPEED;
 	if (game->grid[(int)new_y][(int)new_x] != '1')
 	{
 		game->player_x = new_x;
