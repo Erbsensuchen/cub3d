@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 13:50:46 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:58:11 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.1
+# define MOUSE_SENSITIVITY 0.01
 
 typedef struct s_color
 {
@@ -80,7 +81,7 @@ typedef struct s_game
 	// Player
 	double		player_x;
 	double		player_y;
-	double player_rotation; // in radians, 0 / 2*PI means forward
+	double		player_rotation;
 
 	// Movement flags
 	int			forward;
@@ -111,5 +112,6 @@ int				rotate_right(t_game *game);
 // hooks
 void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
+void			mouse_rotation(double x, double y, void *param);
 
 #endif // HEADER_H
