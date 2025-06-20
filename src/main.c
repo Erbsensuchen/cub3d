@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 15:46:43 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:49:13 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 		print_game(&game);
 	mlx_key_hook(game.mlx, keyhook, &game);
 	mlx_loop_hook(game.mlx, loophook, &game);
+	mlx_cursor_hook(game.mlx, mouse_rotation, &game);
 	mlx_loop(game.mlx);
 	return (free_game(&game), EXIT_SUCCESS);
 }

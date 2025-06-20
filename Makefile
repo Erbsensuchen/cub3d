@@ -48,6 +48,7 @@ SRC_FILES := main.c \
 			right.c \
 			keyhook.c \
 			loophook.c \
+			cursorhook.c \
 			validation.c \
 			rotation.c 
 
