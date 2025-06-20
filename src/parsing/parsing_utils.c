@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 15:09:15 by hello_x           #+#    #+#             */
-/*   Updated: 2025/06/20 15:46:11 by lseeger          ###   ########.fr       */
+/*   Created: 2025/06/20 15:36:38 by lseeger           #+#    #+#             */
+/*   Updated: 2025/06/20 15:46:27 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-void	ft_putstr_fd(const char *s, int fd)
+void	print_parsing_error(const char *error_msg)
 {
-	write(fd, s, ft_strlen(s));
-}
-
-void	ft_putstr(char *s)
-{
-	write(STDOUT_FILENO, s, ft_strlen(s));
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	ft_putstr_fd(error_msg, STDERR_FILENO);
 }

@@ -38,6 +38,7 @@ SRC_FILES := main.c \
 			init_game.c \
 			print_game.c \
 			parsing.c \
+			parsing_utils.c \
 			free_texture.c \
 			init_texture.c \
 			print_texture.c \

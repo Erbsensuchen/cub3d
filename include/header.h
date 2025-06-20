@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 13:50:46 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:36:21 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # ifndef __USE_MISC
 #  define __USE_MISC
 # endif // __USE_MISC
+# include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -80,7 +81,8 @@ typedef struct s_game
 	// Player
 	double		player_x;
 	double		player_y;
-	double player_rotation; // in radians, 0 / 2*PI means forward
+	// in radians, 0 / 2*PI means forward
+	double		player_rotation;
 
 	// Movement flags
 	int			forward;
@@ -95,6 +97,7 @@ void			print_game(t_game *game);
 void			print_grid(t_game *game);
 
 // parsing functions
+void			print_parsing_error(const char *error_msg);
 bool			scene_valid(const char *scene_path);
 bool			parse_game(t_game *game, const char *scene_path);
 
