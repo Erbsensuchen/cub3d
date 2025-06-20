@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 17:30:52 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 18:00:25 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.1
 # define MOUSE_SENSITIVITY 0.01
+
+# define PARSING_SKIP " \t\r\n"
 
 typedef struct s_color
 {
@@ -102,6 +104,7 @@ void			print_parsing_error_line(const char *error_msg,
 					const char *line);
 bool			filename_valid(const char *scene_path);
 bool			is_content_line(char *line);
+bool			parse_color(t_color *color, const char *arg);
 
 // parsing functions
 bool			parse_map(t_game *game, const char *line);

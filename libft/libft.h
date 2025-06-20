@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:25:04 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/20 15:46:07 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 18:08:12 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool				ft_aish(char *str);
 uint32_t			ft_atocolor(const char *str);
 unsigned int		ft_htoi(char *str);
 bool				ft_in_charset(char c, char *set);
+int					ft_strarr_len(char **strs);
 void				ft_free_strs(char **strs);
 void				ft_free_strs_partial(char **strs, int i);
 void				ft_print_strs(char **str, int insertion);

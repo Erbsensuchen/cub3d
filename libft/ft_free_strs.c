@@ -6,11 +6,23 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:04:19 by lseeger           #+#    #+#             */
-/*   Updated: 2025/04/03 13:48:10 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 18:07:39 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_strarr_len(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return (0);
+	i = 0;
+	while (strs[i])
+		i++;
+	return (i);
+}
 
 void	ft_free_strs(char **strs)
 {
