@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 15:49:58 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 17:30:52 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,15 @@ void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
 
-// parsing functions
+// parsing util functions
 void			print_parsing_error(const char *error_msg);
-bool			scene_valid(const char *scene_path);
+void			print_parsing_error_line(const char *error_msg,
+					const char *line);
+bool			filename_valid(const char *scene_path);
+bool			is_content_line(char *line);
+
+// parsing functions
+bool			parse_map(t_game *game, const char *line);
 bool			parse_game(t_game *game, const char *scene_path);
 
 // movement functions

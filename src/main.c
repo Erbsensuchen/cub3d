@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 15:49:13 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/20 17:31:08 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Usage: ./cub3d <scene_file.cub>\n", STDERR_FILENO);
 		return (free_game(&game), EXIT_FAILURE);
 	}
-	if (!scene_valid(argv[1]))
-		return (free_game(&game), EXIT_FAILURE);
-	if (parse_game(&game, argv[1]))
+	if (!parse_game(&game, argv[1]) == EXIT_FAILURE)
 		return (free_game(&game), EXIT_FAILURE);
 	game.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, TITLE, true);
 	if (!game.mlx)

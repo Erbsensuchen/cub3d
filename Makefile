@@ -37,6 +37,7 @@ SRC_FILES := main.c \
 			free_game.c \
 			init_game.c \
 			print_game.c \
+			parsing_map.c \
 			parsing.c \
 			parsing_utils.c \
 			free_texture.c \
@@ -49,7 +50,6 @@ SRC_FILES := main.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
-			validation.c \
 			rotation.c 
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
