@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:16:48 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:19:58 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ static t_list	*get_map(int fd, char *line)
 		ft_lstadd_back(&map, new);
 		line = get_next_line(fd);
 	}
-	free(line);
-	line = get_next_line(fd);
 	while (line)
 	{
 		if (*ft_skip_charset(line, PARSING_SKIP) != 0)
 			return (ft_lstclear(&map, free),
-				print_parsing_error_line("Leftover after Map found: ", line),
+				print_parsing_error_line("Invalid Map Line: ", line),
 				free(line), NULL);
 		free(line);
 		line = get_next_line(fd);
