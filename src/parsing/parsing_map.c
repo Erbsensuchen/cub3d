@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 15:30:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 16:15:42 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static t_list	*get_map(int fd, char *line)
 	map = NULL;
 	while (line && valid_map_line(line))
 	{
-		printf("Parsing map line: %s", line);
 		new = ft_lstnew(line);
 		if (!new)
 			return (free(line), ft_lstclear(&map, free),
@@ -43,18 +42,66 @@ static t_list	*get_map(int fd, char *line)
 	return (map);
 }
 
+static int	get_map_width(t_list *map)
+{
+	int	current;
+	int	max;
+
+	max = 0;
+	while (map && map->content)
+	{
+		ft_remove_c(map->content, "\n");
+		current = ft_strlen(map->content);
+		if (current > max)
+			max = current;
+		map = map->next;
+	}
+	return (max);
+}
+
+static bool	map_to_grid(t_game *game, t_list *map)
+{
+	int	i;
+
+	game->width = get_map_width(map);
+	if (game->width == 0)
+		return (print_parsing_error("Map Width is 0!\n"), false);
+	game->height = ft_lstsize(map);
+	if (game->height == 0)
+		return (print_parsing_error("Map Height is 0!\n"), false);
+	game->grid = malloc((game->height) * sizeof(char *));
+	if (!game->grid)
+		return (print_parsing_error("Memory allocation failed!\n"), false);
+	i = 0;
+	while (i < game->height)
+	{
+		if (!map || !map->content)
+			return (ft_free_strs_partial(game->grid, i), game->grid = NULL,
+				print_parsing_error("Map is incomplete!\n"), false);
+		game->grid[i] = ft_create_filled_str(map->content, game->width, ' ');
+		if (!game->grid[i])
+			return (ft_free_strs_partial(game->grid, i), game->grid = NULL,
+				print_parsing_error("Memory allocation failed!\n"), false);
+		i++;
+	}
+	return (true);
+}
+
 bool	parse_map(t_game *game, int fd, char *last_line)
 {
 	t_list	*map;
+	t_list	*tmp;
 
 	map = get_map(fd, last_line);
 	if (!map)
 		return (false);
-	// debug print
-	while (map)
+	tmp = map;
+	while (tmp)
 	{
-		printf("Map line: %s", (char *)map->content);
-		map = map->next;
+		printf("Map Line: %s", (char *)tmp->content);
+		tmp = tmp->next;
 	}
+	if (!map_to_grid(game, map))
+		return (ft_lstclear(&map, free), false);
 	return (ft_lstclear(&map, free), true);
 }

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:25:04 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 14:01:18 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:59:00 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int					ft_putchar(int c);
 void				ft_write_insertion(int insertion);
 char				*ft_strndup(char *src, char *next);
 char				*ft_create_terminated_str(int len);
+char				*ft_create_filled_str(char *str, int len, char fill_char);
 int					ft_strjoin_inplace(char **s1, char *s2);
 char				**ft_split_charset(const char *str, char *charset);
 void				ft_replace_char(char *str, char old, char new);

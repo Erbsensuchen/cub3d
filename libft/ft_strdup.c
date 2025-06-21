@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 08:30:43 by hello_x           #+#    #+#             */
-/*   Updated: 2025/03/14 12:26:57 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:58:42 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,28 @@ char	*ft_create_terminated_str(int len)
 	if (!result)
 		return (NULL);
 	result[len] = '\0';
+	return (result);
+}
+
+char	*ft_create_filled_str(char *str, int len, char fill_char)
+{
+	char	*result;
+	int		i;
+	int		str_len;
+	int		final_len;
+
+	str_len = ft_strlen(str);
+	if (len > str_len)
+		final_len = len;
+	else
+		final_len = str_len;
+	result = ft_create_terminated_str(final_len);
+	if (!result)
+		return (NULL);
+	i = -1;
+	while (++i < str_len)
+		result[i] = str[i];
+	while (i < final_len)
+		result[i++] = fill_char;
 	return (result);
 }

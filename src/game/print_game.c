@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/18 13:51:59 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/21 16:13:40 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	print_game(t_game *game)
 
 void	print_grid(t_game *game)
 {
+	int	i;
+
 	printf("Map Grid:\n");
-	(void)game;
+	i = 0;
+	while (i < game->height)
+	{
+		if (game->grid[i])
+			printf("%s\n", game->grid[i]);
+		else
+			printf("NULL\n");
+		i++;
+	}
 }
