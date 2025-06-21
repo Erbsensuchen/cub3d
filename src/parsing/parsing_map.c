@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 16:28:47 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:16:48 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ static t_list	*get_map(int fd, char *line)
 		line = get_next_line(fd);
 	}
 	free(line);
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (*ft_skip_charset(line, PARSING_SKIP) != 0)
+			return (ft_lstclear(&map, free),
+				print_parsing_error_line("Leftover after Map found: ", line),
+				free(line), NULL);
+		free(line);
+		line = get_next_line(fd);
+	}
 	return (map);
 }
 
@@ -99,3 +109,9 @@ bool	parse_map(t_game *game, int fd, char *last_line)
 		return (ft_lstclear(&map, free), false);
 	return (ft_lstclear(&map, free), true);
 }
+
+// - load textures
+// - test map parsing => what happens on error
+// - what on empty line? what when data behind valid map?
+// - only one player start position?
+// - is map closed?
