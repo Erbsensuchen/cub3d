@@ -39,6 +39,7 @@ SRC_FILES := main.c \
 			print_game.c \
 			parsing_map.c \
 			parsing.c \
+			validate_grid.c \
 			parsing_utils.c \
 			free_texture.c \
 			init_texture.c \
@@ -126,6 +127,7 @@ debug_clean:
 
 debug_fclean:
 	@rm -rf $(OBJ_DEBUG_DIR)
+	@rm -f $(LIBFT) $(GNL_LIB)
 	@rm -f $(DEBUG_NAME)
 
 debug_re: debug_fclean debug

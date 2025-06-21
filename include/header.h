@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/21 16:01:11 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:22:10 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ bool			parse_color(t_color *color, const char *arg);
 // parsing functions
 bool			parse_game(t_game *game, const char *scene_path);
 bool			parse_map(t_game *game, int fd, char *last_line);
+bool			validate_grid(t_game *game);
 
 // movement functions
 int				move_forward(t_game *game);

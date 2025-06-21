@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:19:58 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:25:25 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ bool	parse_map(t_game *game, int fd, char *last_line)
 		return (false);
 	if (!map_to_grid(game, map))
 		return (ft_lstclear(&map, free), false);
+	if (!validate_grid(game))
+		return (ft_lstclear(&map, free), false);
 	return (ft_lstclear(&map, free), true);
 }
 
 // - load textures
-// - test map parsing => what happens on error
-// - what on empty line? what when data behind valid map?
 // - only one player start position?
 // - is map closed?

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:25:04 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 15:59:00 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:29:40 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_list				*ft_lstprevious(t_list *lst, t_list *target);
 t_list				*ft_lstnew(void *content);
 
 // custom functions
+char				*ft_strpbrk(const char *str, const char *charset);
 char				*ft_skip_charset(char *str, char *charset);
 void				ft_printstr_fd(char *str, int fd);
 bool				ft_aisi(char *str);
