@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 16:15:42 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 16:28:47 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static bool	map_to_grid(t_game *game, t_list *map)
 			return (ft_free_strs_partial(game->grid, i), game->grid = NULL,
 				print_parsing_error("Memory allocation failed!\n"), false);
 		i++;
+		map = map->next;
 	}
 	return (true);
 }
@@ -90,17 +91,10 @@ static bool	map_to_grid(t_game *game, t_list *map)
 bool	parse_map(t_game *game, int fd, char *last_line)
 {
 	t_list	*map;
-	t_list	*tmp;
 
 	map = get_map(fd, last_line);
 	if (!map)
 		return (false);
-	tmp = map;
-	while (tmp)
-	{
-		printf("Map Line: %s", (char *)tmp->content);
-		tmp = tmp->next;
-	}
 	if (!map_to_grid(game, map))
 		return (ft_lstclear(&map, free), false);
 	return (ft_lstclear(&map, free), true);
