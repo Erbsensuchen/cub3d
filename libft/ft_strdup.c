@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 08:30:43 by hello_x           #+#    #+#             */
-/*   Updated: 2025/06/21 15:58:42 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:58:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,26 @@ char	*ft_create_filled_str(char *str, int len, char fill_char)
 	while (i < final_len)
 		result[i++] = fill_char;
 	return (result);
+}
+
+char	**ft_strsdup(char **strs)
+{
+	int		i;
+	char	**new_strs;
+
+	if (!strs)
+		return (NULL);
+	new_strs = malloc((ft_strarr_len(strs) + 1) * sizeof(char *));
+	if (!new_strs)
+		return (NULL);
+	i = 0;
+	while (strs[i])
+	{
+		new_strs[i] = ft_strdup(strs[i]);
+		if (!new_strs[i])
+			return (ft_free_strs_partial(new_strs, i), NULL);
+		i++;
+	}
+	new_strs[i] = NULL;
+	return (new_strs);
 }

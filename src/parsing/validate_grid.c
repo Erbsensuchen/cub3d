@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:22:26 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:43:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:10:14 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,35 @@ static bool	set_player_position(t_game *game)
 	return (true);
 }
 
-bool	validate_grid(t_game *game)
+static bool	is_closed(t_game *game, char **closed, int x, int y)
 {
-	if (!set_player_position(game))
+	if (x < 0 || y < 0 || y >= game->height || x >= game->width)
+		return (false);
+	if (closed[y][x] == '1' || closed[y][x] == 'V')
+		return (true);
+	if (closed[y][x] != '0')
+		return (false);
+	closed[y][x] = 'V';
+	if (!is_closed(game, closed, x + 1, y) || !is_closed(game, closed, x - 1, y)
+		|| !is_closed(game, closed, x, y + 1) || !is_closed(game, closed, x, y
+			- 1))
 		return (false);
 	return (true);
+}
+
+bool	validate_grid(t_game *game)
+{
+	int		i;
+	char	**closed;
+
+	i = 0;
+	if (!set_player_position(game))
+		return (false);
+	closed = ft_strsdup(game->grid);
+	if (!closed)
+		return (print_parsing_error("Memory allocation failed!"), false);
+	if (!is_closed(game, closed, (int)game->player_x, (int)game->player_y))
+		return (ft_free_strs(closed),
+			print_parsing_error("Map is not enclosed!"), false);
+	return (ft_free_strs(closed), true);
 }

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:45:58 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:10:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static bool	map_to_grid(t_game *game, t_list *map)
 	game->height = ft_lstsize(map);
 	if (game->height == 0)
 		return (print_parsing_error("Map Height is 0!"), false);
-	game->grid = malloc((game->height) * sizeof(char *));
+	game->grid = malloc((game->height + 1) * sizeof(char *));
 	if (!game->grid)
 		return (print_parsing_error("Memory allocation failed!"), false);
 	i = 0;
@@ -93,7 +93,7 @@ static bool	map_to_grid(t_game *game, t_list *map)
 		i++;
 		map = map->next;
 	}
-	return (true);
+	return (game->grid[game->height] = NULL, true);
 }
 
 bool	parse_map(t_game *game, int fd, char *last_line)
@@ -109,7 +109,3 @@ bool	parse_map(t_game *game, int fd, char *last_line)
 		return (ft_lstclear(&map, free), false);
 	return (ft_lstclear(&map, free), true);
 }
-
-// - load textures
-// - only one player start position?
-// - is map closed?
