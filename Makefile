@@ -36,6 +36,7 @@ SRC_FILES := main.c \
 			print_color.c \
 			free_game.c \
 			init_game.c \
+			load_game_textures.c \
 			print_game.c \
 			parsing_map.c \
 			parsing.c \
@@ -67,7 +68,7 @@ $(NAME): $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_FILES)
 # Debug binary
 debug: $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_DEBUG_FILES)
 	@echo "Linking debug build..."
-	@$(CC) $(OBJ_DEBUG_FILES) -D DEBUG=1 $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
+	@$(CC) $(OBJ_DEBUG_FILES) $(DEBUG_FLAGS) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
 
 # Compile .o files
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)

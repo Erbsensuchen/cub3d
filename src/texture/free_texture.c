@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:27:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 14:35:07 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:32:52 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,4 @@ void	free_texture(mlx_t *mlx, t_texture *texture)
 		mlx_delete_image(mlx, texture->img);
 		texture->img = NULL;
 	}
-	texture->width = 0;
-	texture->height = 0;
 }

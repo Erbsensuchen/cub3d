@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 17:31:08 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:13:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 		return (free_game(&game), EXIT_FAILURE);
 	game.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, TITLE, true);
 	if (!game.mlx)
+		return (free_game(&game), EXIT_FAILURE);
+	if (!load_game_textures(&game))
 		return (free_game(&game), EXIT_FAILURE);
 	if (DEBUG)
 		print_game(&game);

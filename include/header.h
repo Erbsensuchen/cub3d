@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/21 17:22:10 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:29:17 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,7 @@ void			print_color(t_color *color);
 typedef struct s_texture
 {
 	char		*path;
-	void		*img;
-	int			width;
-	int			height;
+	mlx_image_t	*img;
 }				t_texture;
 
 // texture functions
@@ -101,6 +99,7 @@ void			init_game(t_game *game);
 void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
+bool			load_game_textures(t_game *game);
 
 // parsing util functions
 void			print_parsing_error(const char *error_msg);
