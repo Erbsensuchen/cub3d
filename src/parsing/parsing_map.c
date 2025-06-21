@@ -6,25 +6,11 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 15:11:55 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:30:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-static char	*skip_content(int fd)
-{
-	char	*line;
-
-	line = get_next_line(fd);
-	while (is_content_line(line))
-	{
-		printf("Skipping content line: %s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (line);
-}
 
 static bool	valid_map_line(char *line)
 {
@@ -57,23 +43,18 @@ static t_list	*get_map(int fd, char *line)
 	return (map);
 }
 
-bool	parse_map(t_game *game, const char *scene_path)
+bool	parse_map(t_game *game, int fd, char *last_line)
 {
-	char	*line;
-	int		fd;
 	t_list	*map;
 
-	fd = open(scene_path, O_RDONLY);
-	if (fd < 0)
-		return (print_parsing_error("Could not open file!\n"), false);
-	line = skip_content(fd);
-	map = get_map(fd, line);
+	map = get_map(fd, last_line);
 	if (!map)
-		return (close(fd), false);
+		return (false);
+	// debug print
 	while (map)
 	{
 		printf("Map line: %s", (char *)map->content);
 		map = map->next;
 	}
-	return (close(fd), ft_lstclear(&map, free), true);
+	return (ft_lstclear(&map, free), true);
 }
