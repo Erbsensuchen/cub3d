@@ -6,38 +6,30 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:22:12 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 13:47:30 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 14:24:22 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../libft/libft.h"
 #include "get_next_line.h"
-
-char	*get_buffer(int fd)
-{
-	static char	buffer[1024][BUFFER_SIZE + 1];
-
-	return (buffer[fd]);
-}
 
 char	*handle_found_nl(char *buffer, char *next_nl, char *nl)
 {
 	const ptrdiff_t	found_len = next_nl - buffer + 1;
-	const size_t	nl_len = ft_strlen(nl);
+	const size_t	nl_len = local_strlen(nl);
 	char			*new_nl;
 
 	new_nl = malloc(nl_len + found_len + 1);
 	if (!new_nl)
 		return (free(nl), NULL);
-	ft_memmove(new_nl, nl, nl_len);
-	ft_memmove(new_nl + nl_len, buffer, found_len);
+	local_memmove(new_nl, nl, nl_len);
+	local_memmove(new_nl + nl_len, buffer, found_len);
 	new_nl[nl_len + found_len] = 0;
-	ft_memmove(buffer, next_nl + 1, ft_strlen(next_nl + 1) + 1);
+	local_memmove(buffer, next_nl + 1, local_strlen(next_nl + 1) + 1);
 	free(nl);
 	return (new_nl);
 }
 
-bool	handle_start_buffer(char *buffer, char **nl, size_t *nl_r_len)
+static bool	handle_start_buffer(char *buffer, char **nl, size_t *nl_r_len)
 {
 	char	*next_nl;
 
@@ -57,7 +49,7 @@ bool	handle_start_buffer(char *buffer, char **nl, size_t *nl_r_len)
 	}
 }
 
-bool	read_buffer(int fd, char *buffer, char **nl, size_t *nl_r_len)
+static bool	read_buffer(int fd, char *buffer, char **nl, size_t *nl_r_len)
 {
 	char	*new_str;
 	ssize_t	bytes_read;
@@ -83,26 +75,25 @@ bool	read_buffer(int fd, char *buffer, char **nl, size_t *nl_r_len)
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	*next_nl;
-	char	*nl;
-	size_t	nl_r_len;
+	static char	buffer[1024][BUFFER_SIZE + 1];
+	char		*next_nl;
+	char		*nl;
+	size_t		nl_r_len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	buffer = get_buffer(fd);
 	nl = NULL;
 	nl_r_len = 0;
-	if (handle_start_buffer(buffer, &nl, &nl_r_len))
+	if (handle_start_buffer(buffer[fd], &nl, &nl_r_len))
 		return (nl);
 	while (1)
 	{
-		if (read_buffer(fd, buffer, &nl, &nl_r_len))
+		if (read_buffer(fd, buffer[fd], &nl, &nl_r_len))
 			return (nl);
-		next_nl = get_next_nl(buffer);
+		next_nl = get_next_nl(buffer[fd]);
 		if (next_nl)
-			return (handle_found_nl(buffer, next_nl, nl));
-		if (buffer_join(&nl, buffer, &nl_r_len))
+			return (handle_found_nl(buffer[fd], next_nl, nl));
+		if (buffer_join(&nl, buffer[fd], &nl_r_len))
 			return (NULL);
 	}
 }

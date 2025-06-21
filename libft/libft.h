@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:25:04 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/20 18:08:12 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 14:01:18 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstprevious(t_list *lst, t_list *target);
 t_list				*ft_lstnew(void *content);
-
-// ft_printf
-int					ft_printf(const char *s, ...);
-char				*get_next_line(int fd);
 
 // custom functions
 char				*ft_skip_charset(char *str, char *charset);
