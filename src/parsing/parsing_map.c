@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:25:25 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:45:58 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_list	*get_map(int fd, char *line)
 		new = ft_lstnew(line);
 		if (!new)
 			return (free(line), ft_lstclear(&map, free),
-				print_parsing_error("Memory allocation failed!\n"), NULL);
+				print_parsing_error("Memory allocation failed!"), NULL);
 		ft_lstadd_back(&map, new);
 		line = get_next_line(fd);
 	}
@@ -73,23 +73,23 @@ static bool	map_to_grid(t_game *game, t_list *map)
 
 	game->width = get_map_width(map);
 	if (game->width == 0)
-		return (print_parsing_error("Map Width is 0!\n"), false);
+		return (print_parsing_error("Map Width is 0!"), false);
 	game->height = ft_lstsize(map);
 	if (game->height == 0)
-		return (print_parsing_error("Map Height is 0!\n"), false);
+		return (print_parsing_error("Map Height is 0!"), false);
 	game->grid = malloc((game->height) * sizeof(char *));
 	if (!game->grid)
-		return (print_parsing_error("Memory allocation failed!\n"), false);
+		return (print_parsing_error("Memory allocation failed!"), false);
 	i = 0;
 	while (i < game->height)
 	{
 		if (!map || !map->content)
 			return (ft_free_strs_partial(game->grid, i), game->grid = NULL,
-				print_parsing_error("Map is incomplete!\n"), false);
+				print_parsing_error("Map is incomplete!"), false);
 		game->grid[i] = ft_create_filled_str(map->content, game->width, ' ');
 		if (!game->grid[i])
 			return (ft_free_strs_partial(game->grid, i), game->grid = NULL,
-				print_parsing_error("Memory allocation failed!\n"), false);
+				print_parsing_error("Memory allocation failed!"), false);
 		i++;
 		map = map->next;
 	}

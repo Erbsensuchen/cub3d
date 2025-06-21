@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 16:13:40 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:47:59 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_grid(t_game *game)
 	int	i;
 
 	printf("Map Grid:\n");
+	printf("Width: %d, Height: %d\n", game->width, game->height);
 	i = 0;
 	while (i < game->height)
 	{

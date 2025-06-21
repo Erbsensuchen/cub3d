@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:18:50 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 15:30:49 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:45:03 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	handle_args(t_game *game, char **args)
 			false);
 	*path = ft_strdup(args[1]);
 	if (!*path)
-		return (print_parsing_error("Memory allocation failed!\n"), false);
+		return (print_parsing_error("Memory allocation failed!"), false);
 	return (true);
 }
 
@@ -46,7 +46,7 @@ static bool	dispatch_content(t_game *game, const char *line)
 
 	args = ft_split_charset(line, PARSING_SKIP);
 	if (!args)
-		return (print_parsing_error("Memory allocation failed!\n"), false);
+		return (print_parsing_error("Memory allocation failed!"), false);
 	len = ft_strarr_len(args);
 	if (len == 0)
 		return (ft_free_strs(args), true);
@@ -64,7 +64,7 @@ static bool	parse_content(t_game *game, int fd, char **last_line)
 
 	line = get_next_line(fd);
 	if (!line)
-		return (print_parsing_error("File is empty!\n"), false);
+		return (print_parsing_error("File is empty!"), false);
 	while (is_content_line(line))
 	{
 		if (!dispatch_content(game, line))
@@ -72,7 +72,7 @@ static bool	parse_content(t_game *game, int fd, char **last_line)
 		free(line);
 		line = get_next_line(fd);
 		if (!line)
-			return (print_parsing_error("No Map found!\n"), false);
+			return (print_parsing_error("No Map found!"), false);
 	}
 	*last_line = line;
 	return (true);
@@ -84,10 +84,10 @@ bool	parse_game(t_game *game, const char *scene_path)
 	char	*last_line;
 
 	if (!filename_valid(scene_path))
-		return (print_parsing_error("Files need to End with .cub!\n"), false);
+		return (print_parsing_error("Files need to End with .cub!"), false);
 	fd = open(scene_path, O_RDONLY);
 	if (fd < 0)
-		return (print_parsing_error("Could not open file!\n"), false);
+		return (print_parsing_error("Could not open file!"), false);
 	if (!parse_content(game, fd, &last_line))
 		return (close(fd), false);
 	if (!parse_map(game, fd, last_line))

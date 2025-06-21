@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:36:38 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/20 18:23:32 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:46:37 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	print_parsing_error(const char *error_msg)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	ft_putstr_fd(error_msg, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
 void	print_parsing_error_line(const char *error_msg, const char *line)
@@ -69,7 +70,7 @@ bool	parse_color(t_color *color, const char *arg)
 
 	args = ft_split(arg, ',');
 	if (!args)
-		return (print_parsing_error("Memory allocation failed!\n"), false);
+		return (print_parsing_error("Memory allocation failed!"), false);
 	if (ft_strarr_len(args) != 3)
 		return (ft_free_strs(args),
 			print_parsing_error_line("Invalid color arg: ", arg), false);
