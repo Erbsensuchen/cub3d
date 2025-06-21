@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/20 18:00:25 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 14:27:00 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "MLX42/MLX42.h"
+# include "get_next_line.h"
 # include "libft.h"
 # ifndef __USE_MISC
 #  define __USE_MISC
