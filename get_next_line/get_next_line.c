@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:22:12 by lseeger           #+#    #+#             */
-/*   Updated: 2025/02/20 16:04:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:47:30 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+// #include "../libft/libft.h"
 #include "get_next_line.h"
 
 char	*get_buffer(int fd)
@@ -28,12 +28,12 @@ char	*handle_found_nl(char *buffer, char *next_nl, char *nl)
 
 	new_nl = malloc(nl_len + found_len + 1);
 	if (!new_nl)
-		return (failure_cleanup(nl), NULL);
+		return (free(nl), NULL);
 	ft_memmove(new_nl, nl, nl_len);
 	ft_memmove(new_nl + nl_len, buffer, found_len);
 	new_nl[nl_len + found_len] = 0;
 	ft_memmove(buffer, next_nl + 1, ft_strlen(next_nl + 1) + 1);
-	failure_cleanup(nl);
+	free(nl);
 	return (new_nl);
 }
 
@@ -64,7 +64,7 @@ bool	read_buffer(int fd, char *buffer, char **nl, size_t *nl_r_len)
 
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
-		return (*buffer = 0, failure_cleanup(*nl), *nl = NULL, 1);
+		return (*buffer = 0, free(*nl), *nl = NULL, 1);
 	else if (bytes_read == 0)
 	{
 		if (!*nl)
@@ -72,8 +72,8 @@ bool	read_buffer(int fd, char *buffer, char **nl, size_t *nl_r_len)
 		*nl_r_len = 0;
 		new_str = rstr(*nl, nl_r_len);
 		if (!new_str)
-			return (failure_cleanup(*nl), *nl = NULL, 1);
-		failure_cleanup(*nl);
+			return (free(*nl), *nl = NULL, 1);
+		free(*nl);
 		*nl = new_str;
 		return (*buffer = 0, 1);
 	}

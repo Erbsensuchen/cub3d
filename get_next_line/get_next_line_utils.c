@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:18:55 by lseeger           #+#    #+#             */
-/*   Updated: 2024/11/20 15:57:15 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:51:32 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,4 @@ bool	buffer_join(char **nl, char const *buffer, size_t *nl_r_len)
 	free(*nl);
 	*nl = new_str;
 	return (false);
-}
-
-void	failure_cleanup(char *nl)
-{
-	if (nl)
-		free(nl);
 }

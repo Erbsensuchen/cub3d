@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:17:13 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/17 12:48:37 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 13:48:20 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ char	*get_buffer(int fd);
 char	*get_next_nl(char *s);
 char	*rstr(const char *s, size_t *nl_r_len);
 bool	buffer_join(char **nl, char const *buffer, size_t *nl_r_len);
-void	failure_cleanup(char *nl);
 
 #endif
