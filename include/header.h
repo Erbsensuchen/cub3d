@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/21 14:27:00 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 14:57:27 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define MOUSE_SENSITIVITY 0.01
 
 # define PARSING_SKIP " \t\r\n"
+# define MAP_SYMBOLS "01NSEW"
 
 typedef struct s_color
 {

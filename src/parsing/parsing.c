@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:18:50 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/20 18:23:02 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:15:33 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ bool	parse_content(t_game *game, const char *scene_path)
 		return (close(fd), print_parsing_error("File is empty!\n"), false);
 	while (is_content_line(line))
 	{
+		printf("Dispatch content line: %s", line);
 		if (!dispatch_content(game, line))
 			return (close(fd), free(line), false);
 		free(line);
