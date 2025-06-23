@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/21 18:41:01 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:01:39 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		print_game(&game);
 	mlx_key_hook(game.mlx, keyhook, &game);
 	mlx_loop_hook(game.mlx, loophook, &game);
-	mlx_cursor_hook(game.mlx, mouse_rotation, &game);
+	mlx_cursor_hook(game.mlx, cursorhook, &game);
 	mlx_loop(game.mlx);
 	return (free_game(&game), EXIT_SUCCESS);
 }

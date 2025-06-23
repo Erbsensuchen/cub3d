@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cursorhook.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 11:44:18 by mlendle           #+#    #+#             */
+/*   Updated: 2025/06/23 11:44:19 by mlendle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-void	mouse_rotation(double x, double y, void *param)
+void	cursorhook(double x, double y, void *param)
 {
 	t_game	*game;
 	double	delta_x;

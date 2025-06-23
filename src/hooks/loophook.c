@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 16:05:57 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:27:09 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	movment_handler(t_game *game)
 	int	i;
 
 	i = 1;
-	if (game->forward == -1)
-		i = move_backward(game);
 	if (game->forward == 1)
 		i = move_forward(game);
-	if (game->sideways == -1)
+	if (game->backward == 1)
+		i = move_backward(game);
+	if (game->left == 1)
 		i = move_left(game);
-	if (game->sideways == 1)
+	if (game->right == 1)
 		i = move_right(game);
-	if (game->rotation == -1)
+	if (game->rotation_left == 1)
 		i = rotate_left(game);
-	if (game->rotation == 1)
+	if (game->rotation_right == 1)
 		i = rotate_right(game);
 	return (i);
 }

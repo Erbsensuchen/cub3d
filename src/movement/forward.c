@@ -6,11 +6,11 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:54:19 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/18 16:33:25 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:25:55 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/header.h"
+#include "header.h"
 
 int	move_forward(t_game *game)
 {

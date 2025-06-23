@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/21 18:29:17 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:43:56 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.1
 # define MOUSE_SENSITIVITY 0.01
+# define FOV M_PI_4 // 45 degrees
 
 # define PARSING_SKIP " \t\r\n"
 # define MAP_SYMBOLS " 01NSEW"
@@ -89,9 +90,12 @@ typedef struct s_game
 	double		player_rotation;
 
 	// Movement flags
-	int			forward;
-	int			sideways;
-	int			rotation;
+	bool		forward;
+	bool		backward;
+	bool		left;
+	bool		right;
+	bool		rotation_left;
+	bool		rotation_right;
 }				t_game;
 
 // game functions
@@ -127,6 +131,6 @@ int				rotate_right(t_game *game);
 // hooks
 void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
-void			mouse_rotation(double x, double y, void *param);
+void			cursorhook(double x, double y, void *param);
 
 #endif // HEADER_H

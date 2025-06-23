@@ -83,6 +83,8 @@ $(OBJ_DIR) $(OBJ_DEBUG_DIR):
 	@mkdir -p $@
 
 # Build MLX42
+mlx: libmlx42.a
+
 libmlx42.a: $(LIBMLX) $(LIBMLX)/build/libmlx42.a
 
 $(LIBMLX)/build/libmlx42.a:
