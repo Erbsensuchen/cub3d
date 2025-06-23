@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 12:47:55 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:14:53 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ void	loophook(void *param)
 	i = movment_handler(game);
 	if (DEBUG && !i)
 		print_game(game);
+	game->old_img = game->img;
+	game->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	pre_render(game);
+	cast_rays(game);
+	mlx_image_to_window(game->mlx, game->img, 0, 0);
+	if (game->old_img)
+		mlx_delete_image(game->mlx, game->old_img);
 }

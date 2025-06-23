@@ -30,6 +30,7 @@ vpath %.c src/game
 vpath %.c src/color
 vpath %.c src/movement
 vpath %.c src/hooks
+vpath %.c src/rendering
 
 # Source and object files
 SRC_FILES := main.c \
@@ -49,10 +50,13 @@ SRC_FILES := main.c \
 			forward.c \
 			left.c \
 			right.c \
+			test_movement.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
-			rotation.c 
+			rotation.c \
+			rays.c \
+			pre_render.c 
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

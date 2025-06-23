@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/23 12:50:03 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 15:44:31 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	init_movement_values(t_game *game)
 	game->rotation_left = 0;
 	game->rotation_right = 0;
 	game->capture_mouse = true;
+	game->img = NULL;
+	game->old_img = NULL;
 }
 
 void	init_game(t_game *game)

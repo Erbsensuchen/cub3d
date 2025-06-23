@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 12:50:05 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:07:04 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "MLX42/MLX42.h"
 # include "get_next_line.h"
 # include "libft.h"
-# ifndef __USE_MISC
+# ifndef __USE_MISC // for linux
 #  define __USE_MISC
 # endif // __USE_MISC
 # include <fcntl.h>
@@ -68,6 +68,8 @@ typedef struct s_game
 {
 	// MLX
 	mlx_t		*mlx;
+	mlx_image_t	*img;
+	mlx_image_t	*old_img;
 	bool		capture_mouse;
 
 	// Textures
@@ -124,6 +126,7 @@ int				move_forward(t_game *game);
 int				move_backward(t_game *game);
 int				move_left(t_game *game);
 int				move_right(t_game *game);
+int				test_movement(t_game *game, double new_x, double new_y);
 
 // rotation functions
 int				rotate_left(t_game *game);
@@ -133,5 +136,9 @@ int				rotate_right(t_game *game);
 void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
 void			cursorhook(double x, double y, void *param);
+
+// rendering functions
+void			cast_rays(t_game *game);
+mlx_image_t		*pre_render(t_game *game);
 
 #endif // HEADER_H
