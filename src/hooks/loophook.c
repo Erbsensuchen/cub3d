@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 11:27:09 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:46:23 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	loophook(void *param)
 	int		i;
 
 	game = (t_game *)param;
+	if (game->capture_mouse)
+	{
+        mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
+    }
 	i = 1;
 	i = movment_handler(game);
 	if (DEBUG && !i)

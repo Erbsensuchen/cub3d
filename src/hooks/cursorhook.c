@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:44:18 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 11:44:19 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:13:07 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	cursorhook(double x, double y, void *param)
 	double	delta_x;
 
 	game = (t_game *)param;
+	if (!game->capture_mouse)
+		return ;
 	delta_x = x - (WIN_WIDTH / 2);
-	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	if (delta_x > 0)
 	{

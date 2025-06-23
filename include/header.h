@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 11:43:56 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:07:22 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_game
 {
 	// MLX
 	mlx_t		*mlx;
+    bool        capture_mouse;
 
 	// Textures
 	t_texture	north;

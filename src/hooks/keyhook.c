@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:01:23 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 11:44:23 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:16:37 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ void	key_pressed(mlx_key_data_t keydata, t_game *game)
 		game->rotation_right = 1;
 	else if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(game->mlx);
+    else if (keydata.key == MLX_KEY_C)
+    {
+        game->capture_mouse = !game->capture_mouse;
+        if (game->capture_mouse)
+            mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
+        else
+            mlx_set_cursor_mode(game->mlx, MLX_MOUSE_NORMAL);
+        mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+    }
 }
 
 void	key_released(mlx_key_data_t keydata, t_game *game)
