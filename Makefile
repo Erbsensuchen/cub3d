@@ -4,7 +4,7 @@ DEBUG_NAME  := cub3d_debug
 
 # Compiler and flags
 CC          := cc
-CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast -MMD -MP
 CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable	-Wno-unused-but-set-variable
 DEBUG_FLAGS := -g -O0 -DDEBUG=1 -fno-stack-protector
 
@@ -146,5 +146,9 @@ run: all
 # Run the debug program
 debug_run: debug
 	@./$(DEBUG_NAME)
+
+# Automatically include dependency files
+-include $(OBJ_FILES:.o=.d)
+-include $(OBJ_DEBUG_FILES:.o=.d)
 
 .PHONY: all debug clean fclean re debug_clean debug_fclean debug_re run debug_run

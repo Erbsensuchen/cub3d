@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 16:07:04 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/24 15:01:33 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@
 
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.1
-# define MOUSE_SENSITIVITY 0.01
-# define FOV M_PI_4 // 45 degrees
+# define MOUSE_SENSITIVITY 0.005
+# define FOV M_PI_4    // 45 degrees
+# define RAY_STEP 0.01 // Step size for ray casting
 
 # define PARSING_SKIP " \t\r\n"
 # define MAP_SYMBOLS " 01NSEW"

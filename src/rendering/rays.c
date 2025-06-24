@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/24 14:44:15 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/24 14:56:32 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ double	ray_lengh(double ray_angle, t_game *game)
 	distance = 0.0;
 	while (1)
 	{
-		x += cos(ray_angle) * 0.01;
-		y += sin(ray_angle) * 0.01;
-		distance += 0.01;
+		x += cos(ray_angle) * RAY_STEP;
+		y += sin(ray_angle) * RAY_STEP;
+		distance += RAY_STEP;
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
