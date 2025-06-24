@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 16:50:43 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/24 14:44:15 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@ double	ray_lengh(double ray_angle, t_game *game)
 	distance = 0.0;
 	while (1)
 	{
-		x += cos(ray_angle);
-		y += sin(ray_angle);
-		distance += 0.05;
+		x += cos(ray_angle) * 0.01;
+		y += sin(ray_angle) * 0.01;
+		distance += 0.01;
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
 	return (distance);
 }
 
-void	draw_wall(t_game *game, int x, double distance)
+void	draw_wall(t_game *game, int x, double distance, double ray_angle)
 {
 	double	height;
 	int		start;
 	int		end;
 	int		color;
+	double	corrected_distance;
 
-	height = (WIN_HEIGHT / ((distance * distance) * 10));
+	corrected_distance = distance * cos(ray_angle - game->player_rotation);
+	height = (WIN_HEIGHT / corrected_distance);
 	start = (WIN_HEIGHT - (int)height) / 2;
 	end = start + (int)height;
 	if (end > WIN_HEIGHT)
@@ -67,7 +69,7 @@ void	cast_rays(t_game *game)
 			ray_angle += 2 * M_PI;
 		if (ray_angle > 2 * M_PI)
 			ray_angle -= 2 * M_PI;
-		draw_wall(game, x, ray_lengh(ray_angle, game));
+		draw_wall(game, x, ray_lengh(ray_angle, game), ray_angle);
 		x++;
 	}
 }

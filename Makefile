@@ -5,7 +5,7 @@ DEBUG_NAME  := cub3d_debug
 # Compiler and flags
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast
-CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable	
+CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable	-Wno-unused-but-set-variable
 DEBUG_FLAGS := -g -O0 -DDEBUG=1 -fno-stack-protector
 
 # Directories
