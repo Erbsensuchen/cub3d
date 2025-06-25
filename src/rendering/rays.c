@@ -6,17 +6,18 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 11:45:21 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:26:33 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-double	ray_lengh(double ray_angle, t_game *game)
+static t_ray	ray_info(double ray_angle, t_game *game)
 {
 	double	distance;
 	double	x;
 	double	y;
+	t_ray	ray;
 
 	x = game->player_x;
 	y = game->player_y;
@@ -29,19 +30,22 @@ double	ray_lengh(double ray_angle, t_game *game)
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
-	return (distance);
+	distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
+	ray.angle = ray_angle;
+	ray.distance = distance;
+	ray.hit_x = x;
+	ray.hit_y = y;
+	return (ray);
 }
 
-void	draw_wall(t_game *game, int x, double distance, double ray_angle)
+void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 {
 	double	height;
 	int		start;
 	int		end;
 	int		color;
-	double	corrected_distance;
 
-	corrected_distance = distance * cos(ray_angle - game->player_rotation);
-	height = (game->mlx->height / corrected_distance);
+	height = (game->mlx->height / ray.distance);
 	start = (game->mlx->height - (int)height) / 2;
 	end = start + (int)height;
 	if (end > game->mlx->height)
@@ -51,7 +55,7 @@ void	draw_wall(t_game *game, int x, double distance, double ray_angle)
 	color = 0x008080FF;
 	while (start < end)
 	{
-		mlx_put_pixel(game->img, x, start, color);
+		mlx_put_pixel(game->img, pixel_x, start, color);
 		start++;
 	}
 }
@@ -59,18 +63,15 @@ void	draw_wall(t_game *game, int x, double distance, double ray_angle)
 void	cast_rays(t_game *game)
 {
 	double	ray_angle;
-	int		x;
+	int		pixel_x;
 
-	x = 0;
-	while (x < game->mlx->width)
+	pixel_x = 0;
+	while (pixel_x < game->mlx->width)
 	{
-		ray_angle = game->player_rotation - FOV / 2 + (FOV * x
+		ray_angle = game->player_rotation - FOV / 2 + (FOV * pixel_x
 				/ game->mlx->width);
-		if (ray_angle < 0)
-			ray_angle += 2 * M_PI;
-		if (ray_angle > 2 * M_PI)
-			ray_angle -= 2 * M_PI;
-		draw_wall(game, x, ray_lengh(ray_angle, game), ray_angle);
-		x++;
+		ray_angle = mod_angle(ray_angle);
+		draw_wall(game, pixel_x, ray_info(ray_angle, game));
+		pixel_x++;
 	}
 }

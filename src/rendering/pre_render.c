@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:36:26 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 10:37:19 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:06:39 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ mlx_image_t	*pre_render(t_game *game)
 	int	x;
 	int	y;
 
-	x = 0;
 	y = 0;
 	while (y < game->mlx->height)
 	{
+        x = 0;
 		while (x < game->mlx->width)
 		{
 			if (y < game->mlx->height / 2)
@@ -32,7 +32,6 @@ mlx_image_t	*pre_render(t_game *game)
 			x++;
 		}
 		y++;
-		x = 0;
 	}
 	return (game->img);
 }

@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:44:18 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 10:36:48 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:26:33 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,8 @@ void	cursorhook(double x, double y, void *param)
 	if (!game->capture_mouse)
 		return ;
 	delta_x = x - (game->mlx->width / 2);
-	if (delta_x > 0)
-	{
-		game->player_rotation += delta_x * MOUSE_SENSITIVITY;
-		if (game->player_rotation >= 2 * M_PI)
-			game->player_rotation -= 2 * M_PI;
-	}
-	else if (delta_x < 0)
-	{
-		game->player_rotation += delta_x * MOUSE_SENSITIVITY;
-		if (game->player_rotation < 0)
-			game->player_rotation += 2 * M_PI;
-	}
+	game->player_rotation += delta_x * MOUSE_SENSITIVITY;
+	game->player_rotation = mod_angle(game->player_rotation);
 	if (DEBUG)
 		print_game(game);
 }

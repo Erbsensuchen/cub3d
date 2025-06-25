@@ -31,6 +31,7 @@ vpath %.c src/color
 vpath %.c src/movement
 vpath %.c src/hooks
 vpath %.c src/rendering
+vpath %.c src/utils
 
 # Source and object files
 SRC_FILES := main.c \
@@ -57,7 +58,8 @@ SRC_FILES := main.c \
 			resizehook.c \
 			rotation.c \
 			rays.c \
-			pre_render.c 
+			pre_render.c \
+			angle_utils.c 
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

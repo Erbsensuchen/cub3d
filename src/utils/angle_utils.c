@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation.c                                         :+:      :+:    :+:   */
+/*   angle_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 11:42:44 by mlendle           #+#    #+#             */
+/*   Created: 2025/06/25 14:20:43 by mlendle           #+#    #+#             */
 /*   Updated: 2025/06/25 14:26:33 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/header.h"
+#include "header.h"
 
-int	rotate_left(t_game *game)
+double	mod_angle(double angle)
 {
-	game->player_rotation -= ROTATION_SPEED;
-        game->player_rotation = mod_angle(game->player_rotation);
-	return (0);
-}
-
-int	rotate_right(t_game *game)
-{
-	game->player_rotation += ROTATION_SPEED;
-    game->player_rotation = mod_angle(game->player_rotation);
-	return (0);
+	while (angle < 0)
+		angle += 2 * M_PI;
+	while (angle >= 2 * M_PI)
+		angle -= 2 * M_PI;
+	return (angle);
 }

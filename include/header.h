@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 11:43:25 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:27:15 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.04
 # define MOUSE_SENSITIVITY 0.002
-# define FOV M_PI_4     // 45 degrees
-# define RAY_STEP 0.002 // Step size for ray casting
+# define FOV M_PI_4      // 45 degrees
+# define RAY_STEP 0.0002 // Step size for ray casting
 
 # define PARSING_SKIP " \t\r\n"
 # define MAP_SYMBOLS " 01NSEW"
@@ -64,6 +64,14 @@ typedef struct s_texture
 void			init_texture(t_texture *texture);
 void			free_texture(mlx_t *mlx, t_texture *texture);
 void			print_texture(t_texture *texture);
+
+typedef struct s_ray
+{
+	double angle;    // Angle of the ray
+	double distance; // Distance to the wall hit
+	double hit_x;    // X coordinate of the wall hit
+	double hit_y;    // Y coordinate of the wall hit
+}				t_ray;
 
 typedef struct s_game
 {
@@ -142,5 +150,8 @@ void			resize(int width, int height, void *param);
 // rendering functions
 void			cast_rays(t_game *game);
 mlx_image_t		*pre_render(t_game *game);
+
+// utils
+double			mod_angle(double angle);
 
 #endif // HEADER_H
