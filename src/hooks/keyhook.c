@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:01:23 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 12:50:00 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:44:22 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	key_pressed(mlx_key_data_t keydata, t_game *game)
 			mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 		else
 			mlx_set_cursor_mode(game->mlx, MLX_MOUSE_NORMAL);
-		mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+		mlx_set_mouse_pos(game->mlx, game->mlx->width / 2, game->mlx->height
+			/ 2);
 	}
 }
 

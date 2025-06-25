@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cursorhook.c                                       :+:      :+:    :+:   */
+/*   resizehook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 11:44:18 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 10:36:48 by mlendle          ###   ########.fr       */
+/*   Created: 2025/06/25 11:40:44 by mlendle           #+#    #+#             */
+/*   Updated: 2025/06/25 11:45:07 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	cursorhook(double x, double y, void *param)
+void	resize(int width, int height, void *param)
 {
 	t_game	*game;
-	double	delta_x;
 
-	(void)y;
 	game = (t_game *)param;
-	if (!game->capture_mouse)
-		return ;
-	delta_x = x - (game->mlx->width / 2);
-	if (delta_x > 0)
+	if (game->img)
+		mlx_delete_image(game->mlx, game->img);
+	game->img = mlx_new_image(game->mlx, width, height);
+	if (!game->img)
 	{
-		game->player_rotation += delta_x * MOUSE_SENSITIVITY;
-		if (game->player_rotation >= 2 * M_PI)
-			game->player_rotation -= 2 * M_PI;
+		ft_putstr_fd("Error: Could not create new image.\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
-	else if (delta_x < 0)
-	{
-		game->player_rotation += delta_x * MOUSE_SENSITIVITY;
-		if (game->player_rotation < 0)
-			game->player_rotation += 2 * M_PI;
-	}
+	game->mlx->width = width;
+	game->mlx->height = height;
 	if (DEBUG)
 		print_game(game);
 }

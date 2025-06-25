@@ -6,12 +6,11 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:54:59 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/24 14:43:39 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:44:48 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
 
 int	move_right(t_game *game)
 {

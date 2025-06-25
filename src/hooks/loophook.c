@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 16:14:53 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:44:31 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,15 @@ void	loophook(void *param)
 	if (game->capture_mouse)
 	{
 		mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
-		mlx_set_mouse_pos(game->mlx, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+		mlx_set_mouse_pos(game->mlx, game->mlx->width / 2, game->mlx->height
+			/ 2);
 	}
 	i = 1;
 	i = movment_handler(game);
 	if (DEBUG && !i)
 		print_game(game);
 	game->old_img = game->img;
-	game->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	game->img = mlx_new_image(game->mlx, game->mlx->width, game->mlx->height);
 	pre_render(game);
 	cast_rays(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);

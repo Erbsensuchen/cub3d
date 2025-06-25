@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:36:26 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/23 16:50:58 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 10:37:19 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ mlx_image_t	*pre_render(t_game *game)
 
 	x = 0;
 	y = 0;
-	while (y < WIN_HEIGHT)
+	while (y < game->mlx->height)
 	{
-		while (x < WIN_WIDTH)
+		while (x < game->mlx->width)
 		{
-			if (y < WIN_HEIGHT / 2)
+			if (y < game->mlx->height / 2)
 				mlx_put_pixel(game->img, x, y,
 					game->ceiling.r << 24 | game->ceiling.g << 16 | game->ceiling.b << 8 | 0xFF);
 			else

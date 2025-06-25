@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/24 15:01:33 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:43:25 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 # define WIN_HEIGHT 600
 
 # define MOVEMENT_SPEED 0.1
-# define ROTATION_SPEED 0.1
-# define MOUSE_SENSITIVITY 0.005
-# define FOV M_PI_4    // 45 degrees
-# define RAY_STEP 0.01 // Step size for ray casting
+# define ROTATION_SPEED 0.04
+# define MOUSE_SENSITIVITY 0.002
+# define FOV M_PI_4     // 45 degrees
+# define RAY_STEP 0.002 // Step size for ray casting
 
 # define PARSING_SKIP " \t\r\n"
 # define MAP_SYMBOLS " 01NSEW"
@@ -137,6 +137,7 @@ int				rotate_right(t_game *game);
 void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
 void			cursorhook(double x, double y, void *param);
+void			resize(int width, int height, void *param);
 
 // rendering functions
 void			cast_rays(t_game *game);

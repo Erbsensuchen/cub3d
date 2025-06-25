@@ -5,8 +5,8 @@ DEBUG_NAME  := cub3d_debug
 # Compiler and flags
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast -MMD -MP
-CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable	-Wno-unused-but-set-variable
-DEBUG_FLAGS := -g -O0 -DDEBUG=1 -fno-stack-protector
+CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
+DEBUG_FLAGS := -g -O0 -DDEBUG=1
 
 # Directories
 OBJ_DIR     := obj
@@ -21,7 +21,7 @@ GNL_LIB     := $(GNL_DIR)/get_next_line.a
 
 # Include and linking
 INCLUDES    := -I include -I $(LIBMLX)/include -I $(LIBFT_DIR) -I $(GNL_DIR)
-LIBS        := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBS        := $(LIBMLX)/build/libmlx42.a -lglfw -lm
 
 vpath %.c src
 vpath %.c src/parsing
@@ -54,6 +54,7 @@ SRC_FILES := main.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
+			resizehook.c \
 			rotation.c \
 			rays.c \
 			pre_render.c 
@@ -65,12 +66,12 @@ OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))
 all: $(NAME)
 
 # Main binary
-$(NAME): $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_FILES)
+$(NAME): $(LIBFT) $(GNL_LIB) $(LIBMLX) $(LIBMLX)/build/libmlx42.a $(OBJ_FILES)
 	@echo "Linking $(NAME)..."
 	@$(CC) $(OBJ_FILES) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(NAME)
 
 # Debug binary
-debug: $(LIBFT) $(GNL_LIB) libmlx42.a $(OBJ_DEBUG_FILES)
+debug: $(LIBFT) $(GNL_LIB) $(LIBMLX) $(LIBMLX)/build/libmlx42.a $(OBJ_DEBUG_FILES)
 	@echo "Linking debug build..."
 	@$(CC) $(OBJ_DEBUG_FILES) $(DEBUG_FLAGS) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
 
@@ -87,9 +88,7 @@ $(OBJ_DIR) $(OBJ_DEBUG_DIR):
 	@mkdir -p $@
 
 # Build MLX42
-mlx: libmlx42.a
-
-libmlx42.a: $(LIBMLX) $(LIBMLX)/build/libmlx42.a
+mlx: $(LIBMLX) $(LIBMLX)/build/libmlx42.a
 
 $(LIBMLX)/build/libmlx42.a:
 	@echo "Building MLX42..."
@@ -127,6 +126,9 @@ fclean: clean
 
 # Rebuild all
 re: fclean all
+
+# bonus rule
+bonus: all
 
 # Debug-specific cleaning
 debug_clean:

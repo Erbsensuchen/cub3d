@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/24 14:56:32 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:45:21 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	draw_wall(t_game *game, int x, double distance, double ray_angle)
 	double	corrected_distance;
 
 	corrected_distance = distance * cos(ray_angle - game->player_rotation);
-	height = (WIN_HEIGHT / corrected_distance);
-	start = (WIN_HEIGHT - (int)height) / 2;
+	height = (game->mlx->height / corrected_distance);
+	start = (game->mlx->height - (int)height) / 2;
 	end = start + (int)height;
-	if (end > WIN_HEIGHT)
-		end = WIN_HEIGHT;
+	if (end > game->mlx->height)
+		end = game->mlx->height;
 	if (start < 0)
 		start = 0;
 	color = 0x008080FF;
@@ -62,9 +62,10 @@ void	cast_rays(t_game *game)
 	int		x;
 
 	x = 0;
-	while (x < WIN_WIDTH)
+	while (x < game->mlx->width)
 	{
-		ray_angle = game->player_rotation - FOV / 2 + (FOV * x / WIN_WIDTH);
+		ray_angle = game->player_rotation - FOV / 2 + (FOV * x
+				/ game->mlx->width);
 		if (ray_angle < 0)
 			ray_angle += 2 * M_PI;
 		if (ray_angle > 2 * M_PI)
