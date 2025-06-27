@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 15:50:47 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:09:28 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	print_minimap(t_game *game)
 		}
 		y++;
 	}
-	center_x = get_pixel_pos_x(game, 0, game->mi_cell_size / 2);
-	center_y = get_pixel_pos_y(game, 0, game->mi_cell_size / 2);
+	center_x = (MINIMAP_CELLS_COUNT * game->mi_cell_size) / 2;
+	center_y = (MINIMAP_CELLS_COUNT * game->mi_cell_size) / 2;
 	draw_player_triangle(game, center_x, center_y, fmod(game->player_rotation
 			+ M_PI, 2 * M_PI));
 }
