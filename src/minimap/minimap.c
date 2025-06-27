@@ -6,11 +6,37 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 14:31:23 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 14:47:47 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+static int	get_pixel_pos_x(t_game *game, int x, int pixel_x)
+{
+	int	rest_x;
+	int	res;
+
+	rest_x = (game->player_x - (int)game->player_x) * game->mi_cell_size;
+	res = pixel_x + (MINIMAP_CELLS_COUNT / 2 + x) * game->mi_cell_size - rest_x;
+	if (res < 0)
+		return (0);
+	else
+		return (res);
+}
+
+static int	get_pixel_pos_y(t_game *game, int y, int pixel_y)
+{
+	int	rest_y;
+	int	res;
+
+	rest_y = (game->player_y - (int)game->player_y) * game->mi_cell_size;
+	res = pixel_y + (MINIMAP_CELLS_COUNT / 2 + y) * game->mi_cell_size - rest_y;
+	if (res < 0)
+		return (0);
+	else
+		return (res);
+}
 
 static void	print_cell(t_game *game, int x, int y)
 {
@@ -30,9 +56,8 @@ static void	print_cell(t_game *game, int x, int y)
 		pixel_x = 0;
 		while (pixel_x < game->mi_cell_size)
 		{
-			mlx_put_pixel(game->img, pixel_x + (MINIMAP_CELLS_COUNT / 2 + x)
-				* game->mi_cell_size, pixel_y + (MINIMAP_CELLS_COUNT / 2 + y)
-				* game->mi_cell_size, game->floor.rgb);
+			mlx_put_pixel(game->img, get_pixel_pos_x(game, x, pixel_x),
+				get_pixel_pos_y(game, y, pixel_y), game->floor.rgb);
 			pixel_x++;
 		}
 		pixel_y++;
