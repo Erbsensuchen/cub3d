@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/27 14:06:32 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 15:37:19 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define WIN_HEIGHT 600
 
 // movement
-# define MOVEMENT_SPEED 0.1
-# define ROTATION_SPEED 0.04
+# define MOVEMENT_SPEED 0.05
+# define ROTATION_SPEED 0.02
 # define MOUSE_SENSITIVITY 0.002
 # define FOV M_PI_4      // 45 degrees
 # define RAY_STEP 0.0002 // Step size for ray casting
@@ -50,8 +50,11 @@
 # define PLAYER_POSITION_SYMBOLS "NSEW"
 
 // minimap
-# define MINIMAP_SIZE 0.1f
+# define MINIMAP_SIZE 0.2f
 # define MINIMAP_CELLS_COUNT 10
+# define MINIMAP_PLAYER_SIZE 0.015f
+# define MINIMAP_PLAYER_WIDTH 0.005f
+# define PLAYER_COLOR 0xFF0000FF
 
 typedef struct s_color
 {
@@ -81,6 +84,28 @@ typedef struct s_ray
 	double hit_x;    // X coordinate of the wall hit
 	double hit_y;    // Y coordinate of the wall hit
 }				t_ray;
+
+typedef struct s_triangle
+{
+	double		tip_x;
+	double		tip_y;
+	double		base_x;
+	double		base_y;
+	double		left_x;
+	double		left_y;
+	double		right_x;
+	double		right_y;
+	double		denom;
+	double		a;
+	double		b;
+	double		c;
+	int			px;
+	double		py;
+	int			min_x;
+	int			min_y;
+	int			max_x;
+	int			max_y;
+}				t_triangle;
 
 typedef struct s_game
 {
@@ -121,6 +146,8 @@ typedef struct s_game
 	// Minimap
 	int			mi_size;
 	int			mi_cell_size;
+	int			mi_player_size;
+	int			mi_player_width;
 }				t_game;
 
 // game functions
@@ -162,6 +189,8 @@ void			resize(int width, int height, void *param);
 
 // minimap
 void			print_minimap(t_game *game);
+void			draw_player_triangle(t_game *game, int x, int y,
+					double angle_rad);
 
 // rendering functions
 void			cast_rays(t_game *game);

@@ -61,7 +61,8 @@ SRC_FILES := main.c \
 			rays.c \
 			pre_render.c \
 			angle_utils.c \
-			minimap.c
+			minimap.c \
+			draw_player_triangle.c
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

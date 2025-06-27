@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 13:26:23 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 15:13:42 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ static void	init_movement_values(t_game *game)
 	game->capture_mouse = true;
 	game->img = NULL;
 	game->old_img = NULL;
+}
+
+static void	init_minimap(t_game *game)
+{
 	game->mi_size = WIN_WIDTH * MINIMAP_SIZE;
 	game->mi_cell_size = game->mi_size / MINIMAP_CELLS_COUNT;
+	game->mi_player_size = WIN_WIDTH * MINIMAP_PLAYER_SIZE;
+	game->mi_player_width = WIN_WIDTH * MINIMAP_PLAYER_WIDTH;
 }
 
 void	init_game(t_game *game)
@@ -47,4 +53,5 @@ void	init_game(t_game *game)
 	init_texture(&game->east);
 	init_texture(&game->west);
 	init_movement_values(game);
+	init_minimap(game);
 }
