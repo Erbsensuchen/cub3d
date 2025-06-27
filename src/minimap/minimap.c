@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 15:38:53 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 15:50:47 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	get_pixel_pos_x(t_game *game, int x, int pixel_x)
 
 	rest_x = (game->player_x - (int)game->player_x) * game->mi_cell_size;
 	res = pixel_x + (MINIMAP_CELLS_COUNT / 2 + x) * game->mi_cell_size - rest_x;
-	if (res < 0)
+	if (res < 0 || res > game->mi_size)
 		return (0);
 	else
 		return (res);
@@ -32,7 +32,7 @@ static int	get_pixel_pos_y(t_game *game, int y, int pixel_y)
 
 	rest_y = (game->player_y - (int)game->player_y) * game->mi_cell_size;
 	res = pixel_y + (MINIMAP_CELLS_COUNT / 2 + y) * game->mi_cell_size - rest_y;
-	if (res < 0)
+	if (res < 0 || res > game->mi_size)
 		return (0);
 	else
 		return (res);
@@ -72,10 +72,10 @@ void	print_minimap(t_game *game)
 	int	center_y;
 
 	y = -MINIMAP_CELLS_COUNT / 2;
-	while (y < MINIMAP_CELLS_COUNT / 2 + 1)
+	while (y < MINIMAP_CELLS_COUNT / 2 + 2)
 	{
 		x = -MINIMAP_CELLS_COUNT / 2;
-		while (x < MINIMAP_CELLS_COUNT / 2 + 1)
+		while (x < MINIMAP_CELLS_COUNT / 2 + 2)
 		{
 			print_cell(game, x, y);
 			x++;
