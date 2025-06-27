@@ -30,6 +30,7 @@ vpath %.c src/game
 vpath %.c src/color
 vpath %.c src/movement
 vpath %.c src/hooks
+vpath %.c src/minimap
 vpath %.c src/rendering
 vpath %.c src/utils
 
@@ -59,7 +60,8 @@ SRC_FILES := main.c \
 			rotation.c \
 			rays.c \
 			pre_render.c \
-			angle_utils.c 
+			angle_utils.c \
+			minimap.c
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

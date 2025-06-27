@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/23 15:44:31 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/27 13:26:23 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	init_movement_values(t_game *game)
 	game->capture_mouse = true;
 	game->img = NULL;
 	game->old_img = NULL;
+	game->mi_size = WIN_WIDTH * MINIMAP_SIZE;
+	game->mi_cell_size = game->mi_size / MINIMAP_CELLS_COUNT;
 }
 
 void	init_game(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:36:38 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:46:37 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 14:10:16 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ bool	parse_color(t_color *color, const char *arg)
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (ft_free_strs(args),
 			print_parsing_error_line("Invalid color values: ", arg), false);
-	color->r = r;
-	color->g = g;
-	color->b = b;
-	return (ft_free_strs(args), true);
+	return (color->r = r, color->g = g, color->b = b,
+		color->rgb = color->r << 24 | color->g << 16 | color->b << 8 | 0xFF,
+		ft_free_strs(args), true);
 }

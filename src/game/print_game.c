@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 17:47:59 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/27 13:32:52 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	print_game(t_game *game)
 	print_grid(game);
 	printf("Player Position: (%.2f | %.2f)\n", game->player_x, game->player_y);
 	printf("Player Rotation: %.2f\n", game->player_rotation);
+	printf("mi_size: %i mi_cell_size: %i\n", game->mi_size, game->mi_cell_size);
 	printf("\n");
 }
 

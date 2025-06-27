@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 14:27:15 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/27 14:06:32 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,39 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// debug
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
 
+// base
 # define TITLE "Cub3D"
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
 
+// movement
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.04
 # define MOUSE_SENSITIVITY 0.002
 # define FOV M_PI_4      // 45 degrees
 # define RAY_STEP 0.0002 // Step size for ray casting
 
+// parsing
 # define PARSING_SKIP " \t\r\n"
 # define MAP_SYMBOLS " 01NSEW"
 # define EMPTY_SYMBOLS " 0"
 # define PLAYER_POSITION_SYMBOLS "NSEW"
+
+// minimap
+# define MINIMAP_SIZE 0.1f
+# define MINIMAP_CELLS_COUNT 10
 
 typedef struct s_color
 {
 	int			r;
 	int			g;
 	int			b;
+	uint32_t	rgb;
 }				t_color;
 // color functions
 void			print_color(t_color *color);
@@ -108,6 +117,10 @@ typedef struct s_game
 	bool		right;
 	bool		rotation_left;
 	bool		rotation_right;
+
+	// Minimap
+	int			mi_size;
+	int			mi_cell_size;
 }				t_game;
 
 // game functions
@@ -146,6 +159,9 @@ void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
 void			cursorhook(double x, double y, void *param);
 void			resize(int width, int height, void *param);
+
+// minimap
+void			print_minimap(t_game *game);
 
 // rendering functions
 void			cast_rays(t_game *game);

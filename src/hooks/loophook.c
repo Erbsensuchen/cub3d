@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loophook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 11:44:31 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/27 13:10:21 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	loophook(void *param)
 	game->img = mlx_new_image(game->mlx, game->mlx->width, game->mlx->height);
 	pre_render(game);
 	cast_rays(game);
+	print_minimap(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 	if (game->old_img)
 		mlx_delete_image(game->mlx, game->old_img);
