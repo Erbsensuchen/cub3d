@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:01:23 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 11:44:22 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:25:22 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	key_pressed(mlx_key_data_t keydata, t_game *game)
 {
 	if (keydata.key == MLX_KEY_W)
-		game->forward = 1;
+		game->forward = true;
 	else if (keydata.key == MLX_KEY_S)
-		game->backward = 1;
+		game->backward = true;
 	else if (keydata.key == MLX_KEY_A)
-		game->left = 1;
+		game->left = true;
 	else if (keydata.key == MLX_KEY_D)
-		game->right = 1;
+		game->right = true;
 	else if (keydata.key == MLX_KEY_LEFT)
-		game->rotation_left = 1;
+		game->rotation_left = true;
 	else if (keydata.key == MLX_KEY_RIGHT)
-		game->rotation_right = 1;
+		game->rotation_right = true;
 	else if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(game->mlx);
 	else if (keydata.key == MLX_KEY_C)
@@ -43,17 +43,17 @@ void	key_pressed(mlx_key_data_t keydata, t_game *game)
 void	key_released(mlx_key_data_t keydata, t_game *game)
 {
 	if (keydata.key == MLX_KEY_W)
-		game->forward = 0;
+		game->forward = false;
 	else if (keydata.key == MLX_KEY_S)
-		game->backward = 0;
+		game->backward = false;
 	else if (keydata.key == MLX_KEY_A)
-		game->left = 0;
+		game->left = false;
 	else if (keydata.key == MLX_KEY_D)
-		game->right = 0;
+		game->right = false;
 	else if (keydata.key == MLX_KEY_LEFT)
-		game->rotation_left = 0;
+		game->rotation_left = false;
 	else if (keydata.key == MLX_KEY_RIGHT)
-		game->rotation_right = 0;
+		game->rotation_right = false;
 }
 
 void	keyhook(mlx_key_data_t keydata, void *param)
@@ -62,6 +62,6 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		key_pressed(keydata, (t_game *)param);
 	else if (keydata.action == MLX_RELEASE)
 		key_released(keydata, (t_game *)param);
-	if (DEBUG)
+	if (DEBUG && keydata.action == MLX_PRESS && keydata.key == MLX_KEY_L)
 		print_game((t_game *)param);
 }

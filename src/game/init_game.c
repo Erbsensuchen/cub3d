@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 15:13:42 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:16:38 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ static void	init_movement_values(t_game *game)
 	game->player_x = 0.0;
 	game->player_y = 0.0;
 	game->player_rotation = 0.0;
-	game->forward = 0;
-	game->backward = 0;
-	game->left = 0;
-	game->right = 0;
-	game->rotation_left = 0;
-	game->rotation_right = 0;
+	game->forward = false;
+	game->backward = false;
+	game->left = false;
+	game->right = false;
+	game->rotation_left = false;
+	game->rotation_right = false;
+	game->mouse_delta_x = 0;
 	game->capture_mouse = true;
 	game->img = NULL;
 	game->old_img = NULL;

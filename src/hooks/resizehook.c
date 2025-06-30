@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:40:44 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/27 16:05:06 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:23:54 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,4 @@ void	resize(int width, int height, void *param)
 	game->mi_cell_size = game->mi_size / MINIMAP_CELLS_COUNT;
 	game->mi_player_size = width * MINIMAP_PLAYER_SIZE;
 	game->mi_player_width = width * MINIMAP_PLAYER_WIDTH;
-	if (DEBUG)
-		print_game(game);
 }

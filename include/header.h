@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 10:56:44 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:11:46 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,11 @@ typedef struct s_game
 	bool		rotation_left;
 	bool		rotation_right;
 
+	// Movement Vector
+	double		mouse_delta_x;
+	float		move_x;
+	float		move_y;
+
 	// Minimap
 	int			mi_size;
 	int			mi_cell_size;
@@ -155,6 +160,7 @@ void			init_game(t_game *game);
 void			free_game(t_game *game);
 void			print_game(t_game *game);
 void			print_grid(t_game *game);
+void			print_movement(t_game *game);
 bool			load_game_textures(t_game *game);
 
 // parsing util functions
@@ -171,11 +177,8 @@ bool			parse_map(t_game *game, int fd, char *last_line);
 bool			validate_grid(t_game *game);
 
 // movement functions
-int				move_forward(t_game *game);
-int				move_backward(t_game *game);
-int				move_left(t_game *game);
-int				move_right(t_game *game);
-int				test_movement(t_game *game, double new_x, double new_y);
+bool			move(t_game *game);
+bool			test_movement(t_game *game, double new_x, double new_y);
 
 // rotation functions
 int				rotate_left(t_game *game);
@@ -186,8 +189,8 @@ void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
 void			cursorhook(double x, double y, void *param);
 void			resize(int width, int height, void *param);
-void	mousehook(mouse_key_t keydata, action_t action, modifier_key_t mods,
-    void *param);
+void			mousehook(mouse_key_t keydata, action_t action,
+					modifier_key_t mods, void *param);
 
 // minimap
 void			print_minimap(t_game *game);

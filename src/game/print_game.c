@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/27 13:32:52 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 13:03:50 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	print_game(t_game *game)
 	printf("Ceiling Color: ");
 	print_color(&game->ceiling);
 	print_grid(game);
-	printf("Player Position: (%.2f | %.2f)\n", game->player_x, game->player_y);
-	printf("Player Rotation: %.2f\n", game->player_rotation);
+	print_movement(game);
 	printf("mi_size: %i mi_cell_size: %i\n", game->mi_size, game->mi_cell_size);
 	printf("\n");
 }
@@ -56,4 +55,11 @@ void	print_grid(t_game *game)
 			printf("NULL\n");
 		i++;
 	}
+}
+
+void	print_movement(t_game *game)
+{
+	printf("Player Movement: (%.2f | %.2f)\n", game->move_x, game->move_y);
+	printf("Player Position: (%.2f | %.2f)\n", game->player_x, game->player_y);
+	printf("Player Rotation: %.2f\n", game->player_rotation);
 }

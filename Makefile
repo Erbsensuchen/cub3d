@@ -48,17 +48,13 @@ SRC_FILES := main.c \
 			free_texture.c \
 			init_texture.c \
 			print_texture.c \
-			backward.c \
-			forward.c \
-			left.c \
-			right.c \
+			move.c \
 			test_movement.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
 			resizehook.c \
 			mousehook.c \
-			rotation.c \
 			rays.c \
 			pre_render.c \
 			angle_utils.c \
