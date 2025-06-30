@@ -3,47 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 10:47:40 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:45:08 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+static t_wall_dir	get_direction(t_ray *ray)
+{
+	int	prev_cell_x;
+	int	prev_cell_y;
+	int	hit_cell_x;
+	int	hit_cell_y;
+
+	prev_cell_x = (int)ray->prev_x;
+	prev_cell_y = (int)ray->prev_y;
+	hit_cell_x = (int)ray->hit_x;
+	hit_cell_y = (int)ray->hit_y;
+	if (hit_cell_x > prev_cell_x)
+		return (WALL_WEST);
+	if (hit_cell_x < prev_cell_x)
+		return (WALL_EAST);
+	if (hit_cell_y > prev_cell_y)
+		return (WALL_NORTH);
+	if (hit_cell_y < prev_cell_y)
+		return (WALL_SOUTH);
+	return (WALL_UNKNOWN);
+}
+
 static t_ray	ray_info(double ray_angle, t_game *game)
 {
-	double	distance;
 	double	x;
 	double	y;
+	double	distance;
 	t_ray	ray;
 
 	x = game->player_x;
 	y = game->player_y;
 	distance = 0.0;
+	ray.angle = ray_angle;
 	while (1)
 	{
+		ray.prev_x = x;
+		ray.prev_y = y;
 		x += cos(ray_angle) * RAY_STEP;
 		y += sin(ray_angle) * RAY_STEP;
 		distance += RAY_STEP;
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
-	distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
-	ray.angle = ray_angle;
-	ray.distance = distance;
+	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 	ray.hit_x = x;
 	ray.hit_y = y;
+	ray.hit_dir = get_direction(&ray);
 	return (ray);
+}
+
+static uint32_t	get_wall_color(t_ray *ray)
+{
+	if (ray->hit_dir == WALL_NORTH)
+		return (0xFF4444FF);
+	else if (ray->hit_dir == WALL_SOUTH)
+		return (0x44FF44FF);
+	else if (ray->hit_dir == WALL_EAST)
+		return (0x4444FFFF);
+	else if (ray->hit_dir == WALL_WEST)
+		return (0xFFFF44FF);
+	else
+		return (0x888888FF);
 }
 
 void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 {
-	double	height;
-	int		start;
-	int		end;
-	int		color;
+	double		height;
+	int			start;
+	int			end;
+	uint32_t	color;
 
 	height = (game->mlx->height / ray.distance);
 	start = (game->mlx->height - (int)height) / 2;
@@ -52,8 +90,8 @@ void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 		end = game->mlx->height;
 	if (start < 0)
 		start = 0;
-	color = 0x008080FF;
-    // insert textures here
+	color = get_wall_color(&ray);
+	// insert textures here
 	while (start < end)
 	{
 		mlx_put_pixel(game->img, pixel_x, start, color);

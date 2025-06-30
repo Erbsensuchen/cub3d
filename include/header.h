@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 15:50:17 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:43:49 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,25 @@ void			init_texture(t_texture *texture);
 void			free_texture(mlx_t *mlx, t_texture *texture);
 void			print_texture(t_texture *texture);
 
+// directions
+typedef enum e_wall_dir
+{
+	WALL_NORTH,
+	WALL_SOUTH,
+	WALL_EAST,
+	WALL_WEST,
+	WALL_UNKNOWN,
+}				t_wall_dir;
+
 typedef struct s_ray
 {
 	double angle;    // Angle of the ray
 	double distance; // Distance to the wall hit
 	double hit_x;    // X coordinate of the wall hit
-	double hit_y;    // Y coordinate of the wall hit
+	double		prev_x;
+	double		prev_y;
+	double hit_y; // Y coordinate of the wall hit
+	t_wall_dir	hit_dir;
 }				t_ray;
 
 typedef struct s_triangle
