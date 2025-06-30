@@ -49,7 +49,6 @@ SRC_FILES := main.c \
 			init_texture.c \
 			print_texture.c \
 			move.c \
-			test_movement.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
@@ -59,7 +58,8 @@ SRC_FILES := main.c \
 			pre_render.c \
 			angle_utils.c \
 			minimap.c \
-			draw_player_triangle.c
+			draw_player_triangle.c \
+			double_utils.c
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

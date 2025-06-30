@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 14:14:32 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:02:39 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ bool	movement_handler(t_game *game)
 	game->move_x = 0;
 	game->move_y = 0;
 	if (game->forward)
-		game->move_x = -1;
-	if (game->backward)
 		game->move_x += 1;
+	if (game->backward)
+		game->move_x += -1;
 	if (game->left)
-		game->move_y = -1;
+		game->move_y += -1;
 	if (game->right)
 		game->move_y += 1;
 	if (game->rotation_left && !game->mouse_delta_x)

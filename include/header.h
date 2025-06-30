@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 14:11:46 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 14:58:44 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@
 # define MINIMAP_PLAYER_SIZE 0.015f
 # define MINIMAP_PLAYER_WIDTH 0.005f
 # define PLAYER_COLOR 0xFF0000FF
+
+// utils
+# define DOUBLE_EPSILON 1e-8
 
 typedef struct s_color
 {
@@ -178,11 +181,6 @@ bool			validate_grid(t_game *game);
 
 // movement functions
 bool			move(t_game *game);
-bool			test_movement(t_game *game, double new_x, double new_y);
-
-// rotation functions
-int				rotate_left(t_game *game);
-int				rotate_right(t_game *game);
 
 // hooks
 void			keyhook(mlx_key_data_t keydata, void *param);
@@ -201,7 +199,11 @@ void			draw_player_triangle(t_game *game, int x, int y,
 void			cast_rays(t_game *game);
 mlx_image_t		*pre_render(t_game *game);
 
-// utils
+// angle utils
 double			mod_angle(double angle);
+
+// float utils
+void			normalize_double(double *x, double *y);
+bool			double_close(double x, double y);
 
 #endif // HEADER_H
