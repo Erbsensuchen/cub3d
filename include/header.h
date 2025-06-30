@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/27 15:37:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 10:56:44 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,8 @@ void			keyhook(mlx_key_data_t keydata, void *param);
 void			loophook(void *param);
 void			cursorhook(double x, double y, void *param);
 void			resize(int width, int height, void *param);
+void	mousehook(mouse_key_t keydata, action_t action, modifier_key_t mods,
+    void *param);
 
 // minimap
 void			print_minimap(t_game *game);

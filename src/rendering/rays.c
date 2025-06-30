@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/25 14:26:33 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/06/30 10:47:40 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 	if (start < 0)
 		start = 0;
 	color = 0x008080FF;
+    // insert textures here
 	while (start < end)
 	{
 		mlx_put_pixel(game->img, pixel_x, start, color);

@@ -57,6 +57,7 @@ SRC_FILES := main.c \
 			loophook.c \
 			cursorhook.c \
 			resizehook.c \
+			mousehook.c \
 			rotation.c \
 			rays.c \
 			pre_render.c \
