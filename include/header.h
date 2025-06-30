@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 15:23:20 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:50:17 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,8 +202,7 @@ mlx_image_t		*pre_render(t_game *game);
 // angle utils
 double			mod_angle(double angle);
 
-// float utils
-void			normalize_double(double *x, double *y);
+// double utils
 bool			double_close(double x, double y);
 
 #endif // HEADER_H

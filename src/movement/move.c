@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 15:14:22 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:50:05 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static bool	test_movement(t_game *game, double x_move, double y_move)
 
 	if (double_close(x_move, 0) && double_close(y_move, 0))
 		return (false);
-	normalize_double(&x_move, &y_move);
 	x_move *= MOVEMENT_SPEED;
 	y_move *= MOVEMENT_SPEED;
 	new_x = game->player_x + x_move;
