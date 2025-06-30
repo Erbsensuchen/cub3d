@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 14:58:44 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:23:20 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 
 // parsing
 # define PARSING_SKIP " \t\r\n"
-# define MAP_SYMBOLS " 01NSEW"
+# define MAP_SYMBOLS " 01NSEWD"
 # define EMPTY_SYMBOLS " 0"
 # define PLAYER_POSITION_SYMBOLS "NSEW"
 

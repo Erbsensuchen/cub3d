@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:40:44 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 13:23:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:20:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	resize(int width, int height, void *param)
 	if (!game->img)
 	{
 		ft_putstr_fd("Error: Could not create new image.\n", STDERR_FILENO);
+		free_game(game);
 		exit(EXIT_FAILURE);
 	}
 	game->mlx->width = width;

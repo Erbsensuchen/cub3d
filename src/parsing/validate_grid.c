@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:22:26 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 18:10:14 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:27:45 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static bool	is_closed(t_game *game, char **closed, int x, int y)
 		return (false);
 	if (closed[y][x] == '1' || closed[y][x] == 'V')
 		return (true);
-	if (closed[y][x] != '0')
+	if (closed[y][x] != '0' && closed[y][x] != 'D')
 		return (false);
 	closed[y][x] = 'V';
 	if (!is_closed(game, closed, x + 1, y) || !is_closed(game, closed, x - 1, y)
