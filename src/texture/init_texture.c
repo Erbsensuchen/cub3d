@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:28:42 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 18:33:33 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:50:51 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	init_texture(t_texture *texture)
 {
 	texture->path = NULL;
-	texture->img = NULL;
+	texture->xpmt = NULL;
+	texture->tex = NULL;
 }
