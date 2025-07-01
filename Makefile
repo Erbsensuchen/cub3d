@@ -50,6 +50,7 @@ SRC_FILES := main.c \
 			print_texture.c \
 			get_pixel_color.c \
 			move.c \
+			hooks.c \
 			keyhook.c \
 			loophook.c \
 			cursorhook.c \
