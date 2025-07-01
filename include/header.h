@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/01 13:49:30 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 14:36:56 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ typedef enum e_wall_dir
 
 typedef struct s_ray
 {
-	double angle;    // Angle of the ray
-	double distance; // Distance to the wall hit
-	double hit_x;    // X coordinate of the wall hit
+	double			angle;
+	double			distance;
+	double			hit_x;
 	double			prev_x;
 	double			prev_y;
-	double hit_y; // Y coordinate of the wall hit
+	double			hit_y;
 	t_wall_dir		hit_dir;
 }					t_ray;
 
@@ -202,6 +202,8 @@ bool				validate_grid(t_game *game);
 bool				move(t_game *game);
 
 // hooks
+void				hooks(t_game *game);
+
 void				keyhook(mlx_key_data_t keydata, void *param);
 void				loophook(void *param);
 void				cursorhook(double x, double y, void *param);
