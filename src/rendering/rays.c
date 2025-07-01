@@ -6,31 +6,39 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 16:45:08 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:35:49 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static t_wall_dir	get_direction(t_ray *ray)
+static t_wall_dir	get_direction(t_ray *ray, t_game *game)
 {
-	int	prev_cell_x;
-	int	prev_cell_y;
-	int	hit_cell_x;
-	int	hit_cell_y;
+	int	prev_x;
+	int	prev_y;
+	int	hit_x;
+	int	hit_y;
+	int	dx;
+	int	dy;
 
-	prev_cell_x = (int)ray->prev_x;
-	prev_cell_y = (int)ray->prev_y;
-	hit_cell_x = (int)ray->hit_x;
-	hit_cell_y = (int)ray->hit_y;
-	if (hit_cell_x > prev_cell_x)
-		return (WALL_WEST);
-	if (hit_cell_x < prev_cell_x)
+	prev_x = (int)ray->prev_x;
+	prev_y = (int)ray->prev_y;
+	hit_x = (int)ray->hit_x;
+	hit_y = (int)ray->hit_y;
+	dx = hit_x - prev_x;
+	dy = hit_y - prev_y;
+	if (dx > 0 && dy == 0)
 		return (WALL_EAST);
-	if (hit_cell_y > prev_cell_y)
-		return (WALL_NORTH);
-	if (hit_cell_y < prev_cell_y)
+	if (dx < 0 && dy == 0)
+		return (WALL_WEST);
+	if (dy > 0 && dx == 0)
 		return (WALL_SOUTH);
+	if (dy < 0 && dx == 0)
+		return (WALL_NORTH);
+	if (dx != 0 && game->grid[prev_y][prev_x + dx] == '1')
+		return ((dx > 0) ? WALL_EAST : WALL_WEST);
+	if (dy != 0 && game->grid[prev_y + dy][prev_x] == '1')
+		return ((dy > 0) ? WALL_SOUTH : WALL_NORTH);
 	return (WALL_UNKNOWN);
 }
 
@@ -58,7 +66,7 @@ static t_ray	ray_info(double ray_angle, t_game *game)
 	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 	ray.hit_x = x;
 	ray.hit_y = y;
-	ray.hit_dir = get_direction(&ray);
+	ray.hit_dir = get_direction(&ray, game);
 	return (ray);
 }
 
