@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:22:26 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 15:27:45 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 14:24:55 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,8 @@ static bool	is_closed(t_game *game, char **closed, int x, int y)
 
 bool	validate_grid(t_game *game)
 {
-	int		i;
 	char	**closed;
 
-	i = 0;
 	if (!set_player_position(game))
 		return (false);
 	closed = ft_strsdup(game->grid);
