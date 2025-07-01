@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/01 13:04:57 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 13:49:30 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@
 # define MINIMAP_PLAYER_WIDTH 0.005f
 # define PLAYER_COLOR 0xFF0000FF
 
+// rendering
+# define RENDERING_ERROR 0xFF00FFFF         // pinkish
+# define RENDERING_OUT_OF_BOUNDS 0xFFFF00FF // yellow
+
 // utils
 # define DOUBLE_EPSILON 1e-8
 
@@ -80,6 +84,7 @@ typedef struct s_texture
 void				init_texture(t_texture *texture);
 void				free_texture(mlx_t *mlx, t_texture *texture);
 void				print_texture(t_texture *texture);
+uint32_t			get_pixel_color(mlx_texture_t *texture, int x, int y);
 
 // directions
 typedef enum e_wall_dir

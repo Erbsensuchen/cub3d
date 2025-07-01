@@ -48,6 +48,7 @@ SRC_FILES := main.c \
 			free_texture.c \
 			init_texture.c \
 			print_texture.c \
+			get_pixel_color.c \
 			move.c \
 			keyhook.c \
 			loophook.c \
