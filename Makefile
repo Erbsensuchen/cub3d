@@ -54,7 +54,8 @@ SRC_FILES := main.c \
 			cursorhook.c \
 			resizehook.c \
 			mousehook.c \
-			rays.c \
+			rendering.c \
+			cast_ray.c \
 			pre_render.c \
 			angle_utils.c \
 			minimap.c \

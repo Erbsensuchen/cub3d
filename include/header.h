@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/01 12:48:31 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/01 13:04:57 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ void				draw_player_triangle(t_game *game, int x, int y,
 // rendering functions
 void				cast_rays(t_game *game);
 mlx_image_t			*pre_render(t_game *game);
+t_ray				cast_ray(double ray_angle, t_game *game);
 
 // angle utils
 double				mod_angle(double angle);
