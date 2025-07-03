@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_game_textures.c                               :+:      :+:    :+:   */
+/*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:11:49 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/01 13:55:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/03 10:20:04 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,30 @@
 
 static bool	process_texture(t_texture *texture, const char *texture_name)
 {
+	int	len;
+
 	if (!texture->path)
 		return (print_parsing_error_line("Missing texture path: ",
 				texture_name), false);
-	texture->xpmt = mlx_load_xpm42(texture->path);
-	if (!texture->xpmt)
-		return (print_parsing_error_line("Failed to load texture: ",
+	len = ft_strlen(texture->path);
+	if (len > 5 && ft_strcmp(texture->path + len - 4, ".png") == 0)
+	{
+		texture->tex = mlx_load_png(texture->path);
+		if (!texture->tex)
+			return (print_parsing_error_line("Failed to load texture: ",
+					texture_name), false);
+	}
+	else if (len > 7 && ft_strcmp(texture->path + len - 6, ".xpm42") == 0)
+	{
+		texture->xpmt = mlx_load_xpm42(texture->path);
+		if (!texture->xpmt)
+			return (print_parsing_error_line("Failed to load texture: ",
+					texture_name), false);
+		texture->tex = &texture->xpmt->texture;
+	}
+	else
+		return (print_parsing_error_line("invalid texture path: ",
 				texture_name), false);
-	texture->tex = &texture->xpmt->texture;
 	return (true);
 }
 

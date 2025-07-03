@@ -39,7 +39,6 @@ SRC_FILES := main.c \
 			print_color.c \
 			free_game.c \
 			init_game.c \
-			load_game_textures.c \
 			print_game.c \
 			parsing_map.c \
 			parsing.c \
@@ -47,6 +46,7 @@ SRC_FILES := main.c \
 			parsing_utils.c \
 			free_texture.c \
 			init_texture.c \
+			load_textures.c \
 			print_texture.c \
 			get_pixel_color.c \
 			move.c \
