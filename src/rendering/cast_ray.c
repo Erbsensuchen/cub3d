@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/02 10:07:43 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/03 11:54:16 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static t_wall_dir	resolve_diagonal_hit(t_game *game, t_ray *ray, int dx,
 		else
 			return (WALL_NORTH);
 	}
-	return (WALL_UNKNOWN);
+	if(ray->angle > M_PI)
+        return (WALL_NORTH);
+    else
+        return (WALL_SOUTH);
 }
 
 static t_wall_dir	get_direction(t_ray *ray, t_game *game)
@@ -71,8 +74,8 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
-	ray.distance = distance;
-	// ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
+	// ray.distance = distance;
+	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 	ray.hit_x = x;
 	ray.hit_y = y;
 	ray.hit_dir = get_direction(&ray, game);

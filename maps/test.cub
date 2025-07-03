@@ -1,7 +1,7 @@
-NO textures/red_brick.xpm42
+NO textures/plain_wall.png
 EA textures/red_brick.xpm42
 SO textures/red_brick.xpm42
-WE textures/download-1.png
+WE textures/red_brick.xpm42
 
 C 23,54,4
 F 255,234,233
