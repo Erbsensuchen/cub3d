@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:27:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/01 12:49:46 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/03 12:36:09 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_texture(mlx_t *mlx, t_texture *texture)
 {
+	(void)mlx;
 	free(texture->path);
 	texture->path = NULL;
 	if (texture->xpmt)

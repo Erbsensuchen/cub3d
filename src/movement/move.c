@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 15:50:05 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/03 12:39:40 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static bool	test_movement(t_game *game, double x_move, double y_move)
 	y_move *= MOVEMENT_SPEED;
 	new_x = game->player_x + x_move;
 	new_y = game->player_y + y_move;
-	if (game->grid[(int)new_y][(int)new_x] == '0')
+	if (game->grid[(int)new_y][(int)new_x] == '0'
+		&& (game->grid[(int)game->player_y][(int)new_x] == '0'
+			|| game->grid[(int)new_y][(int)game->player_x] == '0'))
 		return (game->player_x = new_x, game->player_y = new_y, true);
 	else
 		return (false);
