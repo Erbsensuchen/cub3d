@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/03 11:54:16 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/03 12:02:08 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static t_wall_dir	resolve_diagonal_hit(t_game *game, t_ray *ray, int dx,
 		else
 			return (WALL_NORTH);
 	}
-	if(ray->angle > M_PI)
-        return (WALL_NORTH);
-    else
-        return (WALL_SOUTH);
+	if (ray->angle > M_PI)
+		return (WALL_NORTH);
+	else
+		return (WALL_SOUTH);
 }
 
 static t_wall_dir	get_direction(t_ray *ray, t_game *game)

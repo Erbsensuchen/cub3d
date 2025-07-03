@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/03 11:31:26 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/03 12:02:20 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static uint32_t	get_wall_pixel_color(t_game *game, t_ray *ray, int pixel_y)
 		wall_hit_pos = ray->hit_y - (int)ray->hit_y;
 	else
 		wall_hit_pos = ray->hit_x - (int)ray->hit_x;
-    if(ray->hit_dir == WALL_WEST || ray->hit_dir == WALL_SOUTH)
-        wall_hit_pos = 1.0 - wall_hit_pos;
+	if (ray->hit_dir == WALL_WEST || ray->hit_dir == WALL_SOUTH)
+		wall_hit_pos = 1.0 - wall_hit_pos;
 	tex_x = (int)(wall_hit_pos * texture->width);
 	// if (tex_x < 0)
 	// 	tex_x = 0;
 	// else if (tex_x >= (int)texture->width)
 	// 	tex_x = texture->width - 1;
-	tex_y =  (int)(((double)(pixel_y - (game->mlx->height - height) / 2)
-			/ height) * texture->height);
+	tex_y = (int)(((double)(pixel_y - (game->mlx->height - height) / 2)
+				/ height) * texture->height);
 	// we shouldn't get any out of bounds values
 	// if (tex_y < 0)
 	// 	tex_y = 0;
