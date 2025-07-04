@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:11:49 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/03 10:20:04 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:02:56 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ bool	load_game_textures(t_game *game)
 	if (!process_texture(&game->east, "East"))
 		return (false);
 	if (!process_texture(&game->west, "West"))
+		return (false);
+	if (!process_texture(&game->goos, "Goos"))
 		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 14:16:38 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:00:13 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_game(t_game *game)
 	init_texture(&game->south);
 	init_texture(&game->east);
 	init_texture(&game->west);
+	init_texture(&game->goos);
 	init_movement_values(game);
 	init_minimap(game);
 }

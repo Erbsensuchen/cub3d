@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:27:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 12:34:17 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:26:46 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	free_texture(mlx_t *mlx, t_texture *texture)
+void	free_texture(t_texture *texture)
 {
-	(void)mlx;
 	free(texture->path);
 	texture->path = NULL;
 	if (texture->xpmt)
@@ -22,7 +21,7 @@ void	free_texture(mlx_t *mlx, t_texture *texture)
 		mlx_delete_xpm42(texture->xpmt);
 		texture->xpmt = NULL;
 	}
-	else
+	else if (texture->tex)
 	{
 		mlx_delete_texture(texture->tex);
 		texture->tex = NULL;

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 14:47:49 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:17:22 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@
 // utils
 # define DOUBLE_EPSILON 1e-8
 
+// goos
+# define GOOS_ELEMENT "GO"
+
 typedef struct s_color
 {
 	int				r;
@@ -85,7 +88,7 @@ typedef struct s_texture
 
 // texture functions
 void				init_texture(t_texture *texture);
-void				free_texture(mlx_t *mlx, t_texture *texture);
+void				free_texture(t_texture *texture);
 void				print_texture(t_texture *texture);
 uint32_t			get_pixel_color(mlx_texture_t *texture, int x, int y);
 
@@ -145,6 +148,7 @@ typedef struct s_game
 	t_texture		south;
 	t_texture		east;
 	t_texture		west;
+	t_texture		goos;
 
 	// Colors
 	t_color			floor;

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 13:18:02 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:27:09 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ static void	free_grid(t_game *game)
 
 void	free_game(t_game *game)
 {
-	free_texture(game->mlx, &game->north);
-	free_texture(game->mlx, &game->south);
-	free_texture(game->mlx, &game->east);
-	free_texture(game->mlx, &game->west);
+	free_texture(&game->north);
+	free_texture(&game->south);
+	free_texture(&game->east);
+	free_texture(&game->west);
+	free_texture(&game->goos);
 	free_grid(game);
 	reset_movement_values(game);
 	if (game->mlx)
