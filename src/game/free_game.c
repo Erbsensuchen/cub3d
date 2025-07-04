@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:57:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:07:22 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,22 @@ static void	free_grid(t_game *game)
 	}
 }
 
+static void	free_goos_data(t_game *game)
+{
+	free(game->goos_pos_x);
+	game->goos_pos_x = NULL;
+	free(game->goos_pos_y);
+	game->goos_pos_y = NULL;
+	free(game->goos_target_x);
+	game->goos_target_x = NULL;
+	free(game->goos_target_y);
+	game->goos_target_y = NULL;
+	free(game->goos_states);
+	game->goos_states = NULL;
+	free(game->goos_times);
+	game->goos_times = NULL;
+}
+
 void	free_game(t_game *game)
 {
 	free_texture(&game->north);
@@ -57,14 +73,12 @@ void	free_game(t_game *game)
 		mlx_delete_image(game->mlx, game->img);
 		game->img = NULL;
 	}
+	if (game->old_img)
+	{
+		mlx_delete_image(game->mlx, game->old_img);
+		game->old_img = NULL;
+	}
 	if (game->mlx)
 		mlx_terminate(game->mlx);
-	free(game->goos_pos_x);
-	game->goos_pos_x = NULL;
-	free(game->goos_pos_y);
-	game->goos_pos_y = NULL;
-	free(game->goos_states);
-	game->goos_states = NULL;
-	free(game->goos_times);
-	game->goos_times = NULL;
+	free_goos_data(game);
 }

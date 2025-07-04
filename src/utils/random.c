@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_utils.c                                     :+:      :+:    :+:   */
+/*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 14:44:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:18:44 by lseeger          ###   ########.fr       */
+/*   Created: 2025/07/04 16:18:21 by lseeger           #+#    #+#             */
+/*   Updated: 2025/07/04 16:18:47 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-bool	double_close(double x, double y)
+uint32_t	lcg_rand(void)
 {
-	return (fabs(x - y) <= DOUBLE_EPSILON);
+	static uint32_t	state = 1;
+
+	state = 1664525u * state + 1013904223u;
+	return (state);
 }
 
-void	normalize_doubles(double *x, double *y)
+uint32_t	lcg_rand_max(uint32_t max)
 {
-	double	length;
-
-	length = sqrt((*x) * (*x) + (*y) * (*y));
-	if (length != 0.0)
-	{
-		*x /= length;
-		*y /= length;
-	}
+	return (lcg_rand() % max);
 }

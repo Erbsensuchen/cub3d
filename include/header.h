@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 15:53:12 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:18:38 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -106,15 +107,16 @@ typedef enum e_wall_dir
 // goos state
 typedef enum e_goos_state
 {
-	GOOS_SIT,
-	GOOS_JUMP,
-	GOOS_LOOK,
-	GOOS_WALK,
-	GOOS_FLAP,
-	GOOS_FLY,
-	GOOS_SLEEP,
-	GOOS_EAT,
+	GOOS_SIT = 0,
+	GOOS_JUMP = 1,
+	GOOS_LOOK = 2,
+	GOOS_WALK = 3,
+	GOOS_FLAP = 4,
+	GOOS_FLY = 5,
+	GOOS_SLEEP = 6,
+	GOOS_EAT = 7,
 }					t_goos_state;
+# define GOOS_STATE_COUNT 8
 
 typedef struct s_ray
 {
@@ -200,6 +202,8 @@ typedef struct s_game
 	// Goos
 	int				*goos_pos_x;
 	int				*goos_pos_y;
+	int				*goos_target_x;
+	int				*goos_target_y;
 	t_goos_state	*goos_states;
 	int				*goos_times;
 }					t_game;
@@ -255,5 +259,7 @@ double				mod_angle(double angle);
 // double utils
 bool				double_close(double x, double y);
 void				normalize_doubles(double *x, double *y);
+uint32_t			lcg_rand(void);
+uint32_t			lcg_rand_max(uint32_t max);
 
 #endif // HEADER_H
