@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:39:55 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 17:40:54 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,36 @@ static bool	init_goos(t_game *game)
 	game->goose_times = malloc(sizeof(int) * GOOSE_COUNT);
 	if (!game->goose_times)
 		return (print_parsing_error("Memory allocation failed!"), false);
+	game->goose_anim_frame = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_anim_frame)
+		return (print_parsing_error("Memory allocation failed!"), false);
+	game->goose_anim_count = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_anim_count)
+		return (print_parsing_error("Memory allocation failed!"), false);
 	return (true);
+}
+
+static void	init_goose_values(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < GOOSE_COUNT)
+	{
+		game->goose_pos_x[i] = 0;
+		game->goose_pos_y[i] = 0;
+		game->goose_target_x[i] = 0;
+		game->goose_target_y[i] = 0;
+		game->goose_states[i] = GOOSE_SIT;
+		game->goose_times[i] = 0;
+		game->goose_anim_frame[i] = 0;
+		game->goose_anim_count[i] = GOOSE_SIT_ANIM;
+		i++;
+	}
 }
 
 bool	init_game(t_game *game)
 {
-	int	i;
-
 	game->mlx = NULL;
 	init_texture(&game->north);
 	init_texture(&game->south);
@@ -83,16 +106,6 @@ bool	init_game(t_game *game)
 	init_minimap(game);
 	if (!init_goos(game))
 		return (false);
-	i = 0;
-	while (i < GOOSE_COUNT)
-	{
-		game->goose_pos_x[i] = 0;
-		game->goose_pos_y[i] = i * 100;
-		game->goose_target_x[i] = 0;
-		game->goose_target_y[i] = i * 100;
-		game->goose_states[i] = GOOSE_SIT;
-		game->goose_times[i] = 0;
-		i++;
-	}
+	init_goose_values(game);
 	return (true);
 }

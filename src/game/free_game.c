@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:38:40 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 17:27:30 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	free_goos_data(t_game *game)
 	game->goose_states = NULL;
 	free(game->goose_times);
 	game->goose_times = NULL;
+	free(game->goose_anim_frame);
+	game->goose_anim_frame = NULL;
 }
 
 void	free_game(t_game *game)
