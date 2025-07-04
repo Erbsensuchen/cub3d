@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:39:55 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:55:35 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,31 @@ static void	init_minimap(t_game *game)
 
 static bool	init_goos(t_game *game)
 {
-	int	i;
-
 	game->goos_pos_x = malloc(sizeof(int) * GOOS_COUNT);
 	if (!game->goos_pos_x)
 		return (print_parsing_error("Memory allocation failed!"), false);
 	game->goos_pos_y = malloc(sizeof(int) * GOOS_COUNT);
 	if (!game->goos_pos_y)
-	{
-		free(game->goos_pos_x);
-		game->goos_pos_x = NULL;
-		return (print_parsing_error("Memory allocation failed!"), false);
-	}
-	i = 0;
-	while (i < GOOS_COUNT)
-	{
-		game->goos_pos_x[i] = i * 100; // Example initialization
-		game->goos_pos_y[i] = i * 100; // Example initialization
-		i++;
-	}
+		return (free(game->goos_pos_x), game->goos_pos_x = NULL,
+			print_parsing_error("Memory allocation failed!"), false);
+	game->goos_states = malloc(sizeof(t_goos_state) * GOOS_COUNT);
+	if (!game->goos_states)
+		return (free(game->goos_pos_x), game->goos_pos_x = NULL,
+			free(game->goos_pos_y), game->goos_pos_y = NULL,
+			print_parsing_error("Memory allocation failed!"), false);
+	game->goos_times = malloc(sizeof(int) * GOOS_COUNT);
+	if (!game->goos_times)
+		return (free(game->goos_pos_x), game->goos_pos_x = NULL,
+			free(game->goos_pos_y), game->goos_pos_y = NULL,
+			free(game->goos_states), game->goos_states = NULL,
+			print_parsing_error("Memory allocation failed!"), false);
 	return (true);
 }
 
 bool	init_game(t_game *game)
 {
+	int	i;
+
 	game->mlx = NULL;
 	init_texture(&game->north);
 	init_texture(&game->south);
@@ -80,5 +81,16 @@ bool	init_game(t_game *game)
 	init_texture(&game->goos);
 	init_movement_values(game);
 	init_minimap(game);
-	return (init_goos(game));
+	if (!init_goos(game))
+		return (false);
+	i = 0;
+	while (i < GOOS_COUNT)
+	{
+		game->goos_pos_x[i] = 0;
+		game->goos_pos_y[i] = i * 100;
+		game->goos_states[i] = GOOS_SIT;
+		game->goos_times[i] = 0;
+		i++;
+	}
+	return (true);
 }

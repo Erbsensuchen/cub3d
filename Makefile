@@ -57,6 +57,7 @@ SRC_FILES := main.c \
 			resizehook.c \
 			mousehook.c \
 			rendering.c \
+			render_goos.c \
 			cast_ray.c \
 			pre_render.c \
 			angle_utils.c \

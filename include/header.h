@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 15:39:21 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:53:12 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,19 @@ typedef enum e_wall_dir
 	WALL_UNKNOWN,
 }					t_wall_dir;
 
+// goos state
+typedef enum e_goos_state
+{
+	GOOS_SIT,
+	GOOS_JUMP,
+	GOOS_LOOK,
+	GOOS_WALK,
+	GOOS_FLAP,
+	GOOS_FLY,
+	GOOS_SLEEP,
+	GOOS_EAT,
+}					t_goos_state;
+
 typedef struct s_ray
 {
 	double			angle;
@@ -187,6 +200,8 @@ typedef struct s_game
 	// Goos
 	int				*goos_pos_x;
 	int				*goos_pos_y;
+	t_goos_state	*goos_states;
+	int				*goos_times;
 }					t_game;
 
 // game functions
@@ -232,6 +247,7 @@ void				draw_player_triangle(t_game *game, int x, int y,
 void				cast_rays(t_game *game);
 mlx_image_t			*pre_render(t_game *game);
 t_ray				cast_ray(double ray_angle, t_game *game);
+void				render_goos(t_game *game);
 
 // angle utils
 double				mod_angle(double angle);
