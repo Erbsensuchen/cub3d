@@ -33,6 +33,7 @@ vpath %.c src/hooks
 vpath %.c src/minimap
 vpath %.c src/rendering
 vpath %.c src/utils
+vpath %.c src/goose
 
 # Source and object files
 SRC_FILES := main.c \
@@ -64,7 +65,8 @@ SRC_FILES := main.c \
 			minimap.c \
 			draw_player_triangle.c \
 			double_utils.c \
-			random.c
+			random.c \
+			update_goose.c \
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

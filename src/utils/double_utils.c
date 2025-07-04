@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 14:44:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:18:44 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:50:42 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,14 @@ void	normalize_doubles(double *x, double *y)
 		*x /= length;
 		*y /= length;
 	}
+}
+
+double	ft_distance(int x, int y, int px, int py)
+{
+	double	dx;
+	double	dy;
+
+	dx = (double)(px - x);
+	dy = (double)(py - y);
+	return (sqrt(dx * dx + dy * dy));
 }

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 16:37:13 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 17:17:16 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,14 @@
 # define DOUBLE_EPSILON 1e-8
 
 // goose
+# define GOOSE_SEED 42
 # define GOOSE_ELEMENT "GO"
 # define GOOSE_COUNT 3
+# define GOOSE_SPEED 1
+# define GOOSE_DISTANCE 10
+# define GOOSE_TIME 500
+# define GOOSE_SIT_TIME 1000
+# define GOOSE_WALK_TIME 500
 
 typedef struct s_color
 {
@@ -108,15 +114,15 @@ typedef enum e_wall_dir
 typedef enum e_goose_state
 {
 	GOOSE_SIT = 0,
-	GOOSE_JUMP = 1,
-	GOOSE_LOOK = 2,
-	GOOSE_WALK = 3,
+	GOOSE_WALK = 1,
+	GOOSE_JUMP = 2,
+	GOOSE_LOOK = 3,
 	GOOSE_FLAP = 4,
 	GOOSE_FLY = 5,
 	GOOSE_SLEEP = 6,
 	GOOSE_EAT = 7,
 }					t_goose_state;
-# define GOOSE_STATE_COUNT 8
+# define GOOSE_STATE_COUNT 2
 
 typedef struct s_ray
 {
@@ -262,6 +268,9 @@ double				mod_angle(double angle);
 // double utils
 bool				double_close(double x, double y);
 void				normalize_doubles(double *x, double *y);
+double				ft_distance(int x, int y, int px, int py);
+
+// random functions
 uint32_t			lcg_rand(void);
 uint32_t			lcg_rand_max(uint32_t max);
 

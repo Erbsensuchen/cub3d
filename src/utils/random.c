@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:18:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:18:47 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 17:17:38 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 uint32_t	lcg_rand(void)
 {
-	static uint32_t	state = 1;
+	static uint32_t	state = GOOSE_SEED;
 
 	state = 1664525u * state + 1013904223u;
 	return (state);
