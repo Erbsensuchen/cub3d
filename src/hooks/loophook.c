@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 12:26:37 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 12:31:22 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	loophook(void *param)
 	pre_render(game);
 	cast_rays(game);
 	print_minimap(game);
-	door(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
+	door(game);
 	if (game->old_img)
 		mlx_delete_image(game->mlx, game->old_img);
 }
