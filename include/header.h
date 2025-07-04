@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 11:54:15 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 14:47:49 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,8 @@ typedef struct s_game
 
 	// Movement Vector
 	double			mouse_delta_x;
-	float			move_x;
-	float			move_y;
+	double			move_x;
+	double			move_y;
 
 	// Minimap
 	int				mi_size;
@@ -229,5 +229,6 @@ double				mod_angle(double angle);
 
 // double utils
 bool				double_close(double x, double y);
+void				normalize_doubles(double *x, double *y);
 
 #endif // HEADER_H

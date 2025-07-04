@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/03 12:39:40 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 14:51:01 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool	move(t_game *game)
 	double	x_move;
 	double	y_move;
 
+	normalize_doubles(&game->move_x, &game->move_y);
 	x_move = game->move_x * cos(game->player_rotation) - game->move_y
 		* sin(game->player_rotation);
 	y_move = game->move_x * sin(game->player_rotation) + game->move_y
