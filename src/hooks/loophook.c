@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   loophook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 15:02:39 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 11:57:30 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	door(t_game *game)
+{
+	double	door_x;
+	double	door_y;
+
+	door_x = game->player_x + cos(game->player_rotation)
+		* DOOR_REACHABLE_DISTANCE;
+	door_y = game->player_y + sin(game->player_rotation)
+		* DOOR_REACHABLE_DISTANCE;
+	if(door_x < 0 || door_y < 0 || door_x >= game->width
+		|| door_y >= game->height)
+		return ;
+	if (game->grid[(int)door_y][(int)door_x] == 'D')
+	{
+		mlx_put_string(game->mlx, "Press 'E' to open the door", 10, 10);
+	}
+}
 
 bool	movement_handler(t_game *game)
 {
@@ -58,6 +76,7 @@ void	loophook(void *param)
 	pre_render(game);
 	cast_rays(game);
 	print_minimap(game);
+	door(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 	if (game->old_img)
 		mlx_delete_image(game->mlx, game->old_img);

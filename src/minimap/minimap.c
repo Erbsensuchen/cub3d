@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/30 15:42:25 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 11:48:37 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,18 @@ static void	print_cell(t_game *game, int x, int y)
 	int	pixel_y;
 	int	x_res;
 	int	y_res;
+	int	color;
 
 	x_res = x + (int)game->player_x;
 	y_res = y + (int)game->player_y;
 	if (x_res < 0 || y_res < 0 || x_res >= game->width || y_res >= game->height
-		|| game->grid[y_res][x_res] != '1')
+		|| game->grid[y_res][x_res] == '0' || game->grid[y_res][x_res] == ' ')
 		return ;
+	color = 0xffffffff;
+	if (game->grid[y_res][x_res] == 'D')
+		color = 0xff00ff00;
+	else if (game->grid[y_res][x_res] == 'd')
+		color = 0x00ffffff;
 	pixel_y = 0;
 	while (pixel_y < game->mi_cell_size)
 	{
@@ -54,7 +60,7 @@ static void	print_cell(t_game *game, int x, int y)
 			y_res = get_pixel_pos_y(game, y, pixel_y);
 			if (x_res >= 0 && x_res < game->mi_size && y_res >= 0
 				&& y_res < game->mi_size)
-				mlx_put_pixel(game->img, x_res, y_res, game->floor.rgb);
+				mlx_put_pixel(game->img, x_res, y_res, color);
 			pixel_x++;
 		}
 		pixel_y++;

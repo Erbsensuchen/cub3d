@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/01 14:36:56 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 11:54:15 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@
 // rendering
 # define RENDERING_ERROR 0xFF00FFFF         // pinkish
 # define RENDERING_OUT_OF_BOUNDS 0xFFFF00FF // yellow
+
+// door
+# define DOOR_REACHABLE_DISTANCE 1
 
 // utils
 # define DOUBLE_EPSILON 1e-8
