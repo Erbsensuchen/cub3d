@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/01 14:35:32 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:38:19 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	init_game(&game);
+	if (!init_game(&game))
+		return (EXIT_FAILURE);
 	if (argc < 2 || argc > 3)
 	{
 		ft_putstr_fd("Usage: ./cub3d <scene_file.cub>\n", STDERR_FILENO);

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:27:09 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:40:24 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,8 @@ void	free_game(t_game *game)
 	reset_movement_values(game);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
+	free(game->goos_pos_x);
+	game->goos_pos_x = NULL;
+	free(game->goos_pos_y);
+	game->goos_pos_y = NULL;
 }

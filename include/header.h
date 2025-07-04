@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 15:17:22 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 15:39:21 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 
 // goos
 # define GOOS_ELEMENT "GO"
+# define GOOS_COUNT 3
 
 typedef struct s_color
 {
@@ -182,10 +183,14 @@ typedef struct s_game
 	int				mi_cell_size;
 	int				mi_player_size;
 	int				mi_player_width;
+
+	// Goos
+	int				*goos_pos_x;
+	int				*goos_pos_y;
 }					t_game;
 
 // game functions
-void				init_game(t_game *game);
+bool				init_game(t_game *game);
 void				free_game(t_game *game);
 void				print_game(t_game *game);
 void				print_grid(t_game *game);
