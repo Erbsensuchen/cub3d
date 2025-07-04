@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 11:57:30 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/04 12:26:37 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ void	door(t_game *game)
 		* DOOR_REACHABLE_DISTANCE;
 	door_y = game->player_y + sin(game->player_rotation)
 		* DOOR_REACHABLE_DISTANCE;
-	if(door_x < 0 || door_y < 0 || door_x >= game->width
+	if (door_x < 0 || door_y < 0 || door_x >= game->width
 		|| door_y >= game->height)
-		return ;
-	if (game->grid[(int)door_y][(int)door_x] == 'D')
-	{
-		mlx_put_string(game->mlx, "Press 'E' to open the door", 10, 10);
-	}
+		if (game->grid[(int)door_y][(int)door_x] == 'D')
+		{
+			mlx_put_string(game->mlx, "Press 'E' to open the door", 10, 10);
+		}
 }
 
 bool	movement_handler(t_game *game)
