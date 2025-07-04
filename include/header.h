@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 17:41:34 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:17:09 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@
 // goose
 # define GOOSE_SEED 42
 # define GOOSE_ELEMENT "GO"
-# define GOOSE_COUNT 3000
+# define GOOSE_COUNT 2
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10
 # define GOOSE_SIT_TIME 100
 
 // goose animations
-# define GOOSE_ANIMATION_SPEED 10
-# define GOOSE_ANIMATION_SIZE 64
+# define GOOSE_ANIMATION_WAIT 50
+# define GOOSE_ANIMATION_SIZE 32
 # define GOOSE_SIT_ANIM 8
 # define GOOSE_SIT_ANIM_FRAMES 4
 # define GOOSE_WALK_ANIM 7
@@ -218,6 +218,7 @@ typedef struct s_game
 	int				*goose_target_y;
 	t_goose_state	*goose_states;
 	int				*goose_times;
+	int				goose_anim_wait;
 	int				*goose_anim_frame;
 	int				*goose_anim_count;
 }					t_game;

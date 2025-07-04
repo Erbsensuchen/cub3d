@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 17:40:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:04:01 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static void	init_goose_values(t_game *game)
 		game->goose_anim_count[i] = GOOSE_SIT_ANIM;
 		i++;
 	}
+	game->goose_anim_wait = 0;
 }
 
 bool	init_game(t_game *game)
