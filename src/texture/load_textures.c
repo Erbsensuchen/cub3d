@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:11:49 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:02:56 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:40:34 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	load_game_textures(t_game *game)
 		return (false);
 	if (!process_texture(&game->west, "West"))
 		return (false);
-	if (!process_texture(&game->goos, "Goos"))
+	if (!process_texture(&game->goose, "Goose"))
 		return (false);
 	return (true);
 }

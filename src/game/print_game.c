@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:47:02 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:00:45 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:40:06 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	print_textures(t_game *game)
 	print_texture(&game->east);
 	printf("West: ");
 	print_texture(&game->west);
-	printf("Goos: ");
-	print_texture(&game->goos);
+	printf("Goose: ");
+	print_texture(&game->goose);
 }
 
 void	print_game(t_game *game)

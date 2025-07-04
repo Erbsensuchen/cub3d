@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:06:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:39:55 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,23 @@ static void	init_minimap(t_game *game)
 
 static bool	init_goos(t_game *game)
 {
-	game->goos_pos_x = malloc(sizeof(int) * GOOS_COUNT);
-	if (!game->goos_pos_x)
+	game->goose_pos_x = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_pos_x)
 		return (print_parsing_error("Memory allocation failed!"), false);
-	game->goos_pos_y = malloc(sizeof(int) * GOOS_COUNT);
-	if (!game->goos_pos_y)
+	game->goose_pos_y = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_pos_y)
 		return (print_parsing_error("Memory allocation failed!"), false);
-	game->goos_target_x = malloc(sizeof(int) * GOOS_COUNT);
-	if (!game->goos_target_x)
+	game->goose_target_x = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_target_x)
 		return (print_parsing_error("Memory allocation failed!"), false);
-	game->goos_target_y = malloc(sizeof(int) * GOOS_COUNT);
-	if (!game->goos_target_y)
+	game->goose_target_y = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_target_y)
 		return (print_parsing_error("Memory allocation failed!"), false);
-	game->goos_states = malloc(sizeof(t_goos_state) * GOOS_COUNT);
-	if (!game->goos_states)
+	game->goose_states = malloc(sizeof(t_goose_state) * GOOSE_COUNT);
+	if (!game->goose_states)
 		return (print_parsing_error("Memory allocation failed!"), false);
-	game->goos_times = malloc(sizeof(int) * GOOS_COUNT);
-	if (!game->goos_times)
+	game->goose_times = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_times)
 		return (print_parsing_error("Memory allocation failed!"), false);
 	return (true);
 }
@@ -78,20 +78,20 @@ bool	init_game(t_game *game)
 	init_texture(&game->south);
 	init_texture(&game->east);
 	init_texture(&game->west);
-	init_texture(&game->goos);
+	init_texture(&game->goose);
 	init_movement_values(game);
 	init_minimap(game);
 	if (!init_goos(game))
 		return (false);
 	i = 0;
-	while (i < GOOS_COUNT)
+	while (i < GOOSE_COUNT)
 	{
-		game->goos_pos_x[i] = 0;
-		game->goos_pos_y[i] = i * 100;
-		game->goos_target_x[i] = 0;
-		game->goos_target_y[i] = i * 100;
-		game->goos_states[i] = GOOS_SIT;
-		game->goos_times[i] = 0;
+		game->goose_pos_x[i] = 0;
+		game->goose_pos_y[i] = i * 100;
+		game->goose_target_x[i] = 0;
+		game->goose_target_y[i] = i * 100;
+		game->goose_states[i] = GOOSE_SIT;
+		game->goose_times[i] = 0;
 		i++;
 	}
 	return (true);

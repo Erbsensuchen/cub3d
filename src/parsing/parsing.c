@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:18:50 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:32:01 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:40:17 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static bool	handle_args(t_game *game, char **args)
 		path = &game->east.path;
 	else if (ft_strcmp(args[0], "WE") == 0)
 		path = &game->west.path;
-	else if (ft_strcmp(args[0], GOOS_ELEMENT) == 0)
-		path = &game->goos.path;
+	else if (ft_strcmp(args[0], GOOSE_ELEMENT) == 0)
+		path = &game->goose.path;
 	else
 		return (true);
 	if (*path)

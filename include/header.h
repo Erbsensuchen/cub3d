@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 16:18:38 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:37:13 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@
 // utils
 # define DOUBLE_EPSILON 1e-8
 
-// goos
-# define GOOS_ELEMENT "GO"
-# define GOOS_COUNT 3
+// goose
+# define GOOSE_ELEMENT "GO"
+# define GOOSE_COUNT 3
 
 typedef struct s_color
 {
@@ -104,19 +104,19 @@ typedef enum e_wall_dir
 	WALL_UNKNOWN,
 }					t_wall_dir;
 
-// goos state
-typedef enum e_goos_state
+// goose state
+typedef enum e_goose_state
 {
-	GOOS_SIT = 0,
-	GOOS_JUMP = 1,
-	GOOS_LOOK = 2,
-	GOOS_WALK = 3,
-	GOOS_FLAP = 4,
-	GOOS_FLY = 5,
-	GOOS_SLEEP = 6,
-	GOOS_EAT = 7,
-}					t_goos_state;
-# define GOOS_STATE_COUNT 8
+	GOOSE_SIT = 0,
+	GOOSE_JUMP = 1,
+	GOOSE_LOOK = 2,
+	GOOSE_WALK = 3,
+	GOOSE_FLAP = 4,
+	GOOSE_FLY = 5,
+	GOOSE_SLEEP = 6,
+	GOOSE_EAT = 7,
+}					t_goose_state;
+# define GOOSE_STATE_COUNT 8
 
 typedef struct s_ray
 {
@@ -164,7 +164,7 @@ typedef struct s_game
 	t_texture		south;
 	t_texture		east;
 	t_texture		west;
-	t_texture		goos;
+	t_texture		goose;
 
 	// Colors
 	t_color			floor;
@@ -199,13 +199,13 @@ typedef struct s_game
 	int				mi_player_size;
 	int				mi_player_width;
 
-	// Goos
-	int				*goos_pos_x;
-	int				*goos_pos_y;
-	int				*goos_target_x;
-	int				*goos_target_y;
-	t_goos_state	*goos_states;
-	int				*goos_times;
+	// Goose
+	int				*goose_pos_x;
+	int				*goose_pos_y;
+	int				*goose_target_x;
+	int				*goose_target_y;
+	t_goose_state	*goose_states;
+	int				*goose_times;
 }					t_game;
 
 // game functions
@@ -247,11 +247,14 @@ void				print_minimap(t_game *game);
 void				draw_player_triangle(t_game *game, int x, int y,
 						double angle_rad);
 
+// goose
+void				update_goose(t_game *game);
+
 // rendering functions
 void				cast_rays(t_game *game);
 mlx_image_t			*pre_render(t_game *game);
 t_ray				cast_ray(double ray_angle, t_game *game);
-void				render_goos(t_game *game);
+void				render_goose(t_game *game);
 
 // angle utils
 double				mod_angle(double angle);

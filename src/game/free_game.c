@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:07:22 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:38:40 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ static void	free_grid(t_game *game)
 
 static void	free_goos_data(t_game *game)
 {
-	free(game->goos_pos_x);
-	game->goos_pos_x = NULL;
-	free(game->goos_pos_y);
-	game->goos_pos_y = NULL;
-	free(game->goos_target_x);
-	game->goos_target_x = NULL;
-	free(game->goos_target_y);
-	game->goos_target_y = NULL;
-	free(game->goos_states);
-	game->goos_states = NULL;
-	free(game->goos_times);
-	game->goos_times = NULL;
+	free(game->goose_pos_x);
+	game->goose_pos_x = NULL;
+	free(game->goose_pos_y);
+	game->goose_pos_y = NULL;
+	free(game->goose_target_x);
+	game->goose_target_x = NULL;
+	free(game->goose_target_y);
+	game->goose_target_y = NULL;
+	free(game->goose_states);
+	game->goose_states = NULL;
+	free(game->goose_times);
+	game->goose_times = NULL;
 }
 
 void	free_game(t_game *game)
@@ -65,7 +65,7 @@ void	free_game(t_game *game)
 	free_texture(&game->south);
 	free_texture(&game->east);
 	free_texture(&game->west);
-	free_texture(&game->goos);
+	free_texture(&game->goose);
 	free_grid(game);
 	reset_movement_values(game);
 	if (game->img)

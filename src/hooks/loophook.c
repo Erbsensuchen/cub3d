@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 15:42:16 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:40:45 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void	loophook(void *param)
 	door(game);
 	if (game->old_img)
 		mlx_delete_image(game->mlx, game->old_img);
-	render_goos(game);
+	render_goose(game);
 }

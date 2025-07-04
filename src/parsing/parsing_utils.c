@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:36:38 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:29:06 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:40:26 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	is_content_line(char *line)
 	if (ft_strncmp(line, "NO", 2) == 0 || ft_strncmp(line, "SO", 2) == 0
 		|| ft_strncmp(line, "EA", 2) == 0 || ft_strncmp(line, "WE", 2) == 0
 		|| ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0
-		|| ft_strncmp(line, GOOS_ELEMENT, ft_strlen(GOOS_ELEMENT)) == 0)
+		|| ft_strncmp(line, GOOSE_ELEMENT, ft_strlen(GOOSE_ELEMENT)) == 0)
 		return (true);
 	return (false);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_goos.c                                      :+:      :+:    :+:   */
+/*   render_goose.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 15:41:29 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:35:03 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 16:42:07 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	render(t_game *game, int i)
 	int	py;
 
 	int x, y;
-	gx = game->goos_pos_x[i];
-	gy = game->goos_pos_y[i];
+	gx = game->goose_pos_x[i];
+	gy = game->goose_pos_y[i];
 	for (y = 0; y < 18; y++)
 	{
 		for (x = 0; x < 18; x++)
@@ -38,12 +38,12 @@ void	render(t_game *game, int i)
 	}
 }
 
-void	render_goos(t_game *game)
+void	render_goose(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (i < GOOS_COUNT)
+	while (i < GOOSE_COUNT)
 	{
 		render(game, i);
 		i++;
