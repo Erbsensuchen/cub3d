@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 18:04:01 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:37:05 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,28 @@ static bool	init_goos(t_game *game)
 	return (true);
 }
 
-static void	init_goose_values(t_game *game)
+static bool	init_goose_values(t_game *game)
 {
 	int	i;
 
+	game->goose_anim_wait = malloc(sizeof(int) * GOOSE_COUNT);
+	if (!game->goose_anim_wait)
+		return (print_parsing_error("Memory allocation failed!"), false);
 	i = 0;
 	while (i < GOOSE_COUNT)
 	{
-		game->goose_pos_x[i] = 0;
-		game->goose_pos_y[i] = 0;
-		game->goose_target_x[i] = 0;
-		game->goose_target_y[i] = 0;
+		game->goose_pos_x[i] = WIN_WIDTH / 2;
+		game->goose_pos_y[i] = WIN_HEIGHT / 2;
+		game->goose_target_x[i] = WIN_WIDTH / 2;
+		game->goose_target_y[i] = WIN_HEIGHT / 2;
 		game->goose_states[i] = GOOSE_SIT;
 		game->goose_times[i] = 0;
+		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_SIT;
 		game->goose_anim_frame[i] = 0;
 		game->goose_anim_count[i] = GOOSE_SIT_ANIM;
 		i++;
 	}
-	game->goose_anim_wait = 0;
+	return (true);
 }
 
 bool	init_game(t_game *game)
@@ -107,6 +111,7 @@ bool	init_game(t_game *game)
 	init_minimap(game);
 	if (!init_goos(game))
 		return (false);
-	init_goose_values(game);
+	if (!init_goose_values(game))
+		return (false);
 	return (true);
 }

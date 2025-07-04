@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:44:51 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 18:16:46 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:32:09 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,42 @@ static void	update_state(t_game *game, int i)
 	{
 		game->goose_times[i] = GOOSE_SIT_TIME;
 		game->goose_anim_count[i] = GOOSE_SIT_ANIM_FRAMES;
+		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_SIT;
 	}
 	else if (game->goose_states[i] == GOOSE_WALK)
 	{
 		game->goose_target_x[i] = lcg_rand_max(game->mlx->width);
 		game->goose_target_y[i] = lcg_rand_max(game->mlx->height);
 		game->goose_anim_count[i] = GOOSE_WALK_ANIM_FRAMES;
+		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_WALK;
 	}
 }
 
-static void	update_goose_animation(t_game *game)
+static void	update_goose_animation(t_game *game, int i)
 {
-	int	i;
-
-	game->goose_anim_wait++;
-	if (game->goose_anim_wait < GOOSE_ANIMATION_WAIT)
+	game->goose_anim_wait[i]--;
+	if (game->goose_anim_wait[i] > 0)
 		return ;
-	game->goose_anim_wait = 0;
-	i = 0;
-	while (i < GOOSE_COUNT)
-	{
-		game->goose_anim_frame[i]++;
-		if (game->goose_anim_frame[i] >= game->goose_anim_count[i])
-			game->goose_anim_frame[i] = 0;
-		i++;
-	}
+	if (game->goose_states[i] == GOOSE_SIT)
+		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_SIT;
+	else if (game->goose_states[i] == GOOSE_WALK)
+		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_WALK;
+	else
+		game->goose_anim_wait[i] = 100;
+	game->goose_anim_frame[i]++;
+	if (game->goose_anim_frame[i] >= game->goose_anim_count[i])
+		game->goose_anim_frame[i] = 0;
+	i++;
 }
 
 void	update_goose(t_game *game)
 {
 	int	i;
 
-	update_goose_animation(game);
 	i = 0;
 	while (i < GOOSE_COUNT)
 	{
+		update_goose_animation(game, i);
 		if (game->goose_times[i] <= 0 && ft_distance(game->goose_pos_x[i],
 				game->goose_pos_y[i], game->goose_target_x[i],
 				game->goose_target_y[i]) < GOOSE_DISTANCE)
