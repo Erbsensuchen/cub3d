@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:22:26 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/01 14:24:55 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:12:44 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,24 @@ static bool	is_closed(t_game *game, char **closed, int x, int y)
 	return (true);
 }
 
+static void	empty_null_grid(t_game *game, char **closed)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < game->height)
+	{
+		x = -1;
+		while (++x < game->width)
+		{
+			if ((game->grid[y][x] == '0' || game->grid[y][x] == 'D')
+				&& closed[y][x] != 'V')
+				game->grid[y][x] = ' ';
+		}
+	}
+}
+
 bool	validate_grid(t_game *game)
 {
 	char	**closed;
@@ -84,5 +102,6 @@ bool	validate_grid(t_game *game)
 	if (!is_closed(game, closed, (int)game->player_x, (int)game->player_y))
 		return (ft_free_strs(closed),
 			print_parsing_error("Map is not enclosed!"), false);
+	empty_null_grid(game, closed);
 	return (ft_free_strs(closed), true);
 }
