@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:45:41 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:09:12 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ static bool	init_goose_values(t_game *game)
 	i = 0;
 	while (i < GOOSE_COUNT)
 	{
-		game->goose_pos_x[i] = WIN_WIDTH / 2;
-		game->goose_pos_y[i] = WIN_HEIGHT / 2;
-		game->goose_target_x[i] = WIN_WIDTH / 2;
-		game->goose_target_y[i] = WIN_HEIGHT / 2;
+		game->goose_pos_x[i] = lcg_rand_max(WIN_WIDTH);
+		game->goose_pos_y[i] = lcg_rand_max(WIN_HEIGHT);
+		game->goose_target_x[i] = game->goose_pos_x[i];
+		game->goose_target_y[i] = game->goose_pos_y[i];
 		game->goose_states[i] = GOOSE_SIT;
 		game->goose_times[i] = 0;
 		game->goose_anim_wait[i] = GOOSE_ANIM_WAIT_SIT;

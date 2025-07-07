@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:51:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:09:32 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,5 +326,6 @@ double				ft_distance(int x, int y, int px, int py);
 // random functions
 uint32_t			lcg_rand(void);
 uint32_t			lcg_rand_max(uint32_t max);
+uint32_t			lcg_rand01(void);
 
 #endif // HEADER_H

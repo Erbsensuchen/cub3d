@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:18:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 17:17:38 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:04:23 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,9 @@ uint32_t	lcg_rand(void)
 uint32_t	lcg_rand_max(uint32_t max)
 {
 	return (lcg_rand() % max);
+}
+
+uint32_t	lcg_rand01(void)
+{
+	return (lcg_rand() & 1);
 }
