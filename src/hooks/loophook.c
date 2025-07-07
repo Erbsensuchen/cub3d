@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 11:15:54 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:46:24 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	door(t_game *game)
 	else if (game->grid[(int)door_y][(int)door_x] == 'd')
 	{
 		mlx_set_instance_depth(game->door_close_text->instances, 2);
-		if (mlx_is_key_down(game->mlx, MLX_KEY_E) && btn_delay < mlx_get_time())
+		if (mlx_is_key_down(game->mlx, MLX_KEY_E) && btn_delay < mlx_get_time()
+			&& ((int)door_y != (int)game->player_y
+				|| (int)door_x != (int)game->player_x))
 		{
 			btn_delay = mlx_get_time() + 0.5;
 			game->grid[(int)door_y][(int)door_x] = 'D';
