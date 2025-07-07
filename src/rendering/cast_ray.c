@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:34:16 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:37:56 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ t_ray	cast_ray(double ra, t_game *game)
 {
 	t_ray	ray;
 
-	ray.x = game->player_x;
-	ray.y = game->player_y;
+	init_ray(&ray, game->player_x, game->player_y, ra);
 	ray.c_d = 0.0;
-	ray.angle = ra;
 	ray.door_d = 0.0;
 	while (1)
 	{

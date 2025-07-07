@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:54:42 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:08:14 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:37:09 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,11 @@ t_wall_dir	get_door_direction(t_ray *ray, t_game *game)
 	if (dy < 0 && dx == 0)
 		return (WALL_NORTH);
 	return (resolve_diagonal_hit(game, ray, dx, dy));
+}
+
+void	init_ray(t_ray *ray, double x, double y, double ra)
+{
+	ray->x = x;
+	ray->y = y;
+	ray->angle = ra;
 }
