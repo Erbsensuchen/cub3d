@@ -68,6 +68,7 @@ SRC_FILES := main.c \
 			double_utils.c \
 			random.c \
 			update_goose.c \
+			rendering_utils.c \
 
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 OBJ_DEBUG_FILES := $(addprefix $(OBJ_DEBUG_DIR)/, $(SRC_FILES:.c=.o))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 16:41:07 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:54:23 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,9 @@ void				cast_rays(t_game *game);
 mlx_image_t			*pre_render(t_game *game);
 t_ray				cast_ray(double ray_angle, t_game *game);
 void				render_goose(t_game *game);
+
+// rendering utils
+void				put_pixel(t_game *game, int x, int y, uint32_t color);
 
 // angle utils
 double				mod_angle(double angle);

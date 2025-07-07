@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 14:41:52 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:55:59 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,35 +32,41 @@ static int	get_pixel_pos_y(t_game *game, int y, int pixel_y)
 	return (res);
 }
 
+static uint32_t	get_cell_minimap_color(t_game *game, int x, int y)
+{
+	char	cell;
+
+	cell = game->grid[y][x];
+	if (cell == 'D')
+		return (MINIMAP_DOOR_CLOSE_COLOR);
+	else if (cell == 'd')
+		return (MINIMAP_DOOR_OPEN_COLOR);
+	else
+		return (MINIMAP_WALL_COLOR);
+}
+
 static void	print_cell(t_game *game, int x, int y)
 {
-	int	pixel_x;
-	int	pixel_y;
-	int	x_res;
-	int	y_res;
-	int	color;
+	int			pixel_x;
+	int			pixel_y;
+	int			x_res;
+	int			y_res;
+	uint32_t	color;
 
 	x_res = x + (int)game->player_x;
 	y_res = y + (int)game->player_y;
 	if (x_res < 0 || y_res < 0 || x_res >= game->width || y_res >= game->height
 		|| game->grid[y_res][x_res] == '0' || game->grid[y_res][x_res] == ' ')
 		return ;
-	color = MINIMAP_WALL_COLOR;
-	if (game->grid[y_res][x_res] == 'D')
-		color = MINIMAP_DOOR_CLOSE_COLOR;
-	else if (game->grid[y_res][x_res] == 'd')
-		color = MINIMAP_DOOR_OPEN_COLOR;
+	color = get_cell_minimap_color(game, x_res, y_res);
 	pixel_y = 0;
 	while (pixel_y < game->mi_cell_size)
 	{
 		pixel_x = 0;
 		while (pixel_x < game->mi_cell_size)
 		{
-			x_res = get_pixel_pos_x(game, x, pixel_x);
-			y_res = get_pixel_pos_y(game, y, pixel_y);
-			if (x_res >= 0 && x_res < game->mi_size && y_res >= 0
-				&& y_res < game->mi_size)
-				mlx_put_pixel(game->img, x_res, y_res, color);
+			put_pixel(game, get_pixel_pos_x(game, x, pixel_x),
+				get_pixel_pos_y(game, y, pixel_y), color);
 			pixel_x++;
 		}
 		pixel_y++;
