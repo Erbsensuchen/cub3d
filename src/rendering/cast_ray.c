@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:12:17 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:16:06 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ static bool	is_end(t_game *game, double x, double y)
 			|| y >= game->height);
 	return (is_out_of_bounds || game->grid[(int)y][(int)x] == ' '
 		|| game->grid[(int)y][(int)x] == '1');
+}
+
+static bool	is_door(t_game *game, double x, double y, t_ray *ray)
+{
+	if (ray->door_distance != 0.0)
+		return (false);
+	if (game->grid[(int)y][(int)x] == 'D' || game->grid[(int)y][(int)x] == 'd')
+	{
+		ray->door_hit_x = x;
+		ray->door_hit_y = y;
+		return (true);
+	}
+	else
+		return (false);
 }
 
 t_ray	cast_ray(double ray_angle, t_game *game)
@@ -43,12 +57,8 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		distance += RAY_STEP;
 		if (is_end(game, x, y))
 			break ;
-		if ((game->grid[(int)y][(int)x] == 'D'
-				|| game->grid[(int)y][(int)x] == 'd')
-			&& ray.door_distance == 0.0)
+		if (is_door(game, x, y, &ray))
 		{
-			ray.door_hit_x = x;
-			ray.door_hit_y = y;
 			ray.door_distance = distance * cos(mod_angle(ray_angle
 						- game->player_rotation));
 			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
