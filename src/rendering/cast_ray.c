@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 15:14:56 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:32:58 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,24 @@ static t_wall_dir	get_direction(t_ray *ray, t_game *game)
 	return (resolve_diagonal_hit(game, ray, dx, dy));
 }
 
+static t_wall_dir	get_door_direction(t_ray *ray, t_game *game)
+{
+	int	dx;
+	int	dy;
+
+	dx = (int)ray->door_hit_x - (int)ray->prev_x;
+	dy = (int)ray->door_hit_y - (int)ray->prev_y;
+	if (dx > 0 && dy == 0)
+		return (WALL_EAST);
+	if (dx < 0 && dy == 0)
+		return (WALL_WEST);
+	if (dy > 0 && dx == 0)
+		return (WALL_SOUTH);
+	if (dy < 0 && dx == 0)
+		return (WALL_NORTH);
+	return (resolve_diagonal_hit(game, ray, dx, dy));
+}
+
 t_ray	cast_ray(double ray_angle, t_game *game)
 {
 	double	x;
@@ -72,7 +90,9 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		x += cos(ray_angle) * RAY_STEP;
 		y += sin(ray_angle) * RAY_STEP;
 		distance += RAY_STEP;
-		if (x < 0 || x >= game->width || y < 0 || y >= game->height || game->grid[(int)y][(int)x] == ' ' || game->grid[(int)y][(int)x] == '1')
+		if (x < 0 || x >= game->width || y < 0 || y >= game->height
+			|| game->grid[(int)y][(int)x] == ' '
+			|| game->grid[(int)y][(int)x] == '1')
 			break ;
 		if ((game->grid[(int)y][(int)x] == 'D'
 				|| game->grid[(int)y][(int)x] == 'd')
@@ -80,8 +100,10 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		{
 			ray.door_hit_x = x;
 			ray.door_hit_y = y;
-			ray.door_distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
+			ray.door_distance = distance * cos(mod_angle(ray_angle
+						- game->player_rotation));
 			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
+			ray.door_dir = get_door_direction(&ray, game);
 		}
 	}
 	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));

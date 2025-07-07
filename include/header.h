@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 14:56:34 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:32:54 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct s_ray
 	double			door_hit_y;
 	double			door_distance;
 	bool			door_open;
+	t_wall_dir		door_dir;
 }					t_ray;
 
 typedef struct s_triangle

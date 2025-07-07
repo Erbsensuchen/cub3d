@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 15:54:24 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:40:02 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ static uint32_t	get_door_pixel_color(t_game *game, t_ray *ray, int pixel_y)
 	texture = game->door_close_texture.tex;
 	if (ray->door_open)
 		texture = game->door_open_texture.tex;
-	if (!texture)
-		return (RENDERING_ERROR);
 	height = game->mlx->height / ray->door_distance;
-	wall_hit_pos = ray->door_hit_y - (int)ray->door_hit_y;
-	if (fmod(ray->door_hit_y, 1.00) * 100 <= 0.1)
+	if (ray->door_dir == WALL_EAST || ray->door_dir == WALL_WEST)
+		wall_hit_pos = ray->door_hit_y - (int)ray->door_hit_y;
+	else
 		wall_hit_pos = ray->door_hit_x - (int)ray->door_hit_x;
+	if (ray->door_dir == WALL_WEST || ray->door_dir == WALL_SOUTH)
+		wall_hit_pos = 1.0 - wall_hit_pos;
 	tex_x = (int)(wall_hit_pos * texture->width);
 	tex_y = (int)(((double)(pixel_y - (game->mlx->height - height) / 2)
 				/ height) * texture->height);
@@ -76,13 +77,13 @@ static uint32_t	get_door_pixel_color(t_game *game, t_ray *ray, int pixel_y)
 
 void	draw_door(t_game *game, int pixel_x, t_ray ray)
 {
-	double	height;
-	int		start;
-	int		end;
-	int		pixel_y;
-	int		color;
+	double		height;
+	int			start;
+	int			end;
+	uint32_t	color;
+	int			pixel_y;
 
-	height = game->mlx->height / ray.door_distance;
+	height = (game->mlx->height / ray.door_distance);
 	start = (game->mlx->height - (int)height) / 2;
 	end = start + (int)height;
 	if (end > game->mlx->height)
