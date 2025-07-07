@@ -4,9 +4,9 @@ DEBUG_NAME  := cub3d_debug
 
 # Compiler and flags
 CC          := cc
-CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast -MMD -MP -fsanitize=address -g
-# CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
-DEBUG_FLAGS := -g -O0 -DDEBUG=1
+CFLAGS      := -Wall -Wextra -Werror -Ofast -MMD -MP 
+# CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wunreachable-code
+DEBUG_FLAGS := -g -DDEBUG=1 -fsanitize=address -g
 
 # Directories
 OBJ_DIR     := obj

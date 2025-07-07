@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 11:50:50 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:19:36 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		x += cos(ray_angle) * RAY_STEP;
 		y += sin(ray_angle) * RAY_STEP;
 		distance += RAY_STEP;
-		if (game->grid[(int)y][(int)x] == '1')
+		if (x < 0 || x >= game->width || y < 0 || y >= game->height || game->grid[(int)y][(int)x] == ' ' || game->grid[(int)y][(int)x] == '1')
 			break ;
 		if ((game->grid[(int)y][(int)x] == 'D'
 				|| game->grid[(int)y][(int)x] == 'd')
