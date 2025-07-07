@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 19:09:32 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:12:04 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,18 @@ typedef struct s_iter
 	int				i;
 	int				j;
 }					t_iter;
+
+typedef struct s_render_context
+{
+	mlx_texture_t	*tex;
+	uint32_t		*pixels;
+	int				tex_width;
+	int				src_x;
+	int				src_y;
+	uint32_t		color;
+	int				screen_x;
+	int				screen_y;
+}					t_render_context;
 
 typedef struct s_game
 {
