@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 14:56:34 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:38:16 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,20 @@ typedef struct s_triangle
 	int				max_x;
 	int				max_y;
 }					t_triangle;
+
+typedef struct s_box
+{
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+}					t_box;
+
+typedef struct s_iter
+{
+	int				i;
+	int				j;
+}					t_iter;
 
 typedef struct s_game
 {

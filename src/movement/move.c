@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 16:34:44 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 16:39:03 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,27 @@ static bool	is_walkable(char tile)
 
 static bool	is_position_safe(t_game *game, double x, double y)
 {
-	int	min_x;
-	int	max_x;
-	int	min_y;
-	int	max_y;
+	t_box	box;
+	t_iter	iter;
 
-	min_x = (int)(x - COLLISION_RADIUS);
-	max_x = (int)(x + COLLISION_RADIUS);
-	min_y = (int)(y - COLLISION_RADIUS);
-	max_y = (int)(y + COLLISION_RADIUS);
-	for (int i = min_y; i <= max_y; i++)
+	box.min_x = (int)(x - COLLISION_RADIUS);
+	box.max_x = (int)(x + COLLISION_RADIUS);
+	box.min_y = (int)(y - COLLISION_RADIUS);
+	box.max_y = (int)(y + COLLISION_RADIUS);
+	iter.i = box.min_y;
+	while (iter.i <= box.max_y)
 	{
-		for (int j = min_x; j <= max_x; j++)
+		iter.j = box.min_x;
+		while (iter.j <= box.max_x)
 		{
-			if (i < 0 || j < 0 || i >= game->height || j >= game->width)
+			if (iter.i < 0 || iter.j < 0 || iter.i >= game->height
+				|| iter.j >= game->width)
 				return (false);
-			if (!is_walkable(game->grid[i][j]))
+			if (!is_walkable(game->grid[iter.i][iter.j]))
 				return (false);
+			iter.j++;
 		}
+		iter.i++;
 	}
 	return (true);
 }
