@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 11:15:15 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 12:32:47 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 
 // door
 # define DOOR_REACHABLE_DISTANCE 1
+# define OPEN_DOOR_PATH "textures/door_open.png"
+# define CLOSE_DOOR_PATH "textures/door_close.png"
 
 // utils
 # define DOUBLE_EPSILON 1e-8
@@ -140,6 +142,10 @@ typedef struct s_ray
 	double			prev_y;
 	double			hit_y;
 	t_wall_dir		hit_dir;
+	double			door_hit_x;
+	double			door_hit_y;
+	double			door_distance;
+	bool			door_open;
 }					t_ray;
 
 typedef struct s_triangle
@@ -189,7 +195,9 @@ typedef struct s_game
 
 	// Door
 	mlx_image_t		*door_open_text;
+	t_texture		door_open_texture;
 	mlx_image_t		*door_close_text;
+	t_texture		door_close_texture;
 
 	// Player
 	double			player_x;

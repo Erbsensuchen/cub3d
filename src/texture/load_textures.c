@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:11:49 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 16:40:34 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 12:18:07 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ static bool	process_texture(t_texture *texture, const char *texture_name)
 	return (true);
 }
 
+bool	load_door_textures(t_game *game)
+{
+	init_texture(&game->door_close_texture);
+	init_texture(&game->door_open_texture);
+	game->door_close_texture.path = CLOSE_DOOR_PATH;
+	game->door_open_texture.path = OPEN_DOOR_PATH;
+	if (!process_texture(&game->door_close_texture, "Door Close"))
+		return (false);
+	if (!process_texture(&game->door_open_texture, "Door Open"))
+		return (false);
+	return (true);
+}
+
 bool	load_game_textures(t_game *game)
 {
 	if (!process_texture(&game->north, "North"))
@@ -52,6 +65,8 @@ bool	load_game_textures(t_game *game)
 	if (!process_texture(&game->west, "West"))
 		return (false);
 	if (!process_texture(&game->goose, "Goose"))
+		return (false);
+	if (!load_door_textures(game))
 		return (false);
 	return (true);
 }

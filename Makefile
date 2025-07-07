@@ -4,7 +4,7 @@ DEBUG_NAME  := cub3d_debug
 
 # Compiler and flags
 CC          := cc
-CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast -MMD -MP
+CFLAGS      := -Wall -Wextra -Werror -Wunreachable-code -Ofast -MMD -MP -fsanitize=address -g
 # CFLAGS 		+= -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 DEBUG_FLAGS := -g -O0 -DDEBUG=1
 
@@ -77,12 +77,12 @@ all: $(NAME)
 # Main binary
 $(NAME): $(LIBFT) $(GNL_LIB) $(LIBMLX) $(LIBMLX)/build/libmlx42.a $(OBJ_FILES)
 	@echo "Linking $(NAME)..."
-	@$(CC) $(OBJ_FILES) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(NAME)
+	@$(CC) $(OBJ_FILES) $(CFLAGS) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(NAME)
 
 # Debug binary
 debug: $(LIBFT) $(GNL_LIB) $(LIBMLX) $(LIBMLX)/build/libmlx42.a $(OBJ_DEBUG_FILES)
 	@echo "Linking debug build..."
-	@$(CC) $(OBJ_DEBUG_FILES) $(DEBUG_FLAGS) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
+	@$(CC) $(OBJ_DEBUG_FILES) $(CFLAGS) $(DEBUG_FLAGS) $(LIBS) $(LIBFT) $(GNL_LIB) -o $(DEBUG_NAME)
 
 # Compile .o files
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)

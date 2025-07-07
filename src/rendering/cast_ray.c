@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 11:21:26 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:50:50 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 	y = game->player_y;
 	distance = 0.0;
 	ray.angle = ray_angle;
+	ray.door_distance = 0.0;
 	while (1)
 	{
 		ray.prev_x = x;
@@ -73,6 +74,15 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		distance += RAY_STEP;
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
+		if ((game->grid[(int)y][(int)x] == 'D'
+				|| game->grid[(int)y][(int)x] == 'd')
+			&& ray.door_distance == 0.0)
+		{
+			ray.door_hit_x = x;
+			ray.door_hit_y = y;
+			ray.door_distance = distance;
+			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
+		}
 	}
 	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 	ray.hit_x = x;

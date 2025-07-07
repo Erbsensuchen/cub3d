@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:27:21 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 15:26:46 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 12:13:08 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	free_texture(t_texture *texture)
 {
-	free(texture->path);
+	if (ft_strcmp(texture->path, OPEN_DOOR_PATH) && ft_strcmp(texture->path, CLOSE_DOOR_PATH))
+		free(texture->path);
 	texture->path = NULL;
 	if (texture->xpmt)
 	{

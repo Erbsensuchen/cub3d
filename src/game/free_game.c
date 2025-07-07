@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 11:16:18 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 12:33:08 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void	free_game(t_game *game)
 	free_texture(&game->east);
 	free_texture(&game->west);
 	free_texture(&game->goose);
+	free_texture(&game->door_close_texture);
+	free_texture(&game->door_open_texture);
 	free_grid(game);
 	reset_movement_values(game);
-	if (game->img)
+	if (game->img && game->mlx)
 	{
 		mlx_delete_image(game->mlx, game->img);
 		game->img = NULL;
