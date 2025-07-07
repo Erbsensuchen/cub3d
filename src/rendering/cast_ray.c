@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 14:19:36 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:14:56 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		{
 			ray.door_hit_x = x;
 			ray.door_hit_y = y;
-			ray.door_distance = distance;
+			ray.door_distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
 		}
 	}

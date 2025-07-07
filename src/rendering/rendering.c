@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 12:58:28 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:54:24 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,15 @@ static uint32_t	get_door_pixel_color(t_game *game, t_ray *ray, int pixel_y)
 	int				tex_x;
 	int				tex_y;
 
-	texture = get_texture(game, ray);
+	texture = game->door_close_texture.tex;
+	if (ray->door_open)
+		texture = game->door_open_texture.tex;
 	if (!texture)
 		return (RENDERING_ERROR);
-	height = game->mlx->height / ray->distance;
-	if (ray->hit_dir == WALL_EAST || ray->hit_dir == WALL_WEST)
-		wall_hit_pos = ray->hit_y - (int)ray->hit_y;
-	else
-		wall_hit_pos = ray->hit_x - (int)ray->hit_x;
-	if (ray->hit_dir == WALL_WEST || ray->hit_dir == WALL_SOUTH)
-		wall_hit_pos = 1.0 - wall_hit_pos;
+	height = game->mlx->height / ray->door_distance;
+	wall_hit_pos = ray->door_hit_y - (int)ray->door_hit_y;
+	if (fmod(ray->door_hit_y, 1.00) * 100 <= 0.1)
+		wall_hit_pos = ray->door_hit_x - (int)ray->door_hit_x;
 	tex_x = (int)(wall_hit_pos * texture->width);
 	tex_y = (int)(((double)(pixel_y - (game->mlx->height - height) / 2)
 				/ height) * texture->height);
@@ -122,7 +121,8 @@ void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 		mlx_put_pixel(game->img, pixel_x, pixel_y, color);
 		pixel_y++;
 	}
-	if (ray.door_distance > 0)
+	if (ray.door_distance > 0 && ((int)game->player_x != (int)ray.door_hit_x
+			|| (int)game->player_y != (int)ray.door_hit_y))
 		draw_door(game, pixel_x, ray);
 }
 
