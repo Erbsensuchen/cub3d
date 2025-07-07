@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:40:44 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 11:22:21 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:45:58 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	resize(int width, int height, void *param)
 	game->mlx->width = width;
 	game->mlx->height = height;
 	game->mi_size = width * MINIMAP_SIZE;
+	if (game->mi_size >= height)
+		game->mi_size = height;
 	game->mi_cell_size = game->mi_size / MINIMAP_CELLS_COUNT;
 	game->mi_player_size = width * MINIMAP_PLAYER_SIZE;
 	game->mi_player_width = width * MINIMAP_PLAYER_WIDTH;

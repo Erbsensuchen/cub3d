@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 11:48:37 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:41:52 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void	print_cell(t_game *game, int x, int y)
 	if (x_res < 0 || y_res < 0 || x_res >= game->width || y_res >= game->height
 		|| game->grid[y_res][x_res] == '0' || game->grid[y_res][x_res] == ' ')
 		return ;
-	color = 0xffffffff;
+	color = MINIMAP_WALL_COLOR;
 	if (game->grid[y_res][x_res] == 'D')
-		color = 0xff00ff00;
+		color = MINIMAP_DOOR_CLOSE_COLOR;
 	else if (game->grid[y_res][x_res] == 'd')
-		color = 0x00ffffff;
+		color = MINIMAP_DOOR_OPEN_COLOR;
 	pixel_y = 0;
 	while (pixel_y < game->mi_cell_size)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 13:19:03 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:56:34 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@
 # define MINIMAP_PLAYER_SIZE 0.015f
 # define MINIMAP_PLAYER_WIDTH 0.005f
 # define PLAYER_COLOR 0xFF0000FF
+# define MINIMAP_WALL_COLOR 0xFFFFFFFF
+# define MINIMAP_DOOR_CLOSE_COLOR 0x303030ff
+# define MINIMAP_DOOR_OPEN_COLOR 0x008080ff
 
 // rendering
 # define RENDERING_ERROR 0xFF00FFFF         // pinkish
@@ -72,10 +75,10 @@
 // goose
 # define GOOSE_SEED 42
 # define GOOSE_ELEMENT "GO"
-# define GOOSE_COUNT 0
+# define GOOSE_COUNT 100
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10
-# define GOOSE_SIT_TIME 100
+# define GOOSE_SIT_TIME 1000
 
 // goose animations
 # define GOOSE_ANIM_WAIT_SIT 75
@@ -238,6 +241,7 @@ typedef struct s_game
 // game functions
 bool				init_game(t_game *game);
 void				free_game(t_game *game);
+void				init_img(t_game *game);
 void				print_game(t_game *game);
 void				print_grid(t_game *game);
 void				print_movement(t_game *game);

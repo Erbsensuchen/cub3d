@@ -2,15 +2,16 @@ NO textures/plain_wall.png
 EA textures/red_brick.xpm42
 SO textures/red_brick.xpm42
 WE textures/red_brick.xpm42
+GO textures/goose.png
 
 C 23,54,4
 F 255,234,233
 
 1111111
 1010001
-10101111111
-100000000W1
-110D1111111
+10101111111111
+100000000000W1
+110D111111111
  110001
 1110101
 1111111

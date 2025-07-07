@@ -40,6 +40,7 @@ SRC_FILES := main.c \
 			print_color.c \
 			free_game.c \
 			init_game.c \
+			init_img.c \
 			print_game.c \
 			parsing_map.c \
 			parsing.c \

@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 11:09:33 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:46:17 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static bool	test_movement(t_game *game, double x_move, double y_move)
 	new_x = game->player_x + x_move;
 	new_y = game->player_y + y_move;
 	if ((game->grid[(int)new_y][(int)new_x] == '0'
-			|| game->grid[(int)new_y][(int)new_x] == 'd')
+		|| game->grid[(int)new_y][(int)new_x] == 'd')
 		&& (((game->grid[(int)game->player_y][(int)new_x] == '0'
-					|| game->grid[(int)game->player_y][(int)new_x] == 'd'))
-			|| (game->grid[(int)new_y][(int)game->player_x] == '0'
-				|| game->grid[(int)new_y][(int)game->player_x] == 'd')))
+		|| game->grid[(int)game->player_y][(int)new_x] == 'd'))
+		|| (game->grid[(int)new_y][(int)game->player_x] == '0'
+		|| game->grid[(int)new_y][(int)game->player_x] == 'd')))
 		return (game->player_x = new_x, game->player_y = new_y, true);
 	else
 		return (false);
