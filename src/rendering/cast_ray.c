@@ -6,11 +6,21 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:08:59 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:12:17 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+static bool	is_end(t_game *game, double x, double y)
+{
+	bool	is_out_of_bounds;
+
+	is_out_of_bounds = (x < 0 || x >= game->width || y < 0
+			|| y >= game->height);
+	return (is_out_of_bounds || game->grid[(int)y][(int)x] == ' '
+		|| game->grid[(int)y][(int)x] == '1');
+}
 
 t_ray	cast_ray(double ray_angle, t_game *game)
 {
@@ -31,9 +41,7 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		x += cos(ray_angle) * RAY_STEP;
 		y += sin(ray_angle) * RAY_STEP;
 		distance += RAY_STEP;
-		if (x < 0 || x >= game->width || y < 0 || y >= game->height
-			|| game->grid[(int)y][(int)x] == ' '
-			|| game->grid[(int)y][(int)x] == '1')
+		if (is_end(game, x, y))
 			break ;
 		if ((game->grid[(int)y][(int)x] == 'D'
 				|| game->grid[(int)y][(int)x] == 'd')
