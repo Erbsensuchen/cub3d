@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 18:37:05 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:15:24 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ static void	init_movement_values(t_game *game)
 	game->rotation_right = false;
 	game->mouse_delta_x = 0;
 	game->capture_mouse = true;
-	game->img = NULL;
-	game->old_img = NULL;
 }
 
 static void	init_minimap(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loophook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 17:11:33 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:15:54 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,42 @@
 
 void	door(t_game *game)
 {
-	double	door_x;
-	double	door_y;
+	double			door_x;
+	double			door_y;
+	static double	btn_delay = 0;
 
 	door_x = game->player_x + cos(game->player_rotation)
 		* DOOR_REACHABLE_DISTANCE;
 	door_y = game->player_y + sin(game->player_rotation)
 		* DOOR_REACHABLE_DISTANCE;
-	if (door_x < 0 || door_y < 0 || door_x >= game->width
+	if (door_x < 0 || door_x >= game->width || door_y < 0
 		|| door_y >= game->height)
-		if (game->grid[(int)door_y][(int)door_x] == 'D')
+		return ;
+	if (game->grid[(int)door_y][(int)door_x] == 'D')
+	{
+		mlx_set_instance_depth(game->door_open_text->instances, 2);
+		if (mlx_is_key_down(game->mlx, MLX_KEY_E) && btn_delay < mlx_get_time())
 		{
-			mlx_put_string(game->mlx, "Press 'E' to open the door", 10, 10);
+			btn_delay = mlx_get_time() + 0.5;
+			game->grid[(int)door_y][(int)door_x] = 'd';
+			mlx_set_instance_depth(game->door_open_text->instances, 0);
 		}
+	}
+	else if (game->grid[(int)door_y][(int)door_x] == 'd')
+	{
+		mlx_set_instance_depth(game->door_close_text->instances, 2);
+		if (mlx_is_key_down(game->mlx, MLX_KEY_E) && btn_delay < mlx_get_time())
+		{
+			btn_delay = mlx_get_time() + 0.5;
+			game->grid[(int)door_y][(int)door_x] = 'D';
+			mlx_set_instance_depth(game->door_close_text->instances, 0);
+		}
+	}
+	else
+	{
+		mlx_set_instance_depth(game->door_open_text->instances, 0);
+		mlx_set_instance_depth(game->door_close_text->instances, 0);
+	}
 }
 
 bool	movement_handler(t_game *game)
@@ -70,15 +93,10 @@ void	loophook(void *param)
 	game->mouse_delta_x = 0;
 	if (DEBUG && moved)
 		print_movement(game);
-	game->old_img = game->img;
-	game->img = mlx_new_image(game->mlx, game->mlx->width, game->mlx->height);
 	pre_render(game);
 	cast_rays(game);
 	print_minimap(game);
-	mlx_image_to_window(game->mlx, game->img, 0, 0);
 	door(game);
-	if (game->old_img)
-		mlx_delete_image(game->mlx, game->old_img);
 	update_goose(game);
 	render_goose(game);
 }

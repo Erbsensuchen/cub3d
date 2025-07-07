@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/03 12:56:18 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:21:26 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,9 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 		x += cos(ray_angle) * RAY_STEP;
 		y += sin(ray_angle) * RAY_STEP;
 		distance += RAY_STEP;
-        // if (x < 0 || x >= game->grid_width || y < 0 || y >= game->grid_height)
-        // {
-        //     ray.hit_x = -1;
-        //     ray.hit_y = -1;
-        //     ray.hit_dir = WALL_UNKNOWN;
-        //     return (ray);
-        // }
 		if (game->grid[(int)y][(int)x] == '1')
 			break ;
 	}
-	// ray.distance = distance;
 	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
 	ray.hit_x = x;
 	ray.hit_y = y;

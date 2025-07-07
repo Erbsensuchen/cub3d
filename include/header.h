@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/04 18:35:24 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:15:15 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ typedef struct s_game
 	// MLX
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_image_t		*old_img;
 	bool			capture_mouse;
 
 	// Textures
@@ -187,6 +186,10 @@ typedef struct s_game
 	char			**grid;
 	int				width;
 	int				height;
+
+	// Door
+	mlx_image_t		*door_open_text;
+	mlx_image_t		*door_close_text;
 
 	// Player
 	double			player_x;

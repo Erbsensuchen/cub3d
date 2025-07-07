@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/04 17:27:30 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:16:18 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,6 @@ void	free_game(t_game *game)
 	{
 		mlx_delete_image(game->mlx, game->img);
 		game->img = NULL;
-	}
-	if (game->old_img)
-	{
-		mlx_delete_image(game->mlx, game->old_img);
-		game->old_img = NULL;
 	}
 	if (game->mlx)
 		mlx_terminate(game->mlx);

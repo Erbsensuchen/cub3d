@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:01:23 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 13:25:22 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 10:50:47 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	key_pressed(mlx_key_data_t keydata, t_game *game)
 {
-	if (keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 		game->forward = true;
-	else if (keydata.key == MLX_KEY_S)
+	else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 		game->backward = true;
 	else if (keydata.key == MLX_KEY_A)
 		game->left = true;
@@ -42,9 +42,9 @@ void	key_pressed(mlx_key_data_t keydata, t_game *game)
 
 void	key_released(mlx_key_data_t keydata, t_game *game)
 {
-	if (keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 		game->forward = false;
-	else if (keydata.key == MLX_KEY_S)
+	else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 		game->backward = false;
 	else if (keydata.key == MLX_KEY_A)
 		game->left = false;

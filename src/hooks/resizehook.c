@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resizehook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:40:44 by mlendle           #+#    #+#             */
-/*   Updated: 2025/06/30 15:20:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 11:22:21 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	resize(int width, int height, void *param)
 	game->mi_cell_size = game->mi_size / MINIMAP_CELLS_COUNT;
 	game->mi_player_size = width * MINIMAP_PLAYER_SIZE;
 	game->mi_player_width = width * MINIMAP_PLAYER_WIDTH;
+	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }
