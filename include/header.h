@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:37:23 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:51:54 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define WIN_HEIGHT 600
 
 // movement
-# define MOVEMENT_SPEED 0.05
+# define MOVEMENT_SPEED 2
 # define ROTATION_SPEED 0.02
 # define MOUSE_SENSITIVITY 0.002
 # define FOV M_PI_4      // 45 degrees
@@ -197,6 +197,8 @@ typedef struct s_game
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	bool			capture_mouse;
+	double			old_time;
+	double			delta_time;
 
 	// Textures
 	t_texture		north;

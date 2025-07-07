@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:10:36 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 16:39:03 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:50:56 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ bool	move(t_game *game)
 	double	y_move;
 
 	normalize_doubles(&game->move_x, &game->move_y);
+	game->move_x *= game->delta_time;
+	game->move_y *= game->delta_time;
+	if (game->move_x > 0.9)
+		game->move_x = 0.9;
+	else if (game->move_x < -0.9)
+		game->move_x = -0.9;
+	if (game->move_y > 0.9)
+		game->move_y = 0.9;
+	else if (game->move_y < -0.9)
+		game->move_y = -0.9;
 	x_move = game->move_x * cos(game->player_rotation) - game->move_y
 		* sin(game->player_rotation);
 	y_move = game->move_x * sin(game->player_rotation) + game->move_y

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 13:54:36 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:45:41 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ static bool	init_goose_values(t_game *game)
 bool	init_game(t_game *game)
 {
 	game->mlx = NULL;
+	game->delta_time = 0.0;
+	game->old_time = 0.0;
 	init_texture(&game->north);
 	init_texture(&game->south);
 	init_texture(&game->east);

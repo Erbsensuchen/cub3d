@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 17:06:10 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:48:20 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ void	loophook(void *param)
 		mlx_set_mouse_pos(game->mlx, game->mlx->width / 2, game->mlx->height
 			/ 2);
 	}
+	if (double_close(game->old_time, 0.0))
+		game->delta_time = 0.0;
+	else
+		game->delta_time = mlx_get_time() - game->old_time;
+	game->old_time = mlx_get_time();
 	moved = movement_handler(game);
 	game->mouse_delta_x = 0;
 	if (DEBUG && moved)
