@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:08:36 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:25:47 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,9 @@ typedef enum e_goose_state
 
 typedef struct s_ray
 {
+	double			x;
+	double			y;
+	double			c_distance;
 	double			angle;
 	double			distance;
 	double			hit_x;

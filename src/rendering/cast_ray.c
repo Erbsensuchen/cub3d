@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:16:06 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:27:34 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,32 @@ static bool	is_door(t_game *game, double x, double y, t_ray *ray)
 
 t_ray	cast_ray(double ray_angle, t_game *game)
 {
-	double	x;
-	double	y;
-	double	distance;
 	t_ray	ray;
 
-	x = game->player_x;
-	y = game->player_y;
-	distance = 0.0;
+	ray.x = game->player_x;
+	ray.y = game->player_y;
+	ray.c_distance = 0.0;
 	ray.angle = ray_angle;
 	ray.door_distance = 0.0;
 	while (1)
 	{
-		ray.prev_x = x;
-		ray.prev_y = y;
-		x += cos(ray_angle) * RAY_STEP;
-		y += sin(ray_angle) * RAY_STEP;
-		distance += RAY_STEP;
-		if (is_end(game, x, y))
+		ray.prev_x = ray.x;
+		ray.prev_y = ray.y;
+		ray.x += cos(ray_angle) * RAY_STEP;
+		ray.y += sin(ray_angle) * RAY_STEP;
+		ray.c_distance += RAY_STEP;
+		if (is_end(game, ray.x, ray.y))
 			break ;
-		if (is_door(game, x, y, &ray))
+		if (is_door(game, ray.x, ray.y, &ray))
 		{
-			ray.door_distance = distance * cos(mod_angle(ray_angle
+			ray.door_distance = ray.c_distance * cos(mod_angle(ray_angle
 						- game->player_rotation));
-			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
+			ray.door_open = (game->grid[(int)ray.y][(int)ray.x] == 'd');
 			ray.door_dir = get_door_direction(&ray, game);
 		}
 	}
-	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
+	ray.distance = ray.c_distance * cos(mod_angle(ray_angle
+				- game->player_rotation));
 	ray.hit_dir = get_direction(&ray, game);
-	return (ray.hit_x = x, ray.hit_y = y, ray);
+	return (ray.hit_x = ray.x, ray.hit_y = ray.y, ray);
 }
