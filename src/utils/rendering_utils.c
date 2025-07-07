@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:54:42 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 17:56:47 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:08:14 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,31 @@ static t_wall_dir	resolve_diagonal_hit(t_game *game, t_ray *ray, int dx,
 		return (WALL_SOUTH);
 }
 
-t_wall_dir	get_hit_direction(t_ray *ray, t_game *game)
+t_wall_dir	get_direction(t_ray *ray, t_game *game)
 {
 	int	dx;
 	int	dy;
 
 	dx = (int)ray->hit_x - (int)ray->prev_x;
 	dy = (int)ray->hit_y - (int)ray->prev_y;
+	if (dx > 0 && dy == 0)
+		return (WALL_EAST);
+	if (dx < 0 && dy == 0)
+		return (WALL_WEST);
+	if (dy > 0 && dx == 0)
+		return (WALL_SOUTH);
+	if (dy < 0 && dx == 0)
+		return (WALL_NORTH);
+	return (resolve_diagonal_hit(game, ray, dx, dy));
+}
+
+t_wall_dir	get_door_direction(t_ray *ray, t_game *game)
+{
+	int	dx;
+	int	dy;
+
+	dx = (int)ray->door_hit_x - (int)ray->prev_x;
+	dy = (int)ray->door_hit_y - (int)ray->prev_y;
 	if (dx > 0 && dy == 0)
 		return (WALL_EAST);
 	if (dx < 0 && dy == 0)

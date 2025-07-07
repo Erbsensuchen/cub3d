@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 17:56:56 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:08:36 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,7 +306,8 @@ uint32_t			get_door_pixel_color(t_game *game, t_ray *ray, int pixel_y);
 
 // rendering utils
 void				put_pixel(t_game *game, int x, int y, uint32_t color);
-t_wall_dir			get_hit_direction(t_ray *ray, t_game *game);
+t_wall_dir			get_direction(t_ray *ray, t_game *game);
+t_wall_dir			get_door_direction(t_ray *ray, t_game *game);
 
 // angle utils
 double				mod_angle(double angle);

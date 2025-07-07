@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 17:58:19 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:08:59 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ t_ray	cast_ray(double ray_angle, t_game *game)
 			ray.door_distance = distance * cos(mod_angle(ray_angle
 						- game->player_rotation));
 			ray.door_open = (game->grid[(int)y][(int)x] == 'd');
-			ray.door_dir = get_hit_direction(&ray, game);
+			ray.door_dir = get_door_direction(&ray, game);
 		}
 	}
 	ray.distance = distance * cos(mod_angle(ray_angle - game->player_rotation));
-	ray.hit_dir = get_hit_direction(&ray, game);
+	ray.hit_dir = get_direction(&ray, game);
 	return (ray.hit_x = x, ray.hit_y = y, ray);
 }
