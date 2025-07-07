@@ -6,7 +6,7 @@
 /*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 12:32:47 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/07 12:50:06 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@
 // goose
 # define GOOSE_SEED 42
 # define GOOSE_ELEMENT "GO"
-# define GOOSE_COUNT 10000
+# define GOOSE_COUNT 10
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10
 # define GOOSE_SIT_TIME 100
