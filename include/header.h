@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 19:12:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:35:35 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@
 
 // door
 # define DOOR_REACHABLE_DISTANCE 1
-# define OPEN_DOOR_PATH "textures/door_open.png"
-# define CLOSE_DOOR_PATH "textures/door_close.png"
 
 // utils
 # define DOUBLE_EPSILON 1e-8
@@ -75,6 +73,8 @@
 // goose
 # define GOOSE_SEED 42
 # define GOOSE_ELEMENT "GO"
+# define DOOR_OPEN_ELEMENT "DO"
+# define DOOR_CLOSE_ELEMENT "DC"
 # define GOOSE_COUNT 100
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10

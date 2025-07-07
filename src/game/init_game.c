@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:22:39 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 19:09:12 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:30:45 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,6 @@ bool	init_game(t_game *game)
 	init_texture(&game->goose);
 	init_texture(&game->door_open_texture);
 	init_texture(&game->door_close_texture);
-	game->door_open_texture.path = ft_strdup(OPEN_DOOR_PATH);
-	if (!game->door_open_texture.path)
-		return (print_parsing_error("Memory allocation failed!"), false);
-	game->door_close_texture.path = ft_strdup(CLOSE_DOOR_PATH);
-	if (!game->door_close_texture.path)
-		return (print_parsing_error("Memory allocation failed!"), false);
 	init_movement_values(game);
 	init_minimap(game);
 	if (!init_goos(game))

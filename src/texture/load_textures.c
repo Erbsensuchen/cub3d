@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 18:11:49 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 13:56:42 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 19:33:00 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,24 @@ static bool	process_texture(t_texture *texture, const char *texture_name)
 	return (true);
 }
 
+static bool	get_has_door(t_game *game)
+{
+	int	y;
+
+	y = -1;
+	while (++y < game->height)
+	{
+		if (ft_strchr(game->grid[y], 'D') || ft_strchr(game->grid[y], 'd'))
+			return (true);
+	}
+	return (false);
+}
+
 bool	load_game_textures(t_game *game)
 {
+	bool	has_door;
+
+	has_door = get_has_door(game);
 	if (!process_texture(&game->north, "North"))
 		return (false);
 	if (!process_texture(&game->south, "South"))
@@ -53,9 +69,9 @@ bool	load_game_textures(t_game *game)
 		return (false);
 	if (GOOSE_COUNT > 0 && !process_texture(&game->goose, "Goose"))
 		return (false);
-	if (!process_texture(&game->door_open_texture, "Door Open"))
+	if (has_door && !process_texture(&game->door_open_texture, "Door Open"))
 		return (false);
-	if (!process_texture(&game->door_close_texture, "Door Close"))
+	if (has_door && !process_texture(&game->door_close_texture, "Door Close"))
 		return (false);
 	return (true);
 }
