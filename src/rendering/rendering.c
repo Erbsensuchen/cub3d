@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:40:09 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 17:02:09 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:34:06 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	draw_wall(t_game *game, int pixel_x, t_ray ray)
 		mlx_put_pixel(game->img, pixel_x, pixel_y, color);
 		pixel_y++;
 	}
-	if (ray.door_distance > 0 && ((int)game->player_x != (int)ray.door_hit_x
+	if (ray.door_d > 0 && ((int)game->player_x != (int)ray.door_hit_x
 			|| (int)game->player_y != (int)ray.door_hit_y))
 		draw_door(game, pixel_x, ray);
 }

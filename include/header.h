@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:25:47 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:33:21 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ typedef struct s_ray
 {
 	double			x;
 	double			y;
-	double			c_distance;
+	double			c_d;
 	double			angle;
 	double			distance;
 	double			hit_x;
@@ -150,7 +150,7 @@ typedef struct s_ray
 	t_wall_dir		hit_dir;
 	double			door_hit_x;
 	double			door_hit_y;
-	double			door_distance;
+	double			door_d;
 	bool			door_open;
 	t_wall_dir		door_dir;
 }					t_ray;

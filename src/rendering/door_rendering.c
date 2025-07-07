@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:00:15 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 17:01:08 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/07 18:34:32 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_door(t_game *game, int pixel_x, t_ray ray)
 	uint32_t	color;
 	int			pixel_y;
 
-	height = (game->mlx->height / ray.door_distance);
+	height = (game->mlx->height / ray.door_d);
 	start = (game->mlx->height - (int)height) / 2;
 	end = start + (int)height;
 	if (end > game->mlx->height)
@@ -48,7 +48,7 @@ uint32_t	get_door_pixel_color(t_game *game, t_ray *ray, int pixel_y)
 	texture = game->door_close_texture.tex;
 	if (ray->door_open)
 		texture = game->door_open_texture.tex;
-	height = game->mlx->height / ray->door_distance;
+	height = game->mlx->height / ray->door_d;
 	if (ray->door_dir == WALL_EAST || ray->door_dir == WALL_WEST)
 		wall_hit_pos = ray->door_hit_y - (int)ray->door_hit_y;
 	else
