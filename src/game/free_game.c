@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/08 13:46:16 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 13:56:32 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ static void	free_goos_data(t_game *game)
 	game->goose_anim_count = NULL;
 }
 
+static void	free_img(mlx_t *mlx, mlx_image_t *image)
+{
+	if (image && mlx)
+	{
+		mlx_delete_image(mlx, image);
+		image = NULL;
+	}
+}
+
 void	free_game(t_game *game)
 {
 	free_texture(&game->north);
@@ -76,11 +85,9 @@ void	free_game(t_game *game)
 	free_texture(&game->door_open_texture);
 	free_grid(game);
 	reset_movement_values(game);
-	if (game->img && game->mlx)
-	{
-		mlx_delete_image(game->mlx, game->img);
-		game->img = NULL;
-	}
+	free_img(game->mlx, game->img);
+	free_img(game->mlx, game->door_open_text);
+	free_img(game->mlx, game->door_close_text);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	free_goos_data(game);
