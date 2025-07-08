@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:22:26 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 15:12:44 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:19:48 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	handle_player_position(t_game *game, int x, int y, char symbol)
 	game->player_x = x + 0.5;
 	game->player_y = y + 0.5;
 	if (symbol == 'N')
-		game->player_rotation = M_PI / 2;
-	else if (symbol == 'S')
 		game->player_rotation = -M_PI / 2;
+	else if (symbol == 'S')
+		game->player_rotation = M_PI / 2;
 	else if (symbol == 'E')
 		game->player_rotation = 0.0;
 	else if (symbol == 'W')
