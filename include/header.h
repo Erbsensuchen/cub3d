@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/08 12:08:07 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:59:54 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@
 # define GOOSE_ELEMENT "GO"
 # define DOOR_OPEN_ELEMENT "DO"
 # define DOOR_CLOSE_ELEMENT "DC"
-# define GOOSE_COUNT 100
+# define GOOSE_COUNT 0
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10
 # define GOOSE_SIT_TIME 1000

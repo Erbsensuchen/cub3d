@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:33:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/06/21 18:10:04 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:59:32 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	valid_map_line(char *line)
 	if (line == ft_strchr(line, '\n'))
 		return (false);
 	line = ft_skip_charset(line, MAP_SYMBOLS);
-	if (*line != '\n')
+	if (*line != '\n' && *line != '\0')
 		return (false);
 	else
 		return (true);
