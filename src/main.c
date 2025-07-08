@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:56:43 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:46:24 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 14:07:55 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ int	main(int argc, char **argv)
 		print_game(&game);
 	hooks(&game);
 	mlx_loop(game.mlx);
-	if (game.img)
-		mlx_delete_image(game.mlx, game.img);
 	return (free_game(&game), EXIT_SUCCESS);
 }
