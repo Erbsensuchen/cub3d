@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/08 12:59:54 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 13:43:29 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 
 // minimap
 # define MINIMAP_SIZE 0.2f
-# define MINIMAP_CELLS_COUNT 10
+# define MINIMAP_CELLS_COUNT 20
 # define MINIMAP_PLAYER_SIZE 0.015f
 # define MINIMAP_PLAYER_WIDTH 0.005f
 # define PLAYER_COLOR 0xFF0000FF
@@ -75,7 +75,7 @@
 # define GOOSE_ELEMENT "GO"
 # define DOOR_OPEN_ELEMENT "DO"
 # define DOOR_CLOSE_ELEMENT "DC"
-# define GOOSE_COUNT 0
+# define GOOSE_COUNT 1
 # define GOOSE_SPEED 1
 # define GOOSE_DISTANCE 10
 # define GOOSE_SIT_TIME 1000

@@ -6,7 +6,7 @@
 /*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:05:16 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:40:38 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 13:27:48 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,8 @@ void	print_minimap(t_game *game)
 	center_y = (MINIMAP_CELLS_COUNT * game->mi_cell_size) / 2;
 	draw_player_triangle(game, center_x, center_y, game->player_rotation);
 }
+
+/* pov like:
+	draw_player_triangle(game, center_x, center_y, game->player_rotation
+		+ M_PI);
+*/

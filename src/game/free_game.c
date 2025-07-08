@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:24:28 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 12:33:08 by mlendle          ###   ########.fr       */
+/*   Updated: 2025/07/08 13:46:16 by lseeger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ static void	free_goos_data(t_game *game)
 	game->goose_states = NULL;
 	free(game->goose_times);
 	game->goose_times = NULL;
+	free(game->goose_anim_wait);
+	game->goose_anim_wait = NULL;
 	free(game->goose_anim_frame);
 	game->goose_anim_frame = NULL;
+	free(game->goose_anim_count);
+	game->goose_anim_count = NULL;
 }
 
 void	free_game(t_game *game)

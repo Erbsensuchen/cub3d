@@ -1,0 +1,15 @@
+NO textures/stock_wall.png
+EA textures/red_brick.xpm42
+SO textures/goose.png
+WE textures/red_brick.xpm42
+GO textures/goose.png
+DC textures/door_close.png
+DO textures/door_open.png
+C 23,54,4
+F 255,234,233
+
+1111111
+1010001
+1010111
+1000001
+1111111

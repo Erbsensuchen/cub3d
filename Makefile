@@ -155,7 +155,7 @@ debug_re: debug_fclean debug
 
 # Run the program
 run: all
-	@./$(NAME) maps/test.cub
+	@./$(NAME) maps/map0.cub
 
 # Run the debug program
 debug_run: debug
