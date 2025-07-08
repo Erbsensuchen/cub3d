@@ -159,7 +159,7 @@ run: all
 
 # Run the debug program
 debug_run: debug
-	@./$(DEBUG_NAME)
+	@./$(DEBUG_NAME) maps/test.cub
 
 # Automatically include dependency files
 -include $(OBJ_FILES:.o=.d)

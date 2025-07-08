@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:03:56 by lseeger           #+#    #+#             */
-/*   Updated: 2025/07/07 18:37:56 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:01:13 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static bool	is_end(t_game *game, double x, double y)
+static bool	is_end(t_game *game, double x, double y, t_ray *ray)
 {
 	bool	is_out_of_bounds;
 
 	is_out_of_bounds = (x < 0 || x >= game->width || y < 0
 			|| y >= game->height);
-	return (is_out_of_bounds || game->grid[(int)y][(int)x] == ' '
-		|| game->grid[(int)y][(int)x] == '1');
+	if (is_out_of_bounds || game->grid[(int)y][(int)x] == ' '
+		|| game->grid[(int)y][(int)x] == '1')
+	{
+		ray->hit_x = x;
+		ray->hit_y = y;
+		return (true);
+	}
+	return (false);
 }
 
 static bool	is_door(t_game *game, double x, double y, t_ray *ray)
@@ -50,7 +56,7 @@ t_ray	cast_ray(double ra, t_game *game)
 		ray.x += cos(ra) * RAY_STEP;
 		ray.y += sin(ra) * RAY_STEP;
 		ray.c_d += RAY_STEP;
-		if (is_end(game, ray.x, ray.y))
+		if (is_end(game, ray.x, ray.y, &ray))
 			break ;
 		if (is_door(game, ray.x, ray.y, &ray))
 		{

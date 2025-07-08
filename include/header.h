@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:58:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 19:35:35 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:08:07 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ typedef struct s_ray
 	double			angle;
 	double			distance;
 	double			hit_x;
+	double			hit_y;
 	double			prev_x;
 	double			prev_y;
-	double			hit_y;
 	t_wall_dir		hit_dir;
 	double			door_hit_x;
 	double			door_hit_y;

@@ -1,6 +1,6 @@
-NO textures/plain_wall.png
+NO textures/stock_wall.png
 EA textures/red_brick.xpm42
-SO textures/red_brick.xpm42
+SO textures/goose.png
 WE textures/red_brick.xpm42
 GO textures/goose.png
 

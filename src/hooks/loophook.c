@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loophook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseeger <lseeger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlendle <mlendle@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:50:15 by mlendle           #+#    #+#             */
-/*   Updated: 2025/07/07 18:48:20 by lseeger          ###   ########.fr       */
+/*   Updated: 2025/07/08 10:23:34 by mlendle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 static void	handle_door_opening(t_game *game, double x, double y,
 		double *btn_delay)
 {
-	mlx_set_instance_depth(game->door_open_text->instances, 2);
+	game->door_open_text->enabled = true;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_E) && *btn_delay < mlx_get_time())
 	{
 		*btn_delay = mlx_get_time() + 0.5;
 		game->grid[(int)y][(int)x] = 'd';
-		mlx_set_instance_depth(game->door_open_text->instances, 0);
+		game->door_open_text->enabled = false;
 	}
 }
 
 static void	handle_door_closing(t_game *game, double x, double y,
 		double *btn_delay)
 {
-	mlx_set_instance_depth(game->door_close_text->instances, 2);
+	game->door_close_text->enabled = true;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_E) && *btn_delay < mlx_get_time()
 		&& ((int)y != (int)game->player_y || (int)x != (int)game->player_x))
 	{
 		*btn_delay = mlx_get_time() + 0.5;
 		game->grid[(int)y][(int)x] = 'D';
-		mlx_set_instance_depth(game->door_close_text->instances, 0);
+		game->door_close_text->enabled = false;
 	}
 }
 
@@ -56,8 +56,8 @@ void	door(t_game *game)
 		handle_door_closing(game, door_x, door_y, &btn_delay);
 	else
 	{
-		mlx_set_instance_depth(game->door_open_text->instances, 0);
-		mlx_set_instance_depth(game->door_close_text->instances, 0);
+		game->door_close_text->enabled = false;
+		game->door_open_text->enabled = false;
 	}
 }
 
